@@ -3,7 +3,7 @@ package com.nickmillward.snake.client;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
-import com.nickmillward.snake.MyGdxGame;
+import com.nickmillward.snake.SnakeGame;
 
 public class HtmlLauncher extends GwtApplication {
 
@@ -14,6 +14,6 @@ public class HtmlLauncher extends GwtApplication {
 
         @Override
         public ApplicationListener createApplicationListener () {
-                return new MyGdxGame();
+                return new SnakeGame();
         }
 }
