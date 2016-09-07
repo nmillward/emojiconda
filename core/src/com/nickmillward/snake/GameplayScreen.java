@@ -19,11 +19,12 @@ public class GameplayScreen extends ScreenAdapter {
     @Override
     public void show() {
         batch = new SpriteBatch();
+        level = new Level();
     }
 
     @Override
     public void resize(int width, int height) {
-//        level.viewport.update(width, height, true);
+        level.viewport.update(width, height, true);
     }
 
     @Override
@@ -33,7 +34,7 @@ public class GameplayScreen extends ScreenAdapter {
 
     @Override
     public void render(float delta) {
-//        level.update(delta);
+        level.update(delta);
 
         Gdx.gl.glClearColor(
                 Constants.BACKGROUND_COLOR.r,
@@ -43,7 +44,7 @@ public class GameplayScreen extends ScreenAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 
-//        level.render(batch);
+        level.render(batch);
 
     }
 }
