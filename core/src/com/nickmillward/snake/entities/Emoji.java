@@ -36,14 +36,20 @@ public class Emoji {
         position.set(spawnLocation);
 //        direction = Direction.UP;
         // TODO: set velocity, depending on Difficulty
-//        velocity.y -= Constants.EMOJI_DEFAULT_VELOCITY;
+//        velocity.setZero();
+    }
+
+    public void update(float delta) {
+        position.y += delta * Constants.EMOJI_DEFAULT_VELOCITY;
+//        velocity.y += delta * Constants.EMOJI_DEFAULT_VELOCITY;
+//        position.mulAdd(velocity, delta);
     }
 
     public void render(SpriteBatch batch) {
 
         Texture happyFace = new Texture("happy.png");
 
-        batch.draw(happyFace, spawnLocation.x, spawnLocation.y, Constants.WORLD_SIZE * 0.05f, Constants.WORLD_SIZE * 0.05f);
+        batch.draw(happyFace, position.x, position.y, Constants.WORLD_SIZE * 0.05f, Constants.WORLD_SIZE * 0.05f);
 
     }
 }

@@ -25,7 +25,7 @@ public class Level {
     }
 
     public void update(float delta) {
-
+        emoji.update(delta);
     }
 
     public void render(SpriteBatch batch) {
