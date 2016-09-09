@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.nickmillward.snake.Utils.Constants;
+import com.nickmillward.snake.utils.Constants;
 
 /**
  * Created by nmillward on 9/7/16.
