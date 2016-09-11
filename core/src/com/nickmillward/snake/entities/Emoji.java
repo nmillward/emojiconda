@@ -19,6 +19,7 @@ public class Emoji {
     private Vector2 spawnLocation;
     private Vector2 position;
     private Vector2 velocity;
+    private float emojiSize;
 
 
     public Emoji(Level level, Vector2 spawnLocation) {
@@ -60,37 +61,38 @@ public class Emoji {
     public void render(SpriteBatch batch) {
 
         Texture happyFace = new Texture("happy.png");
+        emojiSize = Constants.WORLD_SIZE * 0.05f;
 
-        batch.draw(happyFace, position.x, position.y, Constants.WORLD_SIZE * 0.05f, Constants.WORLD_SIZE * 0.05f);
+        batch.draw(happyFace, position.x, position.y, emojiSize, emojiSize);
 
     }
 
     private void moveLeft(float delta) {
         if (direction != Direction.RIGHT) {
-            position.x -= delta * Constants.EMOJI_DEFAULT_VELOCITY;
+            direction = Direction.LEFT;
         }
-        direction = Direction.LEFT;
+        position.x -= delta * Constants.EMOJI_DEFAULT_VELOCITY;
     }
 
     private void moveRight(float delta) {
         if (direction != Direction.LEFT) {
-            position.x += delta * Constants.EMOJI_DEFAULT_VELOCITY;
+            direction = Direction.RIGHT;
         }
-        direction = Direction.RIGHT;
+        position.x += delta * Constants.EMOJI_DEFAULT_VELOCITY;
     }
 
     private void moveUp(float delta) {
         if (direction != Direction.DOWN) {
-            position.y += delta * Constants.EMOJI_DEFAULT_VELOCITY;
+            direction = Direction.UP;
         }
-        direction = Direction.UP;
+        position.y += delta * Constants.EMOJI_DEFAULT_VELOCITY;
     }
 
     private void moveDown(float delta) {
         if (direction != Direction.UP) {
-            position.y -= delta * Constants.EMOJI_DEFAULT_VELOCITY;
+            direction = Direction.DOWN;
         }
-        direction = Direction.DOWN;
+        position.y -= delta * Constants.EMOJI_DEFAULT_VELOCITY;
     }
 
 }
