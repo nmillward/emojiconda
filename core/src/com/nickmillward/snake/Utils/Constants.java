@@ -12,6 +12,6 @@ public class Constants {
     public static final Color BACKGROUND_COLOR = Color.BLACK;
 
     // EMOJI
-    public static final float EMOJI_DEFAULT_VELOCITY = 10;
+    public static final float EMOJI_DEFAULT_VELOCITY = 50;
 
 }
