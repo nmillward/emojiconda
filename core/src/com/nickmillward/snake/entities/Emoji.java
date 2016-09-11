@@ -19,7 +19,6 @@ public class Emoji {
     private Vector2 spawnLocation;
     private Vector2 position;
     private Vector2 velocity;
-    private float emojiSize;
 
 
     public Emoji(Level level, Vector2 spawnLocation) {
@@ -61,9 +60,8 @@ public class Emoji {
     public void render(SpriteBatch batch) {
 
         Texture happyFace = new Texture("happy.png");
-        emojiSize = Constants.WORLD_SIZE * 0.05f;
 
-        batch.draw(happyFace, position.x, position.y, emojiSize, emojiSize);
+        batch.draw(happyFace, position.x, position.y, Constants.EMOJI_DEFAULT_SIZE, Constants.EMOJI_DEFAULT_SIZE);
 
     }
 

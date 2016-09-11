@@ -26,10 +26,9 @@ public class Level {
     }
 
     private void debugLevel() {
-        float emojiSize = Constants.WORLD_SIZE * 0.05f;
         emojis.add(new Emoji(this, new Vector2(50, 50)));
-        emojis.add(new Emoji(this, new Vector2(50, 50 + emojiSize)));
-        emojis.add(new Emoji(this, new Vector2(50, 50 + emojiSize * 2)));
+        emojis.add(new Emoji(this, new Vector2(50, 50 + Constants.EMOJI_DEFAULT_SIZE)));
+        emojis.add(new Emoji(this, new Vector2(50, 50 + Constants.EMOJI_DEFAULT_SIZE * 2)));
     }
 
     public void update(float delta) {

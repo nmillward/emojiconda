@@ -13,5 +13,6 @@ public class Constants {
 
     // EMOJI
     public static final float EMOJI_DEFAULT_VELOCITY = 50;
+    public static final float EMOJI_DEFAULT_SIZE = WORLD_SIZE * 0.05f;
 
 }
