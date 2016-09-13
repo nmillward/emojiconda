@@ -6,6 +6,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nickmillward.snake.entities.Emoji;
+import com.nickmillward.snake.entities.Snake;
 import com.nickmillward.snake.utils.Constants;
 
 /**
@@ -18,11 +19,15 @@ public class Level {
     public Viewport viewport;
     public Array<Emoji> emojis;
 
+    Snake snake;
+
     public Level() {
         viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
 
         emojis = new Array<Emoji>();
-        debugLevel();
+//        debugLevel();
+
+        snake = new Snake();
     }
 
     private void debugLevel() {
@@ -33,9 +38,9 @@ public class Level {
     }
 
     public void update(float delta) {
-        for (Emoji emoji : emojis) {
-            emoji.update(delta);
-        }
+//        for (Emoji emoji : emojis) {
+//            emoji.update(delta);
+//        }
     }
 
     public void render(SpriteBatch batch) {
@@ -44,10 +49,11 @@ public class Level {
         batch.setProjectionMatrix(viewport.getCamera().combined);
         batch.begin();
 
-        for (Emoji emoji : emojis) {
-            emoji.render(batch);
-        }
+//        for (Emoji emoji : emojis) {
+//            emoji.render(batch);
+//        }
 
+        snake.render(batch);
         batch.end();
     }
 }
