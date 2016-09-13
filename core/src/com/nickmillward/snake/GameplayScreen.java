@@ -1,6 +1,7 @@
 package com.nickmillward.snake;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -46,5 +47,18 @@ public class GameplayScreen extends ScreenAdapter {
 
         level.render(batch);
 
+    }
+
+    public void keyPressed(Input.Keys key) {
+
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+
+        } else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+
+        } else if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+
+        } else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+
+        }
     }
 }
