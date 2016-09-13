@@ -12,7 +12,7 @@ public class Constants {
     public static final Color BACKGROUND_COLOR = Color.BLACK;
 
     // EMOJI
-    public static final float EMOJI_DEFAULT_VELOCITY = 50;
+    public static final float EMOJI_DEFAULT_VELOCITY = 20;
     public static final float EMOJI_DEFAULT_SIZE = WORLD_SIZE * 0.05f;
 
 }

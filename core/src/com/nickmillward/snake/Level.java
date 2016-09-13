@@ -16,7 +16,7 @@ public class Level {
     public static final String TAG = Level.class.getName();
 
     public Viewport viewport;
-    private Array<Emoji> emojis;
+    public Array<Emoji> emojis;
 
     public Level() {
         viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
@@ -27,8 +27,9 @@ public class Level {
 
     private void debugLevel() {
         emojis.add(new Emoji(this, new Vector2(50, 50)));
-        emojis.add(new Emoji(this, new Vector2(50, 50 + Constants.EMOJI_DEFAULT_SIZE)));
-        emojis.add(new Emoji(this, new Vector2(50, 50 + Constants.EMOJI_DEFAULT_SIZE * 2)));
+        emojis.add(new Emoji(this, new Vector2(50, 50 - Constants.EMOJI_DEFAULT_SIZE)));
+        emojis.add(new Emoji(this, new Vector2(50, 50 - Constants.EMOJI_DEFAULT_SIZE * 2)));
+        emojis.add(new Emoji(this, new Vector2(50, 50 - Constants.EMOJI_DEFAULT_SIZE * 3)));
     }
 
     public void update(float delta) {
