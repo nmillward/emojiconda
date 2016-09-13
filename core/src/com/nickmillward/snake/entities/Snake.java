@@ -1,10 +1,10 @@
 package com.nickmillward.snake.entities;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
 import com.nickmillward.snake.utils.Constants;
-import com.nickmillward.snake.utils.Enums;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,14 +16,13 @@ public class Snake {
 
     List<Point> snakePoints;
 
-    private Enums.Direction direction;
-    private Vector2 position;
+    public int xDir, yDir;
     boolean isMoving, isAddPoint;
 
     public Snake() {
         snakePoints = new ArrayList<Point>();
-        direction = Enums.Direction.UP;
-        position = new Vector2(50, 50);
+        xDir = 0;
+        yDir = 0;
         isMoving = false;
         isAddPoint = false;
         snakePoints.add(new Point(Constants.SNAKE_DEFAULT_START_POINT.x, Constants.SNAKE_DEFAULT_START_POINT.y));
@@ -42,13 +41,19 @@ public class Snake {
 
     }
 
+    public void update(float delta) {
+        keyPressed();
+        Gdx.app.log("SNAKE", "Direction: " + getxDir() + ", " + getyDir());
+        move();
+    }
+
     public void move() {
         Point head = snakePoints.get(0);
         Point tail = snakePoints.get(snakePoints.size() - 1);
-        Point newStart = new Point(head.getX() + position.x * Constants.EMOJI_DEFAULT_SIZE, head.getY() + position.y * Constants.EMOJI_DEFAULT_SIZE);
+        Point newStart = new Point(head.getX() + xDir * 4, head.getY() + yDir * 4);
 
         // Set new points for the Body
-        for (int i = snakePoints.size(); i > 0; i--) {
+        for (int i = snakePoints.size() - 1; i >= 1; i--) {
             snakePoints.set(i, snakePoints.get(i - 1));
         }
 
@@ -56,12 +61,48 @@ public class Snake {
         snakePoints.set(0, newStart);
     }
 
-    public Enums.Direction getDirection() {
-        return direction;
+    public void keyPressed() {
+
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+            if (getxDir() != 1) {
+                setxDir(-1);
+                setyDir(0);
+            }
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+            if (getxDir() != -1) {
+                setxDir(1);
+                setyDir(0);
+            }
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+            if (getyDir() != -1) {
+                setxDir(0);
+                setyDir(1);
+            }
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+            if (getyDir() != 1) {
+                setxDir(0);
+                setyDir(-1);
+            }
+        }
     }
 
-    public void setDirection(Enums.Direction direction) {
-        this.direction = direction;
+    public int getxDir() {
+        return xDir;
+    }
+
+    public void setxDir(int xDir) {
+        this.xDir = xDir;
+    }
+
+    public int getyDir() {
+        return yDir;
+    }
+
+    public void setyDir(int yDir) {
+        this.yDir = yDir;
     }
 
     // Get Head of Snake

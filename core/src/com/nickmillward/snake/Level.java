@@ -41,6 +41,7 @@ public class Level {
 //        for (Emoji emoji : emojis) {
 //            emoji.update(delta);
 //        }
+        snake.update(delta);
     }
 
     public void render(SpriteBatch batch) {
