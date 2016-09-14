@@ -19,7 +19,7 @@ public class Snake {
     public int xDir, yDir;
     boolean isMoving, isAddPoint;
 
-    int counter = 0;
+    private int counter = 0;
 
     public Snake() {
         snakePoints = new ArrayList<Point>();
@@ -51,7 +51,9 @@ public class Snake {
 
     public void move(float delta) {
         if (isMoving) {
+
             counter++;
+
             if (counter%5==0) {
                 Point head = snakePoints.get(0);
                 Point tail = snakePoints.get(snakePoints.size() - 1);
