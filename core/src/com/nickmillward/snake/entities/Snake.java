@@ -19,6 +19,8 @@ public class Snake {
     public int xDir, yDir;
     boolean isMoving, isAddPoint;
 
+    int counter = 0;
+
     public Snake() {
         snakePoints = new ArrayList<Point>();
         xDir = 0;
@@ -35,8 +37,8 @@ public class Snake {
 
         Texture happyFace = new Texture("happy.png");
 
-        for (Point p : snakePoints) {
-            batch.draw(happyFace, p.getX(), p.getY(), Constants.EMOJI_DEFAULT_SIZE, Constants.EMOJI_DEFAULT_SIZE);
+        for (Point point : snakePoints) {
+            batch.draw(happyFace, point.getX(), point.getY(), Constants.EMOJI_DEFAULT_SIZE, Constants.EMOJI_DEFAULT_SIZE);
         }
 
     }
@@ -44,24 +46,35 @@ public class Snake {
     public void update(float delta) {
         keyPressed();
         Gdx.app.log("SNAKE", "Direction: " + getxDir() + ", " + getyDir());
-        move();
+        move(delta);
     }
 
-    public void move() {
-        Point head = snakePoints.get(0);
-        Point tail = snakePoints.get(snakePoints.size() - 1);
-        Point newStart = new Point(head.getX() + xDir * 4, head.getY() + yDir * 4);
+    public void move(float delta) {
+        if (isMoving) {
+            counter++;
+            if (counter%5==0) {
+                Point head = snakePoints.get(0);
+                Point tail = snakePoints.get(snakePoints.size() - 1);
+                Point newStart = new Point(head.getX() + xDir * Constants.EMOJI_DEFAULT_SIZE, head.getY() + yDir * Constants.EMOJI_DEFAULT_SIZE);
 
-        // Set new points for the Body
-        for (int i = snakePoints.size() - 1; i >= 1; i--) {
-            snakePoints.set(i, snakePoints.get(i - 1));
+                // Set new points for the Body
+                for (int i = snakePoints.size() - 1; i >= 1; i--) {
+                    snakePoints.set(i, snakePoints.get(i - 1));
+                }
+
+                // Set a new point for the Head
+                snakePoints.set(0, newStart);
+
+                counter = 0;
+            }
         }
-
-        // Set a new point for the Head
-        snakePoints.set(0, newStart);
     }
 
     public void keyPressed() {
+
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.UP)) {
+            isMoving = true;
+        }
 
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
             if (getxDir() != 1) {

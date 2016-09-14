@@ -16,7 +16,7 @@ public class Constants {
     public static final float EMOJI_DEFAULT_VELOCITY = 5;
     public static final float EMOJI_DEFAULT_SIZE = WORLD_SIZE * 0.05f;
 
-    public static final Vector2 SNAKE_DEFAULT_START_POINT = new Vector2(50, 50);
-    public static final int SNAKE_DEFAULT_LENGTH = 4;
+    public static final Vector2 SNAKE_DEFAULT_START_POINT = new Vector2(WORLD_SIZE / 2, WORLD_SIZE / 2);
+    public static final int SNAKE_DEFAULT_LENGTH = 10;
 
 }
