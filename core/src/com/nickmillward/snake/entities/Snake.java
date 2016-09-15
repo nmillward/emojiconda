@@ -19,7 +19,7 @@ public class Snake {
     List<Point> snakePoints;
 
     public int xDir, yDir;
-    boolean isMoving, isAddPoint;
+    boolean isMoving, growSnake;
 
     private int counter = 0;
 
@@ -29,7 +29,7 @@ public class Snake {
         xDir = 0;
         yDir = 0;
         isMoving = false;
-        isAddPoint = false;
+        growSnake = false;
         snakePoints.add(new Point(Constants.SNAKE_DEFAULT_START_POINT.x, Constants.SNAKE_DEFAULT_START_POINT.y));
         for (int i = 1; i < Constants.SNAKE_DEFAULT_LENGTH; i++) {
             snakePoints.add(new Point(Constants.SNAKE_DEFAULT_START_POINT.x, Constants.SNAKE_DEFAULT_START_POINT.y - i * Constants.EMOJI_DEFAULT_SIZE));
@@ -65,6 +65,12 @@ public class Snake {
                 // Set new points for the Body
                 for (int i = snakePoints.size() - 1; i >= 1; i--) {
                     snakePoints.set(i, snakePoints.get(i - 1));
+                }
+
+                // If Snake has eaten a Snack, add to Body
+                if (growSnake) {
+                    snakePoints.add(tail);
+                    growSnake = false;
                 }
 
                 // Set a new point for the Head
@@ -141,5 +147,9 @@ public class Snake {
 
     public float getYofHead() {
         return snakePoints.get(0).getY();
+    }
+
+    public void setGrowSnake(boolean b) {
+        growSnake = b;
     }
 }

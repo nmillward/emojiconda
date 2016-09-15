@@ -41,6 +41,7 @@ public class Snack {
             if (snakeY >= y - 1 && snakeY <= (y + Constants.SNACK_DEFAULT_SIZE)) {
                 Gdx.app.log("SNACK", "SNAKE HIT SNACK");
                 changePosition();
+                snake.setGrowSnake(true);
                 score++;
                 return true;
             }
