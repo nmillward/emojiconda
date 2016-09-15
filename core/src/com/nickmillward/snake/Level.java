@@ -14,17 +14,19 @@ public class Level {
     public static final String TAG = Level.class.getName();
 
     public Viewport viewport;
-    Snake snake;
+    public Snake snake;
+    public boolean isGameOver;
 
     public Level() {
         viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
-
         snake = new Snake();
+        isGameOver = false;
     }
 
 
     public void update(float delta) {
         snake.update(delta);
+        checkGameOver();
     }
 
     public void render(SpriteBatch batch) {
@@ -34,5 +36,14 @@ public class Level {
         batch.begin();
         snake.render(batch);
         batch.end();
+    }
+
+    public void checkGameOver() {
+        if (snake.getXofHead() < 0 || snake.getXofHead() > Constants.WORLD_SIZE) {
+            isGameOver = true;
+        }
+        if (snake.getYofHead() < 0 || snake.getYofHead() > Constants.WORLD_SIZE) {
+            isGameOver = true;
+        }
     }
 }
