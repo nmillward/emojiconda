@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.nickmillward.snake.entities.Snack;
 import com.nickmillward.snake.entities.Snake;
 import com.nickmillward.snake.utils.Constants;
 
@@ -16,11 +17,13 @@ public class Level {
 
     public Viewport viewport;
     public Snake snake;
+    public Snack snack;
     public boolean isGameOver;
 
     public Level() {
         viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
         snake = new Snake(this);
+        snack = new Snack(snake);
         isGameOver = false;
     }
 
@@ -29,6 +32,7 @@ public class Level {
         if (!isGameOver) {
             snake.update(delta);
             checkGameOver();
+            snack.snakeCollisionWithSnack();
         } else {
             //TODO: GAME OVER
         }
@@ -40,15 +44,16 @@ public class Level {
         batch.setProjectionMatrix(viewport.getCamera().combined);
         batch.begin();
         snake.render(batch);
+        snack.render(batch);
         batch.end();
     }
 
     public void checkGameOver() {
-        if (snake.getXofHead() < 0 || snake.getXofHead() > Constants.WORLD_SIZE - Constants.EMOJI_DEFAULT_SIZE) {
+        if (snake.getXofHead() < 0 || snake.getXofHead() > viewport.getWorldWidth() - Constants.EMOJI_DEFAULT_SIZE) {
             isGameOver = true;
             Gdx.app.log(TAG, "GAME OVER");
         }
-        if (snake.getYofHead() < 0 || snake.getYofHead() > Constants.WORLD_SIZE - Constants.EMOJI_DEFAULT_SIZE) {
+        if (snake.getYofHead() < 0 || snake.getYofHead() > viewport.getWorldHeight() - Constants.EMOJI_DEFAULT_SIZE) {
             isGameOver = true;
             Gdx.app.log(TAG, "GAME OVER");
         }

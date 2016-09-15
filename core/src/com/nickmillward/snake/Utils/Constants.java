@@ -19,4 +19,7 @@ public class Constants {
     public static final Vector2 SNAKE_DEFAULT_START_POINT = new Vector2(WORLD_SIZE / 2, WORLD_SIZE / 2);
     public static final int SNAKE_DEFAULT_LENGTH = 10;
 
+    // SNACKS
+    public static final float SNACK_DEFAULT_SIZE = WORLD_SIZE * 0.05f;
+
 }
