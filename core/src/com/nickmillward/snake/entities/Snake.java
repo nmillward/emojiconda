@@ -46,10 +46,10 @@ public class Snake {
     public void update(float delta) {
         keyPressed();
         Gdx.app.log("SNAKE", "Direction: " + getxDir() + ", " + getyDir());
-        move(delta);
+        move();
     }
 
-    public void move(float delta) {
+    public void move() {
         if (isMoving) {
 
             counter++;
