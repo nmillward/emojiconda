@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.nickmillward.snake.Level;
 import com.nickmillward.snake.utils.Constants;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import java.util.List;
  */
 public class Snake {
 
+    Level level;
     List<Point> snakePoints;
 
     public int xDir, yDir;
@@ -21,8 +23,9 @@ public class Snake {
 
     private int counter = 0;
 
-    public Snake() {
+    public Snake(Level level) {
         snakePoints = new ArrayList<Point>();
+        this.level = level;
         xDir = 0;
         yDir = 0;
         isMoving = false;
@@ -46,7 +49,9 @@ public class Snake {
     public void update(float delta) {
         keyPressed();
         Gdx.app.log("SNAKE", "Direction: " + getxDir() + ", " + getyDir());
-        move();
+        if (level.isGameOver) {
+            move();
+        }
     }
 
     public void move() {
@@ -102,6 +107,17 @@ public class Snake {
                 setyDir(-1);
             }
         }
+    }
+
+    public boolean snakeCollision() {
+        float x = getXofHead();
+        float y = getYofHead();
+        for (int i = 1; i < snakePoints.size(); i++) {
+            if (snakePoints.get(i).getX() == x && snakePoints.get(i).getY() == y) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public int getxDir() {

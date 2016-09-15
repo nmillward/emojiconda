@@ -19,7 +19,7 @@ public class Level {
 
     public Level() {
         viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
-        snake = new Snake();
+        snake = new Snake(this);
         isGameOver = false;
     }
 
@@ -39,10 +39,13 @@ public class Level {
     }
 
     public void checkGameOver() {
-        if (snake.getXofHead() < 0 || snake.getXofHead() > Constants.WORLD_SIZE) {
+        if (snake.getXofHead() < 0 || snake.getXofHead() > Constants.WORLD_SIZE - Constants.EMOJI_DEFAULT_SIZE) {
             isGameOver = true;
         }
-        if (snake.getYofHead() < 0 || snake.getYofHead() > Constants.WORLD_SIZE) {
+        if (snake.getYofHead() < 0 || snake.getYofHead() > Constants.WORLD_SIZE - Constants.EMOJI_DEFAULT_SIZE) {
+            isGameOver = true;
+        }
+        if (snake.snakeCollision()) {
             isGameOver = true;
         }
     }
