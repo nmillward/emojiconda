@@ -39,10 +39,10 @@ public class Snack {
         float snakeY = snake.getYofHead() + (Constants.EMOJI_DEFAULT_SIZE / 2);
         if (snakeX >= x - 1 && snakeX <= (x + Constants.SNACK_DEFAULT_SIZE)) {
             if (snakeY >= y - 1 && snakeY <= (y + Constants.SNACK_DEFAULT_SIZE)) {
-                Gdx.app.log("SNACK", "SNAKE HIT SNACK");
                 changePosition();
                 snake.setGrowSnake(true);
                 score++;
+                Gdx.app.log("SNACK", "SNAKE HIT SNACK " + score);
                 return true;
             }
         }
