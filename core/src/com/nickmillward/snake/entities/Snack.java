@@ -26,6 +26,7 @@ public class Snack {
     }
 
     public void changePosition() {
+        //TODO: Make sure the new snack does not land on the Snake Body
         x = (float) Math.random() * (Constants.WORLD_SIZE - Constants.SNACK_DEFAULT_SIZE);
         y = (float) Math.random() * (Constants.WORLD_SIZE - Constants.SNACK_DEFAULT_SIZE);
     }
