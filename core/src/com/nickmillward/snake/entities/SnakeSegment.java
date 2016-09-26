@@ -3,16 +3,16 @@ package com.nickmillward.snake.entities;
 /**
  * Created by nmillward on 9/13/16.
  */
-public class Point {
+public class SnakeSegment {
 
     private float x, y;
 
-    public Point() {
+    public SnakeSegment() {
         x = 0;
         y = 0;
     }
 
-    public Point(float x, float y) {
+    public SnakeSegment(float x, float y) {
         this.x = x;
         this.y = y;
     }

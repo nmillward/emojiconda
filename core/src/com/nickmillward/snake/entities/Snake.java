@@ -16,7 +16,7 @@ import java.util.List;
 public class Snake {
 
     Level level;
-    List<Point> snakePoints;
+    List<SnakeSegment> snakeSegments;
 
     public int xDir, yDir;
     boolean isMoving, growSnake;
@@ -24,15 +24,15 @@ public class Snake {
     private int counter = 0;
 
     public Snake(Level level) {
-        snakePoints = new ArrayList<Point>();
+        snakeSegments = new ArrayList<SnakeSegment>();
         this.level = level;
         xDir = 0;
         yDir = 0;
         isMoving = false;
         growSnake = false;
-        snakePoints.add(new Point(Constants.SNAKE_DEFAULT_START_POINT.x, Constants.SNAKE_DEFAULT_START_POINT.y));
+        snakeSegments.add(new SnakeSegment(Constants.SNAKE_DEFAULT_START_POINT.x, Constants.SNAKE_DEFAULT_START_POINT.y));
         for (int i = 1; i < Constants.SNAKE_DEFAULT_LENGTH; i++) {
-            snakePoints.add(new Point(Constants.SNAKE_DEFAULT_START_POINT.x, Constants.SNAKE_DEFAULT_START_POINT.y - i * Constants.EMOJI_DEFAULT_SIZE));
+            snakeSegments.add(new SnakeSegment(Constants.SNAKE_DEFAULT_START_POINT.x, Constants.SNAKE_DEFAULT_START_POINT.y - i * Constants.EMOJI_DEFAULT_SIZE));
         }
     }
 
@@ -40,8 +40,8 @@ public class Snake {
 
         Texture happyFace = new Texture("happy.png");
 
-        for (Point point : snakePoints) {
-            batch.draw(happyFace, point.getX(), point.getY(), Constants.EMOJI_DEFAULT_SIZE, Constants.EMOJI_DEFAULT_SIZE);
+        for (SnakeSegment snakeSegment : snakeSegments) {
+            batch.draw(happyFace, snakeSegment.getX(), snakeSegment.getY(), Constants.EMOJI_DEFAULT_SIZE, Constants.EMOJI_DEFAULT_SIZE);
         }
 
     }
@@ -58,23 +58,23 @@ public class Snake {
             counter++;
 
             if (counter%5==0) {
-                Point head = snakePoints.get(0);
-                Point tail = snakePoints.get(snakePoints.size() - 1);
-                Point newStart = new Point(head.getX() + xDir * Constants.EMOJI_DEFAULT_SIZE, head.getY() + yDir * Constants.EMOJI_DEFAULT_SIZE);
+                SnakeSegment head = snakeSegments.get(0);
+                SnakeSegment tail = snakeSegments.get(snakeSegments.size() - 1);
+                SnakeSegment newStart = new SnakeSegment(head.getX() + xDir * Constants.EMOJI_DEFAULT_SIZE, head.getY() + yDir * Constants.EMOJI_DEFAULT_SIZE);
 
                 // Set new points for the Body
-                for (int i = snakePoints.size() - 1; i >= 1; i--) {
-                    snakePoints.set(i, snakePoints.get(i - 1));
+                for (int i = snakeSegments.size() - 1; i >= 1; i--) {
+                    snakeSegments.set(i, snakeSegments.get(i - 1));
                 }
 
                 // If Snake has eaten a Snack, add to Body
                 if (growSnake) {
-                    snakePoints.add(tail);
+                    snakeSegments.add(tail);
                     growSnake = false;
                 }
 
                 // Set a new point for the Head
-                snakePoints.set(0, newStart);
+                snakeSegments.set(0, newStart);
 
                 counter = 0;
             }
@@ -116,8 +116,8 @@ public class Snake {
     public boolean snakeCollision() {
         float x = getXofHead();
         float y = getYofHead();
-        for (int i = 1; i < snakePoints.size(); i++) {
-            if (snakePoints.get(i).getX() == x && snakePoints.get(i).getY() == y) {
+        for (int i = 1; i < snakeSegments.size(); i++) {
+            if (snakeSegments.get(i).getX() == x && snakeSegments.get(i).getY() == y) {
                 return true;
             }
         }
@@ -142,11 +142,11 @@ public class Snake {
 
     // Get Head of Snake
     public float getXofHead() {
-        return snakePoints.get(0).getX();
+        return snakeSegments.get(0).getX();
     }
 
     public float getYofHead() {
-        return snakePoints.get(0).getY();
+        return snakeSegments.get(0).getY();
     }
 
     public void setGrowSnake(boolean b) {

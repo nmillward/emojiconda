@@ -4,7 +4,7 @@
 	<inherits name='com.badlogic.gdx.backends.gdx_backends_gwt' />
 
 	<inherits name='MyGdxGame' />
-	<entry-point class='com.nickmillward.snake.client.HtmlLauncher' />
+	<entry-snakeSegment class='com.nickmillward.snake.client.HtmlLauncher' />
 	
 	<set-configuration-property name="gdx.assetpath" value="../android/assets" />
 </module>
