@@ -8,13 +8,13 @@ import com.nickmillward.snake.utils.Constants;
 /**
  * Created by nmillward on 9/14/16.
  */
-public class Snack {
+public class Food {
 
     private float x, y;
     private int score;
     private Snake snake;
 
-    public Snack(Snake snake) {
+    public Food(Snake snake) {
         this.snake = snake;
         x = (float) Math.random() * (Constants.WORLD_SIZE - Constants.SNACK_DEFAULT_SIZE);
         y = (float) Math.random() * (Constants.WORLD_SIZE - Constants.SNACK_DEFAULT_SIZE);
@@ -26,7 +26,7 @@ public class Snack {
     }
 
     public void changePosition() {
-        //TODO: Make sure the new snack does not land on the Snake Body
+        //TODO: Make sure the new food does not land on the Snake Body
         x = (float) Math.random() * (Constants.WORLD_SIZE - Constants.SNACK_DEFAULT_SIZE);
         y = (float) Math.random() * (Constants.WORLD_SIZE - Constants.SNACK_DEFAULT_SIZE);
     }

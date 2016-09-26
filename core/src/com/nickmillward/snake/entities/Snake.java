@@ -67,7 +67,7 @@ public class Snake {
                     snakeSegments.set(i, snakeSegments.get(i - 1));
                 }
 
-                // If Snake has eaten a Snack, add to Body
+                // If Snake has eaten a Food, add to Body
                 if (growSnake) {
                     snakeSegments.add(tail);
                     growSnake = false;
