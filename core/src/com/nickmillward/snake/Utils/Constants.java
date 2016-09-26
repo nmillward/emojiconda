@@ -23,4 +23,9 @@ public class Constants {
     public static final float FOOD_DEFAULT_SIZE = WORLD_SIZE * 0.05f;
     public static final int FOOD_BASE_POINT_VALUE = 5;
 
+    // SNAKE HUD
+    public static final float SNAKE_HUD_VIEWPORT_SIZE = 480;
+    public static final float SNAKE_HUD_MARGIN = 20;
+    public static final String SNAKE_HUD_SCORE_LABEL = "Score: ";
+
 }

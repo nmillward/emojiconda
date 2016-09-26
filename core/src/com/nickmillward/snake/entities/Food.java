@@ -42,7 +42,7 @@ public class Food {
             if (snakeY >= y - 1 && snakeY <= (y + Constants.FOOD_DEFAULT_SIZE)) {
                 changePosition();
                 snake.setGrowSnake(true);
-                score++;
+                score += Constants.FOOD_BASE_POINT_VALUE;
                 Gdx.app.log("SNACK", "SNAKE HIT SNACK " + score);
                 return true;
             }
