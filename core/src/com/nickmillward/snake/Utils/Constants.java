@@ -21,5 +21,6 @@ public class Constants {
 
     // FOOD
     public static final float FOOD_DEFAULT_SIZE = WORLD_SIZE * 0.05f;
+    public static final int FOOD_BASE_POINT_VALUE = 5;
 
 }
