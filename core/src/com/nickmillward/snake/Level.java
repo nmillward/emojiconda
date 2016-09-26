@@ -49,11 +49,11 @@ public class Level {
     }
 
     public void checkGameOver() {
-        if (snake.getXofHead() < 0 || snake.getXofHead() > viewport.getWorldWidth() - Constants.EMOJI_DEFAULT_SIZE) {
+        if (snake.getXofHead() < 0 || snake.getXofHead() > viewport.getWorldWidth() - Constants.SNAKE_SEGMENT_DEFAULT_SIZE) {
             isGameOver = true;
             Gdx.app.log(TAG, "GAME OVER");
         }
-        if (snake.getYofHead() < 0 || snake.getYofHead() > viewport.getWorldHeight() - Constants.EMOJI_DEFAULT_SIZE) {
+        if (snake.getYofHead() < 0 || snake.getYofHead() > viewport.getWorldHeight() - Constants.SNAKE_SEGMENT_DEFAULT_SIZE) {
             isGameOver = true;
             Gdx.app.log(TAG, "GAME OVER");
         }

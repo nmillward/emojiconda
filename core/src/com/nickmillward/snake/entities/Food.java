@@ -16,19 +16,19 @@ public class Food {
 
     public Food(Snake snake) {
         this.snake = snake;
-        x = (float) Math.random() * (Constants.WORLD_SIZE - Constants.SNACK_DEFAULT_SIZE);
-        y = (float) Math.random() * (Constants.WORLD_SIZE - Constants.SNACK_DEFAULT_SIZE);
+        x = (float) Math.random() * (Constants.WORLD_SIZE - Constants.FOOD_DEFAULT_SIZE);
+        y = (float) Math.random() * (Constants.WORLD_SIZE - Constants.FOOD_DEFAULT_SIZE);
     }
 
     public void render(SpriteBatch batch) {
         Texture burger = new Texture("burger.png");
-        batch.draw(burger, x, y, Constants.SNACK_DEFAULT_SIZE, Constants.SNACK_DEFAULT_SIZE);
+        batch.draw(burger, x, y, Constants.FOOD_DEFAULT_SIZE, Constants.FOOD_DEFAULT_SIZE);
     }
 
     public void changePosition() {
         //TODO: Make sure the new food does not land on the Snake Body
-        x = (float) Math.random() * (Constants.WORLD_SIZE - Constants.SNACK_DEFAULT_SIZE);
-        y = (float) Math.random() * (Constants.WORLD_SIZE - Constants.SNACK_DEFAULT_SIZE);
+        x = (float) Math.random() * (Constants.WORLD_SIZE - Constants.FOOD_DEFAULT_SIZE);
+        y = (float) Math.random() * (Constants.WORLD_SIZE - Constants.FOOD_DEFAULT_SIZE);
     }
 
     public int getScore() {
@@ -36,10 +36,10 @@ public class Food {
     }
 
     public boolean snakeCollisionWithSnack() {
-        float snakeX = snake.getXofHead() + (Constants.EMOJI_DEFAULT_SIZE / 2);
-        float snakeY = snake.getYofHead() + (Constants.EMOJI_DEFAULT_SIZE / 2);
-        if (snakeX >= x - 1 && snakeX <= (x + Constants.SNACK_DEFAULT_SIZE)) {
-            if (snakeY >= y - 1 && snakeY <= (y + Constants.SNACK_DEFAULT_SIZE)) {
+        float snakeX = snake.getXofHead() + (Constants.SNAKE_SEGMENT_DEFAULT_SIZE / 2);
+        float snakeY = snake.getYofHead() + (Constants.SNAKE_SEGMENT_DEFAULT_SIZE / 2);
+        if (snakeX >= x - 1 && snakeX <= (x + Constants.FOOD_DEFAULT_SIZE)) {
+            if (snakeY >= y - 1 && snakeY <= (y + Constants.FOOD_DEFAULT_SIZE)) {
                 changePosition();
                 snake.setGrowSnake(true);
                 score++;

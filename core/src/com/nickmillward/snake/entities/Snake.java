@@ -32,7 +32,7 @@ public class Snake {
         growSnake = false;
         snakeSegments.add(new SnakeSegment(Constants.SNAKE_DEFAULT_START_POINT.x, Constants.SNAKE_DEFAULT_START_POINT.y));
         for (int i = 1; i < Constants.SNAKE_DEFAULT_LENGTH; i++) {
-            snakeSegments.add(new SnakeSegment(Constants.SNAKE_DEFAULT_START_POINT.x, Constants.SNAKE_DEFAULT_START_POINT.y - i * Constants.EMOJI_DEFAULT_SIZE));
+            snakeSegments.add(new SnakeSegment(Constants.SNAKE_DEFAULT_START_POINT.x, Constants.SNAKE_DEFAULT_START_POINT.y - i * Constants.SNAKE_SEGMENT_DEFAULT_SIZE));
         }
     }
 
@@ -41,7 +41,7 @@ public class Snake {
         Texture happyFace = new Texture("happy.png");
 
         for (SnakeSegment snakeSegment : snakeSegments) {
-            batch.draw(happyFace, snakeSegment.getX(), snakeSegment.getY(), Constants.EMOJI_DEFAULT_SIZE, Constants.EMOJI_DEFAULT_SIZE);
+            batch.draw(happyFace, snakeSegment.getX(), snakeSegment.getY(), Constants.SNAKE_SEGMENT_DEFAULT_SIZE, Constants.SNAKE_SEGMENT_DEFAULT_SIZE);
         }
 
     }
@@ -60,7 +60,7 @@ public class Snake {
             if (counter%5==0) {
                 SnakeSegment head = snakeSegments.get(0);
                 SnakeSegment tail = snakeSegments.get(snakeSegments.size() - 1);
-                SnakeSegment newStart = new SnakeSegment(head.getX() + xDir * Constants.EMOJI_DEFAULT_SIZE, head.getY() + yDir * Constants.EMOJI_DEFAULT_SIZE);
+                SnakeSegment newStart = new SnakeSegment(head.getX() + xDir * Constants.SNAKE_SEGMENT_DEFAULT_SIZE, head.getY() + yDir * Constants.SNAKE_SEGMENT_DEFAULT_SIZE);
 
                 // Set new points for the Body
                 for (int i = snakeSegments.size() - 1; i >= 1; i--) {
