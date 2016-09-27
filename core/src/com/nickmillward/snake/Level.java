@@ -37,6 +37,7 @@ public class Level {
             food.snakeCollisionWithSnack();
         } else {
             //TODO: GAME OVER
+            resetGame();
         }
     }
 
@@ -76,16 +77,8 @@ public class Level {
         return currentScore;
     }
 
-    public void setCurrentScore(int currentScore) {
-        this.currentScore = currentScore;
-    }
-
     public int getHighScore() {
         return highScore;
-    }
-
-    public void setHighScore(int highScore) {
-        this.highScore = highScore;
     }
 
     public void incrementCurrentScore(int pointValue) {
