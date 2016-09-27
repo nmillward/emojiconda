@@ -49,7 +49,7 @@ public class GameplayScreen extends ScreenAdapter {
 
         level.render(batch);
 
-        snakeHUD.render(batch, level.food.getScore());
+        snakeHUD.render(batch, level.getCurrentScore());
 
     }
 }

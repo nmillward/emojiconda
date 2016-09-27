@@ -25,7 +25,7 @@ public class Level {
     public Level() {
         viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
         snake = new Snake(this);
-        food = new Food(snake);
+        food = new Food(snake, this);
         isGameOver = false;
     }
 
