@@ -19,6 +19,8 @@ public class Level {
     public Snake snake;
     public Food food;
     public boolean isGameOver;
+    public int currentScore;
+    public int highScore = 0;
 
     public Level() {
         viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
@@ -61,5 +63,36 @@ public class Level {
             isGameOver = true;
             Gdx.app.log(TAG, "GAME OVER");
         }
+    }
+
+    public void resetGame() {
+        if (currentScore > highScore) {
+            highScore = currentScore;
+        }
+        resetCurrentScore();
+    }
+
+    public int getCurrentScore() {
+        return currentScore;
+    }
+
+    public void setCurrentScore(int currentScore) {
+        this.currentScore = currentScore;
+    }
+
+    public int getHighScore() {
+        return highScore;
+    }
+
+    public void setHighScore(int highScore) {
+        this.highScore = highScore;
+    }
+
+    public void incrementCurrentScore(int pointValue) {
+        currentScore += pointValue;
+    }
+
+    public void resetCurrentScore() {
+        currentScore = 0;
     }
 }
