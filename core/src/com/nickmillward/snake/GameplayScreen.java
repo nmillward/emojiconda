@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.nickmillward.snake.overlays.GameOverOverlay;
 import com.nickmillward.snake.overlays.SnakeHUD;
 import com.nickmillward.snake.utils.Constants;
 
@@ -17,18 +18,22 @@ public class GameplayScreen extends ScreenAdapter {
     SpriteBatch batch;
     private Level level;
     private SnakeHUD snakeHUD;
+    private GameOverOverlay gameOverOverlay;
 
     @Override
     public void show() {
         batch = new SpriteBatch();
         level = new Level();
         snakeHUD = new SnakeHUD();
+        gameOverOverlay = new GameOverOverlay();
+
     }
 
     @Override
     public void resize(int width, int height) {
         level.viewport.update(width, height, true);
         snakeHUD.viewport.update(width, height, true);
+        gameOverOverlay.viewport.update(width, height, true);
     }
 
     @Override
@@ -51,5 +56,8 @@ public class GameplayScreen extends ScreenAdapter {
 
         snakeHUD.render(batch, level.getCurrentScore());
 
+        if (level.isGameOver) {
+            gameOverOverlay.render(batch, level.getHighScore());
+        }
     }
 }
