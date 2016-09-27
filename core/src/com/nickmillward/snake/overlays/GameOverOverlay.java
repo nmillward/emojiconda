@@ -17,7 +17,7 @@ public class GameOverOverlay {
     public GameOverOverlay() {
         this.viewport = new ExtendViewport(Constants.GAME_OVER_OVERLAY_VIEWPORT_SIZE, Constants.GAME_OVER_OVERLAY_VIEWPORT_SIZE);
         font = new BitmapFont();
-        font.getData().setScale(2);
+        font.getData().setScale(3);
     }
 
     public void render(SpriteBatch batch, int score) {
@@ -27,7 +27,7 @@ public class GameOverOverlay {
 
         final String highScoreText = Constants.HIGH_SCORE_LABEL + score;
 
-        font.draw(batch, highScoreText, viewport.getWorldWidth() / 2, viewport.getWorldHeight() / 2);
+        font.draw(batch, highScoreText, viewport.getWorldWidth() / 3, viewport.getWorldHeight() / 2);
 
         batch.end();
     }
