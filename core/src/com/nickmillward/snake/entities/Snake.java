@@ -57,7 +57,11 @@ public class Snake {
 
             counter++;
 
-            if (counter%5==0) {
+            /**
+             * Counter dictates how quickly the snake will "move"
+             * TODO: Update counter modulo function according to difficulty level
+             */
+            if (counter % Constants.MEDIUM_SNAKE_VELOCITY == 0) {
                 SnakeSegment head = snakeSegments.get(0);
                 SnakeSegment tail = snakeSegments.get(snakeSegments.size() - 1);
                 SnakeSegment newStart = new SnakeSegment(head.getX() + xDir * Constants.SNAKE_SEGMENT_DEFAULT_SIZE, head.getY() + yDir * Constants.SNAKE_SEGMENT_DEFAULT_SIZE);

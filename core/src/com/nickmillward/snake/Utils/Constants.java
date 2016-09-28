@@ -13,8 +13,10 @@ public class Constants {
     public static final Color BACKGROUND_COLOR = Color.BLACK;
 
     // SNAKE
-    public static final float SNAKE_SEGMENT_DEFAULT_VELOCITY = 5;
     public static final float SNAKE_SEGMENT_DEFAULT_SIZE = WORLD_SIZE * 0.05f;
+    public static final int EASY_SNAKE_VELOCITY = 10;
+    public static final int MEDIUM_SNAKE_VELOCITY = 5;
+    public static final int HARD_SNAKE_VELOCITY = 2;
 
     public static final Vector2 SNAKE_DEFAULT_START_POINT = new Vector2(WORLD_SIZE / 2, WORLD_SIZE / 2);
     public static final int SNAKE_DEFAULT_LENGTH = 4;
@@ -31,5 +33,17 @@ public class Constants {
     // GAME OVER OVERLAY
     public static final float GAME_OVER_OVERLAY_VIEWPORT_SIZE = 480;
     public static final String HIGH_SCORE_LABEL = "High Score: ";
+
+    // DIFFICULTY SCREEN
+    public static final float DIFFICULTY_WORLD_SIZE = 480;
+    public static final float DIFFICULTY_LABEL_SCALE = 1.5f;
+
+    public static final String EASY_DIFFICULTY_LABEL = "EASY";
+    public static final String MEDIUM_DIFFICULTY_LABEL = "MEDIUM";
+    public static final String HARD_DIFFICULTY_LABEL = "HARD";
+
+    public static final Vector2 EASY_CENTER = new Vector2(DIFFICULTY_WORLD_SIZE / 2, DIFFICULTY_WORLD_SIZE / 4);
+    public static final Vector2 MEDIUM_CENTER = new Vector2(DIFFICULTY_WORLD_SIZE / 2, DIFFICULTY_WORLD_SIZE / 2);
+    public static final Vector2 HARD_CENTER = new Vector2(DIFFICULTY_WORLD_SIZE / 2, DIFFICULTY_WORLD_SIZE * 3/4);
 
 }

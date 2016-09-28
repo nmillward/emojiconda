@@ -13,4 +13,18 @@ public class Enums {
         STILL
     }
 
+    public enum Difficulty {
+        EASY(Constants.EASY_SNAKE_VELOCITY, Constants.EASY_DIFFICULTY_LABEL),
+        MEDIUM(Constants.MEDIUM_SNAKE_VELOCITY, Constants.MEDIUM_DIFFICULTY_LABEL),
+        HARD(Constants.HARD_SNAKE_VELOCITY, Constants.HARD_DIFFICULTY_LABEL);
+
+        float velocity;
+        String label;
+
+        Difficulty(float velocity, String label) {
+            this.velocity = velocity;
+            this.label = label;
+        }
+    }
+
 }
