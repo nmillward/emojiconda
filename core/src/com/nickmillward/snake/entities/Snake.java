@@ -48,7 +48,7 @@ public class Snake {
 
     public void update(float delta) {
         keyPressed();
-        Gdx.app.log("SNAKE", "Direction: " + getxDir() + ", " + getyDir());
+//        Gdx.app.log("SNAKE", "Direction: " + getxDir() + ", " + getyDir());
         move();
     }
 
