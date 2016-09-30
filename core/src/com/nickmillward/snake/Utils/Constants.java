@@ -40,6 +40,9 @@ public class Constants {
     public static final float DIFFICULTY_WORLD_SIZE = 480;
     public static final float DIFFICULTY_LABEL_SCALE = 1.5f;
 
+    public static final Color BUTTON_COLOR = Color.WHITE;
+    public static final float BUTTON_MARGIN = 20;
+
     public static final String EASY_DIFFICULTY_LABEL = "EASY";
     public static final String MEDIUM_DIFFICULTY_LABEL = "MEDIUM";
     public static final String HARD_DIFFICULTY_LABEL = "HARD";

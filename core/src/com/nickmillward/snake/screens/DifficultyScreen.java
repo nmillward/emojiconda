@@ -11,7 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Align;
-import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.nickmillward.snake.SnakeGame;
 import com.nickmillward.snake.utils.Constants;
 
@@ -23,7 +23,7 @@ public class DifficultyScreen extends InputAdapter implements Screen {
     SnakeGame game;
     ShapeRenderer renderer;
     SpriteBatch batch;
-    ExtendViewport viewport;
+    FitViewport viewport;
     BitmapFont font;
 
     public DifficultyScreen(SnakeGame game) {
@@ -34,7 +34,7 @@ public class DifficultyScreen extends InputAdapter implements Screen {
     public void show() {
         renderer = new ShapeRenderer();
         batch = new SpriteBatch();
-        viewport = new ExtendViewport(Constants.DIFFICULTY_WORLD_SIZE, Constants.DIFFICULTY_WORLD_SIZE);
+        viewport = new FitViewport(Constants.DIFFICULTY_WORLD_SIZE, Constants.DIFFICULTY_WORLD_SIZE);
 
         Gdx.input.setInputProcessor(this);
 
@@ -53,19 +53,51 @@ public class DifficultyScreen extends InputAdapter implements Screen {
                 Constants.BACKGROUND_COLOR.a);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+        /**
+         * Draw Button Rectangle
+         */
         renderer.setProjectionMatrix(viewport.getCamera().combined);
+        renderer.begin(ShapeRenderer.ShapeType.Line);
 
+        renderer.setColor(Constants.BUTTON_COLOR);
+
+        renderer.rect(  //Easy Rectangle
+                Constants.EASY_CENTER.x - Constants.BUTTON_MARGIN,
+                Constants.EASY_CENTER.y - Constants.BUTTON_MARGIN,
+                viewport.getWorldWidth() / 4,
+                viewport.getWorldHeight() / 16
+        );
+
+        renderer.rect(  //Medium Rectangle
+                Constants.MEDIUM_CENTER.x - Constants.BUTTON_MARGIN,
+                Constants.MEDIUM_CENTER.y - Constants.BUTTON_MARGIN,
+                viewport.getWorldWidth() / 4,
+                viewport.getWorldHeight() / 16
+        );
+
+        renderer.rect(  //Hard Rectangle
+                Constants.HARD_CENTER.x - Constants.BUTTON_MARGIN,
+                Constants.HARD_CENTER.y - Constants.BUTTON_MARGIN,
+                viewport.getWorldWidth() / 4,
+                viewport.getWorldHeight() / 16
+        );
+
+        renderer.end();
+
+        /**
+         * Draw Button Text
+         */
         batch.setProjectionMatrix(viewport.getCamera().combined);
         batch.begin();
 
         final GlyphLayout easyLayout = new GlyphLayout(font, Constants.EASY_DIFFICULTY_LABEL);
-        font.draw(batch, Constants.EASY_DIFFICULTY_LABEL, Constants.EASY_CENTER.x + easyLayout.width / 2, Constants.EASY_CENTER.y, 0, Align.center, false);
+        font.draw(batch, Constants.EASY_DIFFICULTY_LABEL, Constants.EASY_CENTER.x + easyLayout.width / 2f, Constants.EASY_CENTER.y, 0, Align.center, false);
 
         final GlyphLayout mediumLayout = new GlyphLayout(font, Constants.MEDIUM_DIFFICULTY_LABEL);
-        font.draw(batch, Constants.MEDIUM_DIFFICULTY_LABEL, Constants.MEDIUM_CENTER.x + mediumLayout.width / 2, Constants.MEDIUM_CENTER.y, 0, Align.center, false);
+        font.draw(batch, Constants.MEDIUM_DIFFICULTY_LABEL, Constants.MEDIUM_CENTER.x + mediumLayout.width / 2f, Constants.MEDIUM_CENTER.y, 0, Align.center, false);
 
         final GlyphLayout hardLayout = new GlyphLayout(font, Constants.HARD_DIFFICULTY_LABEL);
-        font.draw(batch, Constants.HARD_DIFFICULTY_LABEL, Constants.HARD_CENTER.x + hardLayout.width / 2, Constants.HARD_CENTER.y, 0, Align.center, false);
+        font.draw(batch, Constants.HARD_DIFFICULTY_LABEL, Constants.HARD_CENTER.x + hardLayout.width / 2f, Constants.HARD_CENTER.y, 0, Align.center, false);
 
         batch.end();
     }
