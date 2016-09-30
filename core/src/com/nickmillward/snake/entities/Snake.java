@@ -128,6 +128,14 @@ public class Snake {
         return false;
     }
 
+    public boolean isMoving() {
+        return isMoving;
+    }
+
+    public void setMoving(boolean moving) {
+        isMoving = moving;
+    }
+
     public int getxDir() {
         return xDir;
     }

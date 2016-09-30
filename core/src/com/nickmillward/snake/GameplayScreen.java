@@ -1,9 +1,11 @@
 package com.nickmillward.snake;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.input.GestureDetector;
 import com.nickmillward.snake.overlays.GameOverOverlay;
 import com.nickmillward.snake.overlays.SnakeHUD;
 import com.nickmillward.snake.utils.Constants;
@@ -15,6 +17,8 @@ public class GameplayScreen extends ScreenAdapter {
 
     public static final String TAG = GameplayScreen.class.getName();
 
+    MobileControls mobileControls;
+    GestureDetector gestureDetector;
     SpriteBatch batch;
     private Level level;
     private SnakeHUD snakeHUD;
@@ -26,6 +30,12 @@ public class GameplayScreen extends ScreenAdapter {
         level = new Level();
         snakeHUD = new SnakeHUD();
         gameOverOverlay = new GameOverOverlay();
+        mobileControls = new MobileControls(level);
+
+        if (onMobile()) {
+            gestureDetector = new GestureDetector(mobileControls);
+            Gdx.input.setInputProcessor(gestureDetector);
+        }
 
     }
 
@@ -59,5 +69,12 @@ public class GameplayScreen extends ScreenAdapter {
         if (level.isGameOver) {
             gameOverOverlay.render(batch, level.getHighScore());
         }
+    }
+
+    /**
+     * Check if the user is on a mobile device
+     */
+    public boolean onMobile() {
+        return Gdx.app.getType() == Application.ApplicationType.Android || Gdx.app.getType() == Application.ApplicationType.iOS;
     }
 }
