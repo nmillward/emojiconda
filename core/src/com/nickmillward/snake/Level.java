@@ -2,6 +2,7 @@ package com.nickmillward.snake;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nickmillward.snake.entities.Food;
@@ -15,14 +16,16 @@ public class Level {
 
     public static final String TAG = Level.class.getName();
 
+    ShapeRenderer shapeRenderer;
     public Viewport viewport;
     public Snake snake;
     public Food food;
     public boolean isGameOver;
-    public int currentScore;
+    public int currentScore = 0;
     public int highScore = 0;
 
     public Level() {
+        shapeRenderer = new ShapeRenderer();
         viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
         snake = new Snake(this);
         food = new Food(snake, this);
@@ -49,14 +52,27 @@ public class Level {
         snake.render(batch);
         food.render(batch);
         batch.end();
+
+        // BORDER
+//        shapeRenderer.setProjectionMatrix(viewport.getCamera().combined);
+//        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+//        shapeRenderer.setColor(Constants.BORDER_COLOR);
+//        shapeRenderer.rect(
+//                Constants.BORDER_MARGIN,
+//                Constants.BORDER_MARGIN,
+//                viewport.getWorldWidth() - Constants.BORDER_MARGIN,
+//                viewport.getWorldHeight() - Constants.BORDER_MARGIN
+//        );
+//        shapeRenderer.end();
+
     }
 
     public void checkGameOver() {
-        if (snake.getXofHead() < 0 || snake.getXofHead() > viewport.getWorldWidth() - Constants.SNAKE_SEGMENT_DEFAULT_SIZE) {
+        if (snake.getXofHead() < Constants.BORDER_MARGIN || snake.getXofHead() > viewport.getWorldWidth() - Constants.SNAKE_SEGMENT_DEFAULT_SIZE - Constants.BORDER_MARGIN) {
             isGameOver = true;
             Gdx.app.log(TAG, "GAME OVER");
         }
-        if (snake.getYofHead() < 0 || snake.getYofHead() > viewport.getWorldHeight() - Constants.SNAKE_SEGMENT_DEFAULT_SIZE) {
+        if (snake.getYofHead() < Constants.BORDER_MARGIN || snake.getYofHead() > viewport.getWorldHeight() - Constants.SNAKE_SEGMENT_DEFAULT_SIZE - Constants.BORDER_MARGIN) {
             isGameOver = true;
             Gdx.app.log(TAG, "GAME OVER");
         }

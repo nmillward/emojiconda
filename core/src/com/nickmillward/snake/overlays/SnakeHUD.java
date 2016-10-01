@@ -33,12 +33,5 @@ public class SnakeHUD {
         font.draw(batch, scoreText, Constants.SNAKE_HUD_MARGIN, viewport.getWorldHeight() - Constants.SNAKE_HUD_MARGIN);
         batch.end();
 
-        // BORDER
-        shapeRenderer.setProjectionMatrix(viewport.getCamera().combined);
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-        shapeRenderer.setColor(Constants.BORDER_COLOR);
-        shapeRenderer.rect(Constants.BORDER_MARGIN, Constants.BORDER_MARGIN, viewport.getWorldWidth() - Constants.BUTTON_MARGIN, viewport.getWorldHeight() - Constants.BUTTON_MARGIN);
-        shapeRenderer.end();
-
     }
 }
