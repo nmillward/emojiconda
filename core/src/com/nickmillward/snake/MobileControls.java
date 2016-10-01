@@ -45,18 +45,18 @@ public class MobileControls extends InputAdapter implements GestureDetector.Gest
 
         } else {
 
-            if (velocityY < 0) { // Move Down
+            if (velocityY < 0) { // Move UP
                 if (level.snake.getyDir() != -1) {
                     level.snake.setxDir(0);
                     level.snake.setyDir(1);
-                    Gdx.app.log("MOBILE CONTROL", "MOVE DOWN");
+                    Gdx.app.log("MOBILE CONTROL", "MOVE UP");
                 }
 
-            } else if (velocityY > 0) { // Move Up
+            } else if (velocityY > 0) { // Move Down
                 if (level.snake.getyDir() != 1) {
                     level.snake.setxDir(0);
                     level.snake.setyDir(-1);
-                    Gdx.app.log("MOBILE CONTROL", "MOVE UP");
+                    Gdx.app.log("MOBILE CONTROL", "MOVE DOWN");
                 }
             } else {
                 // Do Nothing
