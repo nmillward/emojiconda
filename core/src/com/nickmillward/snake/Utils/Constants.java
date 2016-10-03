@@ -41,6 +41,7 @@ public class Constants {
     // GAME OVER OVERLAY
     public static final float GAME_OVER_OVERLAY_VIEWPORT_SIZE = 480;
     public static final String HIGH_SCORE_LABEL = "High Score: ";
+    public static final String BUTTON_RESTART_TEXT = "RESTART";
 
     // DIFFICULTY SCREEN
     public static final float DIFFICULTY_WORLD_SIZE = 480;
