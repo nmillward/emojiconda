@@ -25,7 +25,15 @@ public class Food {
 
     public void render(SpriteBatch batch) {
         Texture burger = new Texture("burger.png");
-        batch.draw(burger, x, y, Constants.FOOD_DEFAULT_SIZE, Constants.FOOD_DEFAULT_SIZE);
+
+        // Check that the Food does not spawn on the Snake
+        for (SnakeSegment segment : snake.snakeSegments) {
+            if ((Math.abs(segment.getX() - x) < Constants.FOOD_DEFAULT_SIZE) && (Math.abs(segment.getY() - y) < Constants.FOOD_DEFAULT_SIZE)) {
+                changePosition();
+            } else {
+                batch.draw(burger, x, y, Constants.FOOD_DEFAULT_SIZE, Constants.FOOD_DEFAULT_SIZE);
+            }
+        }
     }
 
     public void changePosition() {
