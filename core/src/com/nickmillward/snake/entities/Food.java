@@ -47,8 +47,8 @@ public class Food {
 
         Vector2 foodCenterPosition = new Vector2(x + Constants.FOOD_CENTER.x, y + Constants.FOOD_CENTER.y);
 
-        if (snakeX > foodCenterPosition.x - Constants.SNAKE_SEGMENT_CENTER.x && snakeX < (foodCenterPosition.x + Constants.SNAKE_SEGMENT_CENTER.x)) {
-            if (snakeY > foodCenterPosition.y - Constants.SNAKE_SEGMENT_CENTER.y && snakeY < (foodCenterPosition.y + Constants.SNAKE_SEGMENT_CENTER.y)) {
+        if (Math.abs(snakeX - foodCenterPosition.x) < Constants.FOOD_DEFAULT_SIZE) {
+            if (Math.abs(snakeY - foodCenterPosition.y) < Constants.FOOD_DEFAULT_SIZE) {
                 changePosition();
                 snake.setGrowSnake(true);
                 level.incrementCurrentScore(Constants.FOOD_BASE_POINT_VALUE);
