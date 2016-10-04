@@ -25,21 +25,20 @@ public class Food {
 
     public void render(SpriteBatch batch) {
         Texture burger = new Texture("burger.png");
-
-        // Check that the Food does not spawn on the Snake
-        for (SnakeSegment segment : snake.snakeSegments) {
-            if ((Math.abs(segment.getX() - x) < Constants.FOOD_DEFAULT_SIZE) && (Math.abs(segment.getY() - y) < Constants.FOOD_DEFAULT_SIZE)) {
-                changePosition();
-            } else {
-                batch.draw(burger, x, y, Constants.FOOD_DEFAULT_SIZE, Constants.FOOD_DEFAULT_SIZE);
-            }
-        }
+        batch.draw(burger, x, y, Constants.FOOD_DEFAULT_SIZE, Constants.FOOD_DEFAULT_SIZE);
     }
 
     public void changePosition() {
         //TODO: Make sure the new food does not land on the Snake Body
         x = (float) Math.random() * (Constants.WORLD_SIZE - Constants.FOOD_DEFAULT_SIZE);
         y = (float) Math.random() * (Constants.WORLD_SIZE - Constants.FOOD_DEFAULT_SIZE);
+
+        for (SnakeSegment segment : snake.snakeSegments) {
+            if ((Math.abs(segment.getX() - x) < Constants.FOOD_DEFAULT_SIZE) && (Math.abs(segment.getY() - y) < Constants.FOOD_DEFAULT_SIZE)) {
+                Gdx.app.log("FOOD", "PLACED TOO CLOSE TO SNAKE");
+                changePosition();
+            }
+        }
     }
 
     public boolean snakeCollisionWithSnack() {
