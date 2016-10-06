@@ -58,4 +58,7 @@ public class Constants {
     public static final Vector2 MEDIUM_CENTER = new Vector2(DIFFICULTY_WORLD_SIZE / 2, DIFFICULTY_WORLD_SIZE / 2);
     public static final Vector2 HARD_CENTER = new Vector2(DIFFICULTY_WORLD_SIZE / 2, DIFFICULTY_WORLD_SIZE / 4);
 
+    // START SCREEN
+    public static final String BUTTON_START_TEXT = "START";
+
 }

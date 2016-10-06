@@ -18,7 +18,7 @@ import com.nickmillward.snake.utils.Constants;
 /**
  * Created by nmillward on 9/28/16.
  */
-public class DifficultyScreen extends InputAdapter implements Screen {
+public class DifficultyScreenOld extends InputAdapter implements Screen {
 
     SnakeGame game;
     ShapeRenderer renderer;
@@ -26,7 +26,7 @@ public class DifficultyScreen extends InputAdapter implements Screen {
     FitViewport viewport;
     BitmapFont font;
 
-    public DifficultyScreen(SnakeGame game) {
+    public DifficultyScreenOld(SnakeGame game) {
         this.game = game;
     }
 
