@@ -8,7 +8,6 @@ public class SnakeGame extends Game {
 	@Override
 	public void create () {
 		showStartScreen();
-//		showGameplayScreen();
 	}
 
 	public void showStartScreen() {
