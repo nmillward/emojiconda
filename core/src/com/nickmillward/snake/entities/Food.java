@@ -26,12 +26,8 @@ public class Food {
     }
 
     public void render(SpriteBatch batch) {
-//        Texture burger = new Texture("images/pizza.png");
-//        batch.draw(region, x, y, Constants.FOOD_DEFAULT_SIZE, Constants.FOOD_DEFAULT_SIZE);
-
         TextureRegion region = Assets.instance.foodAssets.ios_pizza;
         Utils.drawTextureRegion(batch, region, position, Constants.FOOD_CENTER);
-
     }
 
     private void initPosition() {
@@ -42,8 +38,7 @@ public class Food {
 
     public void changePosition() {
         //TODO: Make sure the new food does not land on the Snake Body
-        x = (float) Math.random() * (Constants.WORLD_SIZE - Constants.FOOD_DEFAULT_SIZE);
-        y = (float) Math.random() * (Constants.WORLD_SIZE - Constants.FOOD_DEFAULT_SIZE);
+        initPosition();
 
         for (SnakeSegment segment : snake.snakeSegments) {
             if ((Math.abs(segment.getX() - x) < Constants.FOOD_DEFAULT_SIZE) && (Math.abs(segment.getY() - y) < Constants.FOOD_DEFAULT_SIZE)) {

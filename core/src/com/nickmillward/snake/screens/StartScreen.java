@@ -36,7 +36,7 @@ public class StartScreen extends ScreenAdapter {
 
         viewPort = new ScreenViewport();
         stage = new Stage(viewPort);
-        skin = new Skin(Gdx.files.internal("uiskin.json")); //down: default-round-down, up: default-round,
+        skin = new Skin(Gdx.files.internal(Constants.UI_SKIN)); //down: default-round-down, up: default-round,
 
         table = new Table();
         table.setWidth(stage.getWidth());
