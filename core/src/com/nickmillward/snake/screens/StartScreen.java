@@ -25,6 +25,7 @@ public class StartScreen extends ScreenAdapter {
     private Stage stage;
     private Table table;
     private TextButton startButton;
+    private ScreenViewport viewPort;
 
     public StartScreen(SnakeGame game) {
         this.game = game;
@@ -33,8 +34,9 @@ public class StartScreen extends ScreenAdapter {
     @Override
     public void show() {
 
+        viewPort = new ScreenViewport();
+        stage = new Stage(viewPort);
         skin = new Skin(Gdx.files.internal("uiskin.json")); //down: default-round-down, up: default-round,
-        stage = new Stage(new ScreenViewport());
 
         table = new Table();
         table.setWidth(stage.getWidth());
@@ -42,6 +44,7 @@ public class StartScreen extends ScreenAdapter {
         table.setPosition(0, Gdx.graphics.getHeight()); //Start at top left
 
         startButton = new TextButton(Constants.BUTTON_START_TEXT, skin);
+        startButton.setWidth(stage.getWidth() / 4);
         startButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -51,7 +54,7 @@ public class StartScreen extends ScreenAdapter {
             }
         });
 
-        table.add(startButton).padTop(20);
+        table.add(startButton).padTop(100);
 
         stage.addActor(table);
 
