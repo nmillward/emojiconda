@@ -11,6 +11,7 @@ public class Constants {
     // WORLD
     public static final float WORLD_SIZE = 160;
     public static final Color BACKGROUND_COLOR = Color.BLACK;
+    public static final String TEXTURE_ATLAS = "textures/textureAtlas.atlas";
 
     // SNAKE
     public static final float SNAKE_SEGMENT_DEFAULT_SIZE = WORLD_SIZE * 0.05f;
@@ -21,6 +22,19 @@ public class Constants {
 
     public static final Vector2 SNAKE_DEFAULT_START_POINT = new Vector2(WORLD_SIZE / 2, WORLD_SIZE / 2);
     public static final int SNAKE_DEFAULT_LENGTH = 4;
+
+    public static final String IOS_CRY_TEARS = "cry_tears";
+    public static final String IOS_GRIN = "grin";
+    public static final String IOS_HAPPY = "happy";
+    public static final String IOS_HAPPY_CRY = "happy_cry";
+    public static final String IOS_HEART = "heart";
+    public static final String IOS_KISS = "kiss";
+    public static final String IOS_SHADES = "shades";
+    public static final String IOS_SHOCK = "shock";
+    public static final String IOS_SMIRK = "smirk";
+    public static final String IOS_TONGUE_HAPPY = "tongue_happy";
+    public static final String IOS_TONGUE_TEASE = "tongue_tease";
+    public static final String IOS_TONGUE_WINK = "tongue_wink";
 
     // FOOD
     public static final float FOOD_DEFAULT_SIZE = WORLD_SIZE * 0.05f;

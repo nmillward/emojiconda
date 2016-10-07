@@ -26,6 +26,8 @@ public class Food {
     public void render(SpriteBatch batch) {
         Texture burger = new Texture("burger.png");
         batch.draw(burger, x, y, Constants.FOOD_DEFAULT_SIZE, Constants.FOOD_DEFAULT_SIZE);
+
+
     }
 
     public void changePosition() {
