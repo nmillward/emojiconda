@@ -17,12 +17,17 @@ public class GameplayScreen extends ScreenAdapter {
 
     public static final String TAG = GameplayScreen.class.getName();
 
+    SnakeGame game;
     MobileControls mobileControls;
     GestureDetector gestureDetector;
     SpriteBatch batch;
     private Level level;
     private SnakeHUD snakeHUD;
     private GameOverOverlay gameOverOverlay;
+
+    public GameplayScreen(SnakeGame game) { //TODO: Add difficulty parameter
+        this.game = game;
+    }
 
     @Override
     public void show() {
