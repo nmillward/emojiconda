@@ -41,6 +41,17 @@ public class Constants {
     public static final Vector2 FOOD_CENTER = new Vector2(FOOD_DEFAULT_SIZE / 2, FOOD_DEFAULT_SIZE / 2);
     public static final int FOOD_BASE_POINT_VALUE = 5;
 
+    public static final String IOS_BEEF = "beef";
+    public static final String IOS_BURGER = "burger";
+    public static final String IOS_CAKE = "cake";
+    public static final String IOS_CANDYBAR = "candybar";
+    public static final String IOS_COOKIE = "cookie";
+    public static final String IOS_DONUT = "donut";
+    public static final String IOS_DRUMSTICK = "drumstick";
+    public static final String IOS_ICECREAM = "icecream";
+    public static final String IOS_LOLLIPOP = "lollipop";
+    public static final String IOS_PIZZA = "pizza";
+
     // SNAKE HUD
     public static final float SNAKE_HUD_VIEWPORT_SIZE = 480;
     public static final float SNAKE_HUD_MARGIN = 20;

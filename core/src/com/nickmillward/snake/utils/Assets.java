@@ -17,7 +17,7 @@ public class Assets implements Disposable, AssetErrorListener {
     public static final Assets instance = new Assets();
 
     public SnakeAssets snakeAssets;
-//    public FoodAssets foodAssets;
+    public FoodAssets foodAssets;
 
     private AssetManager assetManager;
 
@@ -72,6 +72,34 @@ public class Assets implements Disposable, AssetErrorListener {
             ios_tongue = atlas.findRegion(Constants.IOS_TONGUE_HAPPY);
             ios_tongue_tease = atlas.findRegion(Constants.IOS_TONGUE_TEASE);
             ios_tongue_wink = atlas.findRegion(Constants.IOS_TONGUE_WINK);
+        }
+
+    }
+
+    public class FoodAssets {
+
+        public final AtlasRegion ios_beef;
+        public final AtlasRegion ios_burger;
+        public final AtlasRegion ios_cake;
+        public final AtlasRegion ios_candybar;
+        public final AtlasRegion ios_cookie;
+        public final AtlasRegion ios_donut;
+        public final AtlasRegion ios_drumstick;
+        public final AtlasRegion ios_icecream;
+        public final AtlasRegion ios_lollipop;
+        public final AtlasRegion ios_pizza;
+
+        public FoodAssets(TextureAtlas atlas) {
+            ios_beef = atlas.findRegion(Constants.IOS_BEEF);
+            ios_burger = atlas.findRegion(Constants.IOS_BURGER);
+            ios_cake = atlas.findRegion(Constants.IOS_CAKE);
+            ios_candybar = atlas.findRegion(Constants.IOS_CANDYBAR);
+            ios_cookie = atlas.findRegion(Constants.IOS_COOKIE);
+            ios_donut = atlas.findRegion(Constants.IOS_DONUT);
+            ios_drumstick = atlas.findRegion(Constants.IOS_DRUMSTICK);
+            ios_icecream = atlas.findRegion(Constants.IOS_ICECREAM);
+            ios_lollipop = atlas.findRegion(Constants.IOS_LOLLIPOP);
+            ios_pizza = atlas.findRegion(Constants.IOS_PIZZA);
         }
 
     }
