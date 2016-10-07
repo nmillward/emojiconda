@@ -32,6 +32,7 @@ public class Assets implements Disposable, AssetErrorListener {
 
         TextureAtlas atlas = assetManager.get(Constants.TEXTURE_ATLAS);
         snakeAssets = new SnakeAssets(atlas);
+        foodAssets = new FoodAssets(atlas);
     }
 
     @Override

@@ -3,11 +3,13 @@ package com.nickmillward.snake;
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.input.GestureDetector;
 import com.nickmillward.snake.overlays.GameOverOverlay;
 import com.nickmillward.snake.overlays.SnakeHUD;
+import com.nickmillward.snake.utils.Assets;
 import com.nickmillward.snake.utils.Constants;
 
 /**
@@ -31,6 +33,9 @@ public class GameplayScreen extends ScreenAdapter {
 
     @Override
     public void show() {
+        AssetManager assetManager = new AssetManager();
+        Assets.instance.init(assetManager);
+
         batch = new SpriteBatch();
         level = new Level();
         snakeHUD = new SnakeHUD();

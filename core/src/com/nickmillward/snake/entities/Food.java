@@ -1,11 +1,13 @@
 package com.nickmillward.snake.entities;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.nickmillward.snake.Level;
+import com.nickmillward.snake.utils.Assets;
 import com.nickmillward.snake.utils.Constants;
+import com.nickmillward.snake.utils.Utils;
 
 /**
  * Created by nmillward on 9/14/16.
@@ -13,21 +15,29 @@ import com.nickmillward.snake.utils.Constants;
 public class Food {
 
     private float x, y;
+    private Vector2 position;
     private Snake snake;
     private Level level;
 
     public Food(Snake snake, Level level) {
         this.snake = snake;
         this.level = level;
-        x = (float) Math.random() * (Constants.WORLD_SIZE - Constants.FOOD_DEFAULT_SIZE);
-        y = (float) Math.random() * (Constants.WORLD_SIZE - Constants.FOOD_DEFAULT_SIZE);
+        initPosition();
     }
 
     public void render(SpriteBatch batch) {
-        Texture burger = new Texture("burger.png");
-        batch.draw(burger, x, y, Constants.FOOD_DEFAULT_SIZE, Constants.FOOD_DEFAULT_SIZE);
+//        Texture burger = new Texture("images/pizza.png");
+//        batch.draw(region, x, y, Constants.FOOD_DEFAULT_SIZE, Constants.FOOD_DEFAULT_SIZE);
 
+        TextureRegion region = Assets.instance.foodAssets.ios_pizza;
+        Utils.drawTextureRegion(batch, region, position, Constants.FOOD_CENTER);
 
+    }
+
+    private void initPosition() {
+        x = (float) Math.random() * (Constants.WORLD_SIZE - Constants.FOOD_DEFAULT_SIZE);
+        y = (float) Math.random() * (Constants.WORLD_SIZE - Constants.FOOD_DEFAULT_SIZE);
+        position = new Vector2(x, y);
     }
 
     public void changePosition() {

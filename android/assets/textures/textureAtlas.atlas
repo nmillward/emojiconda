@@ -116,79 +116,58 @@ pizza
   orig: 64, 64
   offset: 0, 0
   index: -1
-sad
+shades
   rotate: false
   xy: 332, 68
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-shades
+shock
   rotate: false
   xy: 398, 134
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-shock
+smirk
   rotate: false
   xy: 332, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-smirk
+tada
   rotate: false
   xy: 398, 68
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-surprise
+tongue_happy
   rotate: false
   xy: 464, 134
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tada
+tongue_tease
   rotate: false
   xy: 398, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tongue
+tongue_wink
   rotate: false
   xy: 464, 68
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-tongue_happy
-  rotate: false
-  xy: 530, 134
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tongue_tease
-  rotate: false
-  xy: 464, 2
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
-tongue_wink
-  rotate: false
-  xy: 530, 68
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
 trollface
   rotate: false
-  xy: 596, 134
+  xy: 530, 134
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
