@@ -110,6 +110,13 @@ public class Assets implements Disposable, AssetErrorListener {
             iosFoods.add(ios_beef);
             iosFoods.add(ios_burger);
             iosFoods.add(ios_cake);
+            iosFoods.add(ios_candybar);
+            iosFoods.add(ios_cookie);
+            iosFoods.add(ios_donut);
+            iosFoods.add(ios_drumstick);
+            iosFoods.add(ios_icecream);
+            iosFoods.add(ios_lollipop);
+            iosFoods.add(ios_pizza);
         }
 
     }
