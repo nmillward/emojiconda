@@ -6,6 +6,7 @@ import com.badlogic.gdx.assets.AssetErrorListener;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 
 /**
@@ -73,6 +74,7 @@ public class Assets implements Disposable, AssetErrorListener {
             ios_tongue = atlas.findRegion(Constants.IOS_TONGUE_HAPPY);
             ios_tongue_tease = atlas.findRegion(Constants.IOS_TONGUE_TEASE);
             ios_tongue_wink = atlas.findRegion(Constants.IOS_TONGUE_WINK);
+
         }
 
     }
@@ -90,6 +92,8 @@ public class Assets implements Disposable, AssetErrorListener {
         public final AtlasRegion ios_lollipop;
         public final AtlasRegion ios_pizza;
 
+        public final Array<AtlasRegion> iosFoods;
+
         public FoodAssets(TextureAtlas atlas) {
             ios_beef = atlas.findRegion(Constants.IOS_BEEF);
             ios_burger = atlas.findRegion(Constants.IOS_BURGER);
@@ -101,6 +105,11 @@ public class Assets implements Disposable, AssetErrorListener {
             ios_icecream = atlas.findRegion(Constants.IOS_ICECREAM);
             ios_lollipop = atlas.findRegion(Constants.IOS_LOLLIPOP);
             ios_pizza = atlas.findRegion(Constants.IOS_PIZZA);
+
+            iosFoods = new Array<AtlasRegion>();
+            iosFoods.add(ios_beef);
+            iosFoods.add(ios_burger);
+            iosFoods.add(ios_cake);
         }
 
     }

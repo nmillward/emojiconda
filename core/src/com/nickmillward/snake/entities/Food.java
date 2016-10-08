@@ -9,12 +9,15 @@ import com.nickmillward.snake.utils.Assets;
 import com.nickmillward.snake.utils.Constants;
 import com.nickmillward.snake.utils.Utils;
 
+import java.util.Random;
+
 /**
  * Created by nmillward on 9/14/16.
  */
 public class Food {
 
     private float x, y;
+    private int randomFood;
     private Vector2 position;
     private Snake snake;
     private Level level;
@@ -26,7 +29,7 @@ public class Food {
     }
 
     public void render(SpriteBatch batch) {
-        TextureRegion region = Assets.instance.foodAssets.ios_pizza;
+        TextureRegion region = Assets.instance.foodAssets.iosFoods.get(randomFood);    //TODO: Move out to own method.
         Utils.drawTextureRegion(batch, region, position, Constants.FOOD_CENTER);
     }
 
@@ -39,6 +42,7 @@ public class Food {
     public void changePosition() {
         //TODO: Make sure the new food does not land on the Snake Body
         initPosition();
+        getRandomFoodAsset();
 
         for (SnakeSegment segment : snake.snakeSegments) {
             if ((Math.abs(segment.getX() - x) < Constants.FOOD_DEFAULT_SIZE) && (Math.abs(segment.getY() - y) < Constants.FOOD_DEFAULT_SIZE)) {
@@ -46,6 +50,11 @@ public class Food {
                 changePosition();
             }
         }
+    }
+
+    private void getRandomFoodAsset() {
+        randomFood = new Random().nextInt(Assets.instance.foodAssets.iosFoods.size);
+        Gdx.app.log("FOOD", "random food index: " + randomFood);
     }
 
     public boolean snakeCollisionWithSnack() {
