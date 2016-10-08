@@ -61,6 +61,8 @@ public class Assets implements Disposable, AssetErrorListener {
         public final AtlasRegion ios_tongue_tease;
         public final AtlasRegion ios_tongue_wink;
 
+        public final Array<AtlasRegion> iosEmojis;
+
         public SnakeAssets(TextureAtlas atlas) {
             ios_cry_tears = atlas.findRegion(Constants.IOS_CRY_TEARS);
             ios_grin = atlas.findRegion(Constants.IOS_GRIN);
@@ -74,6 +76,19 @@ public class Assets implements Disposable, AssetErrorListener {
             ios_tongue = atlas.findRegion(Constants.IOS_TONGUE_HAPPY);
             ios_tongue_tease = atlas.findRegion(Constants.IOS_TONGUE_TEASE);
             ios_tongue_wink = atlas.findRegion(Constants.IOS_TONGUE_WINK);
+
+            iosEmojis = new Array<AtlasRegion>();
+            iosEmojis.add(ios_cry_tears);
+            iosEmojis.add(ios_grin);
+            iosEmojis.add(ios_happy);
+            iosEmojis.add(ios_happy_tears);
+            iosEmojis.add(ios_heart);
+            iosEmojis.add(ios_kiss);
+            iosEmojis.add(ios_shades);
+            iosEmojis.add(ios_smirk);
+            iosEmojis.add(ios_tongue);
+            iosEmojis.add(ios_tongue_tease);
+            iosEmojis.add(ios_tongue_wink);
 
         }
 

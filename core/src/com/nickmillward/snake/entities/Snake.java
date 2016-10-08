@@ -2,13 +2,15 @@ package com.nickmillward.snake.entities;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.nickmillward.snake.Level;
+import com.nickmillward.snake.utils.Assets;
 import com.nickmillward.snake.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by nmillward on 9/13/16.
@@ -22,6 +24,7 @@ public class Snake {
     boolean isMoving, growSnake;
 
     private int counter = 0;
+    private int randomEmoji;
 
     public Snake(Level level) {
         snakeSegments = new ArrayList<SnakeSegment>();
@@ -30,6 +33,7 @@ public class Snake {
         yDir = 0;
         isMoving = false;
         growSnake = false;
+        getRandomEmojiAsset();
         snakeSegments.add(new SnakeSegment(Constants.SNAKE_DEFAULT_START_POINT.x, Constants.SNAKE_DEFAULT_START_POINT.y));
         for (int i = 1; i < Constants.SNAKE_DEFAULT_LENGTH; i++) {
             snakeSegments.add(new SnakeSegment(Constants.SNAKE_DEFAULT_START_POINT.x, Constants.SNAKE_DEFAULT_START_POINT.y - i * Constants.SNAKE_SEGMENT_DEFAULT_SIZE));
@@ -37,14 +41,17 @@ public class Snake {
     }
 
     public void render(SpriteBatch batch) {
-
-        Texture happyFace = new Texture("happy.png");
-
+        TextureRegion region = Assets.instance.snakeAssets.iosEmojis.get(randomEmoji);
         for (SnakeSegment snakeSegment : snakeSegments) {
-            batch.draw(happyFace, snakeSegment.getX(), snakeSegment.getY(), Constants.SNAKE_SEGMENT_DEFAULT_SIZE, Constants.SNAKE_SEGMENT_DEFAULT_SIZE);
+            batch.draw(region, snakeSegment.getX(), snakeSegment.getY(), Constants.SNAKE_SEGMENT_DEFAULT_SIZE, Constants.SNAKE_SEGMENT_DEFAULT_SIZE);
         }
-
     }
+
+    private void getRandomEmojiAsset() {
+        randomEmoji = new Random().nextInt(Assets.instance.snakeAssets.iosEmojis.size);
+        Gdx.app.log("SNAKE", "random snake index: " + randomEmoji);
+    }
+
 
     public void update(float delta) {
         keyPressed();
