@@ -9,15 +9,13 @@ import com.nickmillward.snake.utils.Assets;
 import com.nickmillward.snake.utils.Constants;
 import com.nickmillward.snake.utils.Utils;
 
-import java.util.Random;
-
 /**
  * Created by nmillward on 9/14/16.
  */
 public class Food {
 
     private float x, y;
-    private int randomFood;
+    private TextureRegion randomFood;
     private Vector2 position;
     private Snake snake;
     private Level level;
@@ -26,17 +24,21 @@ public class Food {
         this.snake = snake;
         this.level = level;
         initPosition();
+        getRandomFoodAsset();
     }
 
     public void render(SpriteBatch batch) {
-        TextureRegion region = Assets.instance.foodAssets.iosFoods.get(randomFood);
-        Utils.drawTextureRegion(batch, region, position, Constants.FOOD_CENTER);
+        Utils.drawTextureRegion(batch, randomFood, position, Constants.FOOD_CENTER);
     }
 
     private void initPosition() {
         x = (float) Math.random() * (Constants.WORLD_SIZE - Constants.FOOD_DEFAULT_SIZE);
         y = (float) Math.random() * (Constants.WORLD_SIZE - Constants.FOOD_DEFAULT_SIZE);
         position = new Vector2(x, y);
+    }
+
+    private void getRandomFoodAsset() {
+        randomFood = Assets.instance.foodAssets.iosFoods.random();
     }
 
     public void changePosition() {
@@ -46,15 +48,10 @@ public class Food {
 
         for (SnakeSegment segment : snake.snakeSegments) {
             if ((Math.abs(segment.getX() - x) < Constants.FOOD_DEFAULT_SIZE) && (Math.abs(segment.getY() - y) < Constants.FOOD_DEFAULT_SIZE)) {
-                Gdx.app.log("FOOD", "PLACED TOO CLOSE TO SNAKE");
+                Gdx.app.log("FOOD", "=================== PLACED TOO CLOSE TO SNAKE");
                 changePosition();
             }
         }
-    }
-
-    private void getRandomFoodAsset() {
-        randomFood = new Random().nextInt(Assets.instance.foodAssets.iosFoods.size);
-        Gdx.app.log("FOOD", "random food index: " + randomFood);
     }
 
     public boolean snakeCollisionWithSnack() {

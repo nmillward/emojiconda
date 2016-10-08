@@ -10,7 +10,6 @@ import com.nickmillward.snake.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by nmillward on 9/13/16.
@@ -24,7 +23,7 @@ public class Snake {
     boolean isMoving, growSnake;
 
     private int counter = 0;
-    private int randomEmoji;
+    private TextureRegion randomEmoji;
 
     public Snake(Level level) {
         snakeSegments = new ArrayList<SnakeSegment>();
@@ -41,15 +40,13 @@ public class Snake {
     }
 
     public void render(SpriteBatch batch) {
-        TextureRegion region = Assets.instance.snakeAssets.iosEmojis.get(randomEmoji);
         for (SnakeSegment snakeSegment : snakeSegments) {
-            batch.draw(region, snakeSegment.getX(), snakeSegment.getY(), Constants.SNAKE_SEGMENT_DEFAULT_SIZE, Constants.SNAKE_SEGMENT_DEFAULT_SIZE);
+            batch.draw(randomEmoji, snakeSegment.getX(), snakeSegment.getY(), Constants.SNAKE_SEGMENT_DEFAULT_SIZE, Constants.SNAKE_SEGMENT_DEFAULT_SIZE);
         }
     }
 
     private void getRandomEmojiAsset() {
-        randomEmoji = new Random().nextInt(Assets.instance.snakeAssets.iosEmojis.size);
-        Gdx.app.log("SNAKE", "random snake index: " + randomEmoji);
+        randomEmoji = Assets.instance.snakeAssets.iosEmojis.random();
     }
 
 
