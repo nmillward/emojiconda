@@ -29,7 +29,7 @@ public class Food {
     }
 
     public void render(SpriteBatch batch) {
-        TextureRegion region = Assets.instance.foodAssets.iosFoods.get(randomFood);    //TODO: Move out to own method.
+        TextureRegion region = Assets.instance.foodAssets.iosFoods.get(randomFood);
         Utils.drawTextureRegion(batch, region, position, Constants.FOOD_CENTER);
     }
 
