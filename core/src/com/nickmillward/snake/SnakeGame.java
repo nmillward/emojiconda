@@ -2,6 +2,7 @@ package com.nickmillward.snake;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.nickmillward.snake.screens.RestartScreen;
 import com.nickmillward.snake.screens.StartScreen;
 
 public class SnakeGame extends Game {
@@ -17,5 +18,9 @@ public class SnakeGame extends Game {
 	public void showGameplayScreen() {
 		Gdx.app.log("GAME", "Gameplay Screen called");
 		setScreen(new GameplayScreen(this));
+	}
+
+	public void showRestartScreen() {
+		setScreen(new RestartScreen(this));
 	}
 }

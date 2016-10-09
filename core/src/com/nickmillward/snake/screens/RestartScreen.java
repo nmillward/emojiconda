@@ -3,8 +3,6 @@ package com.nickmillward.snake.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -17,20 +15,19 @@ import com.nickmillward.snake.SnakeGame;
 import com.nickmillward.snake.utils.Constants;
 
 /**
- * Created by nmillward on 10/6/16.
+ * Created by nmillward on 10/9/16.
  */
-public class StartScreen extends ScreenAdapter {
+public class RestartScreen extends ScreenAdapter {
 
     SnakeGame game;
 
     private Skin skin;
     private Stage stage;
     private Table table;
-    private TextButton startButton;
+    private TextButton restartButton;
     private ScreenViewport viewport;
-    private TextureRegion menuButton;
 
-    public StartScreen(SnakeGame game) {
+    public RestartScreen(SnakeGame game) {
         this.game = game;
     }
 
@@ -39,30 +36,29 @@ public class StartScreen extends ScreenAdapter {
 
         viewport = new ScreenViewport();
         stage = new Stage(viewport);
-        skin = new Skin(Gdx.files.internal(Constants.UI_SKIN)); //down: button, up: button,
-        skin.addRegions(new TextureAtlas(Constants.TEXTURE_ATLAS));
+        skin = new Skin(Gdx.files.internal(Constants.UI_SKIN));
 
         table = new Table();
         table.setWidth(stage.getWidth());
         table.align(Align.center | Align.top);
-        table.setPosition(0, Gdx.graphics.getHeight()); //Start at top left
+        table.setPosition(0, Gdx.graphics.getHeight());
+        
 
-        startButton = new TextButton(Constants.BUTTON_START_TEXT, skin);
-        startButton.setWidth(stage.getWidth() / 4);
-        startButton.addListener(new ClickListener() {
+        restartButton = new TextButton(Constants.BUTTON_RESTART_TEXT, skin);
+        restartButton.setWidth(stage.getWidth() / 4);
+        restartButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                Gdx.app.log("Start", "button clicked");
                 game.showGameplayScreen();
                 event.stop();
             }
         });
 
-        table.add(startButton).padTop(100);
-
+        table.add(restartButton).padTop(100);
         stage.addActor(table);
 
         Gdx.input.setInputProcessor(stage);
+
     }
 
     @Override

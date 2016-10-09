@@ -3,7 +3,6 @@ package com.nickmillward.snake;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nickmillward.snake.entities.Food;
@@ -17,6 +16,7 @@ public class Level {
 
     public static final String TAG = Level.class.getName();
 
+    SnakeGame game;
     ShapeRenderer shapeRenderer;
     public Viewport viewport;
     public Snake snake;
@@ -26,6 +26,7 @@ public class Level {
     public int highScore = 0;
 
     public Level() {
+        game = new SnakeGame();
         shapeRenderer = new ShapeRenderer();
         viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
         initGameDefault();
@@ -92,14 +93,19 @@ public class Level {
             highScore = currentScore;
         }
         //TODO: Remove Timer Task. Replace with Button.
-        Timer.schedule(new Timer.Task() {
-            @Override
-            public void run() {
-                initGameDefault();
-                resetCurrentScore();
-                Gdx.app.log(TAG, "RESTART GAME");
-            }
-        }, 1);
+//        Timer.schedule(new Timer.Task() {
+//            @Override
+//            public void run() {
+//                initGameDefault();
+//                resetCurrentScore();
+//                Gdx.app.log(TAG, "RESTART GAME");
+//            }
+//        }, 1);
+
+//        initGameDefault();
+        resetCurrentScore();
+        game.showRestartScreen();
+
     }
 
     public int getCurrentScore() {
