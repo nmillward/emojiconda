@@ -3,6 +3,8 @@ package com.nickmillward.snake.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -26,6 +28,7 @@ public class StartScreen extends ScreenAdapter {
     private Table table;
     private TextButton startButton;
     private ScreenViewport viewPort;
+    private TextureRegion menuButton;
 
     public StartScreen(SnakeGame game) {
         this.game = game;
@@ -36,7 +39,8 @@ public class StartScreen extends ScreenAdapter {
 
         viewPort = new ScreenViewport();
         stage = new Stage(viewPort);
-        skin = new Skin(Gdx.files.internal(Constants.UI_SKIN)); //down: default-round-down, up: default-round,
+        skin = new Skin(Gdx.files.internal(Constants.UI_SKIN)); //down: button, up: button,
+        skin.addRegions(new TextureAtlas(Constants.TEXTURE_ATLAS));
 
         table = new Table();
         table.setWidth(stage.getWidth());

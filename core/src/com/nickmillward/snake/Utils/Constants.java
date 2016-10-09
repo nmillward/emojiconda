@@ -88,5 +88,6 @@ public class Constants {
 
     // START SCREEN
     public static final String BUTTON_START_TEXT = "START";
+    public static final String MENU_BUTTON = "button";
 
 }

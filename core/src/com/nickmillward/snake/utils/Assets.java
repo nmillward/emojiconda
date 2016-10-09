@@ -19,6 +19,7 @@ public class Assets implements Disposable, AssetErrorListener {
 
     public SnakeAssets snakeAssets;
     public FoodAssets foodAssets;
+    public ButtonAssets buttonAssets;
 
     private AssetManager assetManager;
 
@@ -34,6 +35,7 @@ public class Assets implements Disposable, AssetErrorListener {
         TextureAtlas atlas = assetManager.get(Constants.TEXTURE_ATLAS);
         snakeAssets = new SnakeAssets(atlas);
         foodAssets = new FoodAssets(atlas);
+        buttonAssets = new ButtonAssets(atlas);
     }
 
     @Override
@@ -132,6 +134,16 @@ public class Assets implements Disposable, AssetErrorListener {
             iosFoods.add(ios_icecream);
             iosFoods.add(ios_lollipop);
             iosFoods.add(ios_pizza);
+        }
+
+    }
+
+    public class ButtonAssets {
+
+        public final AtlasRegion menu_button;
+
+        public ButtonAssets(TextureAtlas atlas) {
+            menu_button = atlas.findRegion(Constants.MENU_BUTTON);
         }
 
     }
