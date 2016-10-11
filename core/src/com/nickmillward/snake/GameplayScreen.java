@@ -7,6 +7,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.input.GestureDetector;
+import com.nickmillward.snake.overlays.GameOverOverlay;
 import com.nickmillward.snake.overlays.SnakeHUD;
 import com.nickmillward.snake.utils.Assets;
 import com.nickmillward.snake.utils.Constants;
@@ -24,7 +25,7 @@ public class GameplayScreen extends ScreenAdapter {
     SpriteBatch batch;
     private Level level;
     private SnakeHUD snakeHUD;
-//    private GameOverOverlay gameOverOverlay;
+    private GameOverOverlay gameOverOverlay;
 
     public GameplayScreen(SnakeGame game) { //TODO: Add difficulty parameter
         this.game = game;
@@ -38,7 +39,7 @@ public class GameplayScreen extends ScreenAdapter {
         batch = new SpriteBatch();
         level = new Level();
         snakeHUD = new SnakeHUD();
-//        gameOverOverlay = new GameOverOverlay();
+        gameOverOverlay = new GameOverOverlay();
         mobileControls = new MobileControls(level);
 
         if (onMobile()) {
@@ -52,7 +53,7 @@ public class GameplayScreen extends ScreenAdapter {
     public void resize(int width, int height) {
         level.viewport.update(width, height, true);
         snakeHUD.viewport.update(width, height, true);
-//        gameOverOverlay.viewport.update(width, height, true);
+        gameOverOverlay.viewport.update(width, height, true);
     }
 
     @Override
@@ -76,8 +77,9 @@ public class GameplayScreen extends ScreenAdapter {
         snakeHUD.render(batch, level.getCurrentScore());
 
         if (level.isGameOver) {
-//            gameOverOverlay.render(batch, level.getHighScore());
+//            gameOverOverlay.render(batch, delta, level.getHighScore());
             game.showRestartScreen();
+            Gdx.app.log("GamePlayScreen", "highscore: " + level.getHighScore());
         }
     }
 

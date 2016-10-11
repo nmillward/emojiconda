@@ -6,6 +6,7 @@ import com.nickmillward.snake.screens.RestartScreen;
 import com.nickmillward.snake.screens.StartScreen;
 
 public class SnakeGame extends Game {
+
 	@Override
 	public void create () {
 		showStartScreen();

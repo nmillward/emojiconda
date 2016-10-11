@@ -104,8 +104,6 @@ public class Level {
 
 //        initGameDefault();
         resetCurrentScore();
-        game.showRestartScreen();
-
     }
 
     public int getCurrentScore() {
