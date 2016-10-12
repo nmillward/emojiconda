@@ -12,6 +12,9 @@ public class MobileControls extends InputAdapter implements GestureDetector.Gest
 
     Level level;
 
+    private Vector2 lastTouch = new Vector2();
+    private Vector2 newTouch = new Vector2();
+
     public MobileControls(Level level) {
         this.level = level;
     }
@@ -66,12 +69,45 @@ public class MobileControls extends InputAdapter implements GestureDetector.Gest
 
         level.snake.move();
 
-        return true;
+        return false;
     }
 
     @Override
     public boolean touchDown(float x, float y, int pointer, int button) {
-        return false;
+        lastTouch.set(x, y);
+        Gdx.app.log("MOBILE", "TOUCH DOWN: (" + x + ", " + y + ")");
+        return true;
+    }
+
+    @Override
+    public boolean touchDragged(int screenX, int screenY, int pointer) {
+//        return super.touchDragged(screenX, screenY, pointer);
+        Gdx.app.log("MOBILE", "DRAG OCCURRED");
+
+        newTouch.set(screenX, screenY);
+
+        Vector2 delta = newTouch.cpy().sub(lastTouch);
+
+        if (delta.x > 0) {
+            Gdx.app.log("MOBILE", "MOVE RIGHT");
+        } else if (delta.x < 0) {
+            Gdx.app.log("MOBILE", "MOVE LEFT");
+        }
+
+        if (delta.y > 0) {
+            Gdx.app.log("MOBILE", "MOVE UP");
+        } else if (delta.y < 0) {
+            Gdx.app.log("MOBILE", "MOVE DOWN");
+        }
+
+        lastTouch = newTouch;
+
+        return true;
+    }
+
+    @Override
+    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+        return super.touchUp(screenX, screenY, pointer, button);
     }
 
     @Override
