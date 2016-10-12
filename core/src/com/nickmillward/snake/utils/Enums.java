@@ -1,6 +1,6 @@
 package com.nickmillward.snake.utils;
 
-import com.nickmillward.snake.GameplayScreen;
+import com.nickmillward.snake.screens.GameplayScreen;
 import com.nickmillward.snake.screens.AbstractScreen;
 import com.nickmillward.snake.screens.RestartScreen;
 import com.nickmillward.snake.screens.StartScreen;

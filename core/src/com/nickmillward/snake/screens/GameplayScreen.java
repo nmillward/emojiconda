@@ -1,4 +1,4 @@
-package com.nickmillward.snake;
+package com.nickmillward.snake.screens;
 
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
@@ -6,9 +6,10 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.input.GestureDetector;
+import com.nickmillward.snake.Level;
+import com.nickmillward.snake.MobileControls;
 import com.nickmillward.snake.overlays.GameOverOverlay;
 import com.nickmillward.snake.overlays.SnakeHUD;
-import com.nickmillward.snake.screens.AbstractScreen;
 import com.nickmillward.snake.utils.Assets;
 import com.nickmillward.snake.utils.Constants;
 import com.nickmillward.snake.utils.Enums;
