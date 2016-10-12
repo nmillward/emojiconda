@@ -51,6 +51,8 @@ public class RestartScreen extends ScreenAdapter {
         table.setPosition(0, Gdx.graphics.getHeight());
 
         highScore = new Label(Constants.HIGH_SCORE_LABEL, skin); //  + level.getHighScore()
+//        highScore = new Label(Constants.HIGH_SCORE_LABEL + Level.getLevel().getHighScore(), skin); //  + level.getHighScore()
+//        Gdx.app.log("RESTART", "score = " + );
         table.add(highScore).padTop(100);
 
         table.row();    // Add New Row

@@ -15,6 +15,7 @@ import com.nickmillward.snake.utils.Constants;
 public class Level {
 
     public static final String TAG = Level.class.getName();
+    public static Level level;
 
     SnakeGame game;
     ShapeRenderer shapeRenderer;
@@ -31,7 +32,6 @@ public class Level {
         viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
         initGameDefault();
     }
-
 
     public void update(float delta) {
         if (!isGameOver) {
@@ -102,7 +102,6 @@ public class Level {
 //            }
 //        }, 1);
 
-//        initGameDefault();
         resetCurrentScore();
     }
 
