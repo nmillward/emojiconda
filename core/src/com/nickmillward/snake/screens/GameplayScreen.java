@@ -26,7 +26,6 @@ public class GameplayScreen extends AbstractScreen {
     SpriteBatch batch;
     Level level;
     private SnakeHUD snakeHUD;
-//    private GameOverOverlay gameOverOverlay;
 
     public GameplayScreen() {
         super();
@@ -45,8 +44,6 @@ public class GameplayScreen extends AbstractScreen {
 
     @Override
     public void show() {
-//        gameOverOverlay = new GameOverOverlay();
-
         if (onMobile()) {
             gestureDetector = new GestureDetector(mobileControls);
             Gdx.input.setInputProcessor(gestureDetector);
@@ -57,7 +54,6 @@ public class GameplayScreen extends AbstractScreen {
     public void resize(int width, int height) {
         level.viewport.update(width, height, true);
         snakeHUD.viewport.update(width, height, true);
-//        gameOverOverlay.viewport.update(width, height, true);
     }
 
     @Override
