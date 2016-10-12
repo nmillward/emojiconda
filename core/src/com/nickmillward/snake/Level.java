@@ -15,9 +15,7 @@ import com.nickmillward.snake.utils.Constants;
 public class Level {
 
     public static final String TAG = Level.class.getName();
-    public static Level level;
 
-    SnakeGame game;
     ShapeRenderer shapeRenderer;
     public Viewport viewport;
     public Snake snake;
@@ -27,7 +25,6 @@ public class Level {
     public int highScore = 0;
 
     public Level() {
-        game = new SnakeGame();
         shapeRenderer = new ShapeRenderer();
         viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
         initGameDefault();
@@ -92,16 +89,6 @@ public class Level {
         if (currentScore > highScore) {
             highScore = currentScore;
         }
-        //TODO: Remove Timer Task. Replace with Button.
-//        Timer.schedule(new Timer.Task() {
-//            @Override
-//            public void run() {
-//                initGameDefault();
-//                resetCurrentScore();
-//                Gdx.app.log(TAG, "RESTART GAME");
-//            }
-//        }, 1);
-
         resetCurrentScore();
     }
 

@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
+import com.nickmillward.snake.Level;
 import com.nickmillward.snake.utils.Constants;
 import com.nickmillward.snake.utils.Enums;
 import com.nickmillward.snake.utils.ScreenManager;
@@ -23,11 +24,13 @@ public class RestartScreen extends AbstractScreen {
     private Label highScore;
     private TextButton restartButton;
     private BitmapFont font;
+    private Level level;
 
     public RestartScreen() {
         super();
         skin = new Skin(Gdx.files.internal(Constants.UI_SKIN));
         font = new BitmapFont();
+        level = new Level();
     }
 
     @Override
@@ -37,7 +40,7 @@ public class RestartScreen extends AbstractScreen {
         table.align(Align.center | Align.top);
         table.setPosition(0, Gdx.graphics.getHeight());
 
-        highScore = new Label(Constants.HIGH_SCORE_LABEL, skin); //  + level.getHighScore()
+        highScore = new Label(Constants.HIGH_SCORE_LABEL + level.getHighScore(), skin); //  + level.getHighScore()
 //        highScore = new Label(Constants.HIGH_SCORE_LABEL + Level.getLevel().getHighScore(), skin); //  + level.getHighScore()
 //        Gdx.app.log("RESTART", "score = " + );
         table.add(highScore).padTop(100);

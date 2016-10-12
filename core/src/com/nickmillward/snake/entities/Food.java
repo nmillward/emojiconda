@@ -43,6 +43,7 @@ public class Food {
 
     public void changePosition() {
         //TODO: Make sure the new food does not land on the Snake Body
+        Gdx.app.log("FOOD", "CHANGE POSITION CALLED =================== ");
         initPosition();
         getRandomFoodAsset();
 

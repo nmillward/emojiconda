@@ -21,7 +21,6 @@ public class GameplayScreen extends AbstractScreen {
 
     public static final String TAG = GameplayScreen.class.getName();
 
-    SnakeGame game;
     MobileControls mobileControls;
     GestureDetector gestureDetector;
     SpriteBatch batch;
@@ -30,15 +29,12 @@ public class GameplayScreen extends AbstractScreen {
     private GameOverOverlay gameOverOverlay;
 
     public GameplayScreen() {
+        super();
     }
 
     @Override
     public void buildStage() {
 
-    }
-
-    public GameplayScreen(SnakeGame game) { //TODO: Add difficulty parameter
-        this.game = game;
     }
 
     @Override
@@ -56,7 +52,6 @@ public class GameplayScreen extends AbstractScreen {
             gestureDetector = new GestureDetector(mobileControls);
             Gdx.input.setInputProcessor(gestureDetector);
         }
-
     }
 
     @Override
@@ -87,8 +82,6 @@ public class GameplayScreen extends AbstractScreen {
         snakeHUD.render(batch, level.getCurrentScore());
 
         if (level.isGameOver) {
-//            gameOverOverlay.render(batch, delta, level.getHighScore());
-//            game.showRestartScreen();
             ScreenManager.getInstance().showScreen(Enums.Screen.RESTART_SCREEN);
             Gdx.app.log("GamePlayScreen", "highscore: " + level.getHighScore());
         }
