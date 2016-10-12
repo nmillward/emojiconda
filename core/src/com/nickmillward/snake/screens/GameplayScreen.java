@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.input.GestureDetector;
 import com.nickmillward.snake.Level;
 import com.nickmillward.snake.MobileControls;
-import com.nickmillward.snake.overlays.GameOverOverlay;
 import com.nickmillward.snake.overlays.SnakeHUD;
 import com.nickmillward.snake.utils.Assets;
 import com.nickmillward.snake.utils.Constants;
@@ -25,12 +24,18 @@ public class GameplayScreen extends AbstractScreen {
     MobileControls mobileControls;
     GestureDetector gestureDetector;
     SpriteBatch batch;
-    private Level level;
+    Level level;
     private SnakeHUD snakeHUD;
-    private GameOverOverlay gameOverOverlay;
+//    private GameOverOverlay gameOverOverlay;
 
     public GameplayScreen() {
         super();
+        AssetManager assetManager = new AssetManager();
+        Assets.instance.init(assetManager);
+        level = new Level();
+        batch = new SpriteBatch();
+        snakeHUD = new SnakeHUD();
+        mobileControls = new MobileControls(level);
     }
 
     @Override
@@ -40,14 +45,7 @@ public class GameplayScreen extends AbstractScreen {
 
     @Override
     public void show() {
-        AssetManager assetManager = new AssetManager();
-        Assets.instance.init(assetManager);
-
-        batch = new SpriteBatch();
-        level = new Level();
-        snakeHUD = new SnakeHUD();
-        gameOverOverlay = new GameOverOverlay();
-        mobileControls = new MobileControls(level);
+//        gameOverOverlay = new GameOverOverlay();
 
         if (onMobile()) {
             gestureDetector = new GestureDetector(mobileControls);
@@ -59,7 +57,7 @@ public class GameplayScreen extends AbstractScreen {
     public void resize(int width, int height) {
         level.viewport.update(width, height, true);
         snakeHUD.viewport.update(width, height, true);
-        gameOverOverlay.viewport.update(width, height, true);
+//        gameOverOverlay.viewport.update(width, height, true);
     }
 
     @Override
@@ -84,8 +82,8 @@ public class GameplayScreen extends AbstractScreen {
         snakeHUD.render(batch, level.getCurrentScore());
 
         if (level.isGameOver) {
-            ScreenManager.getInstance().showScreen(Enums.Screen.RESTART_SCREEN);
-            Gdx.app.log("GamePlayScreen", "highscore: " + level.getHighScore());
+            level.resetGame();
+            ScreenManager.getInstance().showScreen(Enums.Screen.RESTART_SCREEN, level.getHighScore());
         }
     }
 

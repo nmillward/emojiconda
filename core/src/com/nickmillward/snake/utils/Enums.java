@@ -1,7 +1,7 @@
 package com.nickmillward.snake.utils;
 
-import com.nickmillward.snake.screens.GameplayScreen;
 import com.nickmillward.snake.screens.AbstractScreen;
+import com.nickmillward.snake.screens.GameplayScreen;
 import com.nickmillward.snake.screens.RestartScreen;
 import com.nickmillward.snake.screens.StartScreen;
 
@@ -42,7 +42,7 @@ public class Enums {
 
         RESTART_SCREEN {
             public AbstractScreen getScreen(Object... params) {
-                return new RestartScreen();
+                return new RestartScreen((Integer) params[0]);
             }
         },
 

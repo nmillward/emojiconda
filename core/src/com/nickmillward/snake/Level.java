@@ -37,7 +37,7 @@ public class Level {
             food.snakeCollisionWithSnack();
         } else {
             //TODO: GAME OVER
-            resetGame();
+//            resetGame();
         }
     }
 
