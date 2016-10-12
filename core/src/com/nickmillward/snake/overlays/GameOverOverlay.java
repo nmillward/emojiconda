@@ -63,7 +63,7 @@ public class GameOverOverlay extends InputAdapter {
         restartButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.showGameplayScreen();
+//                game.showGameplayScreen();
                 event.stop();
             }
         });

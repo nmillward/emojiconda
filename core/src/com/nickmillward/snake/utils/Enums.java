@@ -1,6 +1,6 @@
 package com.nickmillward.snake.utils;
 
-import com.nickmillward.snake.SnakeGame;
+import com.nickmillward.snake.GameplayScreen;
 import com.nickmillward.snake.screens.AbstractScreen;
 import com.nickmillward.snake.screens.RestartScreen;
 import com.nickmillward.snake.screens.StartScreen;
@@ -48,7 +48,7 @@ public class Enums {
 
         GAME {
             public AbstractScreen getScreen(Object... params) {
-                return new SnakeGame();
+                return new GameplayScreen();
             }
         };
 

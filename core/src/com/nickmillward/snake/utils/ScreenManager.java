@@ -30,7 +30,7 @@ public class ScreenManager {
     }
 
     // Use enum to retrieve screen
-    public void ShowScreen(Enums.Screen screenEnum, Object... params) {
+    public void showScreen(Enums.Screen screenEnum, Object... params) {
 
         // Get current screen to dispose of
         Screen currentScreen = game.getScreen();
