@@ -58,6 +58,12 @@ public class RestartScreen extends AbstractScreen {
 
         table.add(restartButton).padTop(100);
         addActor(table);
+    }
 
+    @Override
+    public void dispose() {
+        super.dispose();
+        font.dispose();
+        skin.dispose();
     }
 }

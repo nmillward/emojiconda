@@ -48,4 +48,10 @@ public class StartScreen extends AbstractScreen {
         table.add(startButton).padTop(100);
         addActor(table);
     }
+
+    @Override
+    public void dispose() {
+        super.dispose();
+        skin.dispose();
+    }
 }

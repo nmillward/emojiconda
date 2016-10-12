@@ -64,7 +64,8 @@ public class GameplayScreen extends AbstractScreen {
 
     @Override
     public void dispose() {
-
+        super.dispose();
+        batch.dispose();
     }
 
     @Override
