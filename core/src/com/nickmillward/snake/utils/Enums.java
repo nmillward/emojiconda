@@ -1,5 +1,10 @@
 package com.nickmillward.snake.utils;
 
+import com.nickmillward.snake.SnakeGame;
+import com.nickmillward.snake.screens.AbstractScreen;
+import com.nickmillward.snake.screens.RestartScreen;
+import com.nickmillward.snake.screens.StartScreen;
+
 /**
  * Created by nmillward on 9/9/16.
  */
@@ -25,6 +30,30 @@ public class Enums {
             this.velocity = velocity;
             this.label = label;
         }
+    }
+
+    public enum Screen {
+
+        START_SCREEN {
+            public AbstractScreen getScreen(Object... params) {
+                return new StartScreen();
+            }
+        },
+
+        RESTART_SCREEN {
+            public AbstractScreen getScreen(Object... params) {
+                return new RestartScreen();
+            }
+        },
+
+        GAME {
+            public AbstractScreen getScreen(Object... params) {
+                return new SnakeGame();
+            }
+        };
+
+        public abstract AbstractScreen getScreen(Object... params);
+
     }
 
 }
