@@ -32,7 +32,7 @@ public class StartScreen extends AbstractScreen {
         table = new Table();
         table.setWidth(super.getWidth());
         table.align(Align.center | Align.top);
-        table.setPosition(0, Gdx.graphics.getHeight()); //Start at top left
+        table.setPosition(0, getHeight()); //Start at top left
 
         startButton = new TextButton(Constants.BUTTON_START_TEXT, skin);
         startButton.setWidth(getWidth() / 4);

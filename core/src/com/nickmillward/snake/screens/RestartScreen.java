@@ -38,9 +38,10 @@ public class RestartScreen extends AbstractScreen implements Screen {
         table = new Table();
         table.setWidth(getWidth());
         table.align(Align.center | Align.top);
-        table.setPosition(0, Gdx.graphics.getHeight());
+        table.setPosition(0, getHeight());
 
         highScoreLabel = new Label(Constants.HIGH_SCORE_LABEL + highScore, skin);
+        highScoreLabel.setFontScale(2);
         table.add(highScoreLabel).padTop(100);
 
         table.row();    // Add New Row
