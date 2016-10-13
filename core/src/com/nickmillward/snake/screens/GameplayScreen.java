@@ -79,10 +79,10 @@ public class GameplayScreen extends AbstractScreen {
         shapeRenderer.setProjectionMatrix(getCamera().combined);
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(Constants.BORDER_COLOR);
-        shapeRenderer.rectLine(0, 0, 0, getHeight(), 10.0f); // left
-        shapeRenderer.rectLine(0, 0, getWidth(), 0, 10.0f); // bottom
-        shapeRenderer.rectLine(getWidth(), 0, getWidth(), getHeight(), 10.0f); // right
-        shapeRenderer.rectLine(0, getHeight(), getWidth(), getHeight(), 10.0f); // top
+        shapeRenderer.rectLine(0, 0, 0, getHeight(), Constants.BORDER_WIDTH); // left
+        shapeRenderer.rectLine(0, 0, getWidth(), 0, Constants.BORDER_WIDTH); // bottom
+        shapeRenderer.rectLine(getWidth(), 0, getWidth(), getHeight(), Constants.BORDER_WIDTH); // right
+        shapeRenderer.rectLine(0, getHeight(), getWidth(), getHeight(), Constants.BORDER_WIDTH); // top
         shapeRenderer.end();
 
         level.render(batch);

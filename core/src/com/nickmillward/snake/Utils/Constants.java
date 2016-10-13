@@ -62,7 +62,7 @@ public class Constants {
 
     // LEVEL
     public static final Color BORDER_COLOR = Color.WHITE;
-    public static final float BORDER_MARGIN = SNAKE_SEGMENT_DEFAULT_SIZE / 2;
+    public static final float BORDER_WIDTH = 10.0f;
 
     // GAME OVER SCREEN
     public static final String HIGH_SCORE_LABEL = "High Score: ";
