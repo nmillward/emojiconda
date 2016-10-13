@@ -61,13 +61,10 @@ public class Constants {
     public static final String SNAKE_HUD_SCORE_LABEL = "Score: ";
 
     // LEVEL
-    public static final float LEVEL_VIEWPORT_SIZE = 480;
     public static final Color BORDER_COLOR = Color.WHITE;
-    public static final float BORDER_WIDTH = 10;
-    public static final float BORDER_MARGIN = SNAKE_SEGMENT_DEFAULT_SIZE;
+    public static final float BORDER_MARGIN = SNAKE_SEGMENT_DEFAULT_SIZE / 2;
 
-    // GAME OVER OVERLAY
-    public static final float GAME_OVER_OVERLAY_VIEWPORT_SIZE = 480;
+    // GAME OVER SCREEN
     public static final String HIGH_SCORE_LABEL = "High Score: ";
     public static final String BUTTON_RESTART_TEXT = "RESTART";
 

@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.input.GestureDetector;
 import com.nickmillward.snake.Level;
 import com.nickmillward.snake.MobileControls;
@@ -26,6 +27,7 @@ public class GameplayScreen extends AbstractScreen {
     SpriteBatch batch;
     Level level;
     private SnakeHUD snakeHUD;
+    private ShapeRenderer shapeRenderer;
 
     public GameplayScreen() {
         super();
@@ -39,7 +41,7 @@ public class GameplayScreen extends AbstractScreen {
 
     @Override
     public void buildStage() {
-
+        shapeRenderer = new ShapeRenderer();
     }
 
     @Override
@@ -72,6 +74,16 @@ public class GameplayScreen extends AbstractScreen {
                 Constants.BACKGROUND_COLOR.b,
                 Constants.BACKGROUND_COLOR.a);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        // BORDER
+        shapeRenderer.setProjectionMatrix(getCamera().combined);
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        shapeRenderer.setColor(Constants.BORDER_COLOR);
+        shapeRenderer.rectLine(0, 0, 0, getHeight(), 10.0f); // left
+        shapeRenderer.rectLine(0, 0, getWidth(), 0, 10.0f); // bottom
+        shapeRenderer.rectLine(getWidth(), 0, getWidth(), getHeight(), 10.0f); // right
+        shapeRenderer.rectLine(0, getHeight(), getWidth(), getHeight(), 10.0f); // top
+        shapeRenderer.end();
 
         level.render(batch);
 

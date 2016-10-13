@@ -2,7 +2,6 @@ package com.nickmillward.snake;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nickmillward.snake.entities.Food;
@@ -16,7 +15,6 @@ public class Level {
 
     public static final String TAG = Level.class.getName();
 
-    ShapeRenderer shapeRenderer;
     public Viewport viewport;
     public Snake snake;
     public Food food;
@@ -25,7 +23,6 @@ public class Level {
     public int highScore = 0;
 
     public Level() {
-        shapeRenderer = new ShapeRenderer();
         viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
         initGameDefault();
     }
@@ -35,9 +32,6 @@ public class Level {
             snake.update(delta);
             checkGameOver();
             food.snakeCollisionWithSnack();
-        } else {
-            //TODO: GAME OVER
-//            resetGame();
         }
     }
 
@@ -49,19 +43,6 @@ public class Level {
         snake.render(batch);
         food.render(batch);
         batch.end();
-
-        // BORDER
-//        shapeRenderer.setProjectionMatrix(viewport.getCamera().combined);
-//        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-//        shapeRenderer.setColor(Constants.BORDER_COLOR);
-//        shapeRenderer.rect(
-//                Constants.BORDER_MARGIN,
-//                Constants.BORDER_MARGIN,
-//                viewport.getWorldWidth() - Constants.BORDER_MARGIN,
-//                viewport.getWorldHeight() - Constants.BORDER_MARGIN
-//        );
-//        shapeRenderer.end();
-
     }
 
     public void checkGameOver() {
