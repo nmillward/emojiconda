@@ -32,8 +32,8 @@ public class Food {
     }
 
     private void initPosition() {
-        x = (float) Math.random() * (Constants.WORLD_SIZE - Constants.FOOD_DEFAULT_SIZE);
-        y = (float) Math.random() * (Constants.WORLD_SIZE - Constants.FOOD_DEFAULT_SIZE);
+        x = (float) Math.random() * (Constants.WORLD_SIZE - Constants.FOOD_DEFAULT_SIZE - Constants.BORDER_WIDTH);
+        y = (float) Math.random() * (Constants.WORLD_SIZE - Constants.FOOD_DEFAULT_SIZE - Constants.BORDER_WIDTH);
         position = new Vector2(x, y);
     }
 
@@ -62,9 +62,7 @@ public class Food {
         Vector2 foodCenterPosition = new Vector2(x + Constants.FOOD_CENTER.x, y + Constants.FOOD_CENTER.y);
 
         if (Math.abs(snakeX - foodCenterPosition.x) < (Constants.SNAKE_SEGMENT_DEFAULT_SIZE)) {
-//            Gdx.app.log("FOOD", "SNAKE X & FOOD X DIFF = " + Math.abs(snakeX - foodCenterPosition.x));
             if (Math.abs(snakeY - foodCenterPosition.y) < (Constants.SNAKE_SEGMENT_DEFAULT_SIZE)) {
-//                Gdx.app.log("FOOD", "SNAKE Y & FOOD Y DIFF = " + Math.abs(snakeY - foodCenterPosition.y));
                 changePosition();
                 snake.setGrowSnake(true);
                 level.incrementCurrentScore(Constants.FOOD_BASE_POINT_VALUE);
