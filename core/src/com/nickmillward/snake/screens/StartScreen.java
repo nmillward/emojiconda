@@ -8,7 +8,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
-import com.nickmillward.snake.Level;
 import com.nickmillward.snake.utils.Constants;
 import com.nickmillward.snake.utils.Enums;
 import com.nickmillward.snake.utils.ScreenManager;
@@ -21,7 +20,6 @@ public class StartScreen extends AbstractScreen {
     private Skin skin;
     private Table table;
     private TextButton startButton;
-    private Level level;
 
     public StartScreen() {
         super();
