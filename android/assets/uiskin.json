@@ -1,6 +1,6 @@
 {
     com.badlogic.gdx.graphics.g2d.BitmapFont: {
-        default-font: { file: Helvetica.fnt }
+        default-font: { file: fishFont.fnt }
     },
     com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
         default: { font: default-font }

@@ -1,7 +1,6 @@
 package com.nickmillward.snake.screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -10,7 +9,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.nickmillward.snake.utils.Constants;
 import com.nickmillward.snake.utils.Enums;
@@ -32,7 +30,7 @@ public class StartScreen extends AbstractScreen {
         super();
         skin = new Skin(Gdx.files.internal(Constants.UI_SKIN)); //down: button, up: button,
         skin.addRegions(new TextureAtlas(Constants.TEXTURE_ATLAS));
-        startUpNine = new NinePatch(skin.getRegion("button"));
+        startUpNine = skin.getPatch("button");
         textButtonStyle = new TextButton.TextButtonStyle();
         font = new BitmapFont();
     }
@@ -44,17 +42,19 @@ public class StartScreen extends AbstractScreen {
         table.align(Align.center | Align.top);
         table.setPosition(0, getHeight()); //Start at top left
 
-        textButtonStyle.up = new NinePatchDrawable(startUpNine);
-
-        font.setColor(Color.BLACK);
-        font.getData().setScale(2);
-        textButtonStyle.font = font;
-        startButton = new TextButton(Constants.BUTTON_START_TEXT, textButtonStyle);
-        startButton.setBounds(50, 50, getWidth() / 4, getHeight() / 4);
+//        textButtonStyle.up = new NinePatchDrawable(startUpNine);
+//
+//        font.setColor(Color.BLACK);
+//        font.getData().setScale(2);
+//        textButtonStyle.font = font;
+//        startButton = new TextButton(Constants.BUTTON_START_TEXT, textButtonStyle);
+//        startButton.setBounds(50, 50, getWidth() / 4, getHeight() / 4);
 //        skin.add("button-up", new NinePatchDrawable(startUpNine));
 
-//        startButton = new TextButton(Constants.BUTTON_START_TEXT, skin);
-//        startButton.setWidth(getWidth() / 100);
+        skin.getFont("default-font").getData().setScale(2);
+
+        startButton = new TextButton(Constants.BUTTON_START_TEXT, skin);
+        startButton.setWidth(getWidth() / 100);
 
         startButton.addListener(new ClickListener() {
             @Override
