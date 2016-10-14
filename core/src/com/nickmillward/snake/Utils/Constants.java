@@ -10,7 +10,7 @@ public class Constants {
 
     // WORLD
     public static final float WORLD_SIZE = 800;
-    public static final Color BACKGROUND_COLOR = Color.SLATE;
+    public static final Color BACKGROUND_COLOR = Color.SKY;
     public static final String TEXTURE_ATLAS = "textures/textureAtlas.atlas";
     public static final String UI_SKIN = "uiskin.json";
 
