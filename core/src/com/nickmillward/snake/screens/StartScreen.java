@@ -1,14 +1,18 @@
 package com.nickmillward.snake.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.nickmillward.snake.utils.Constants;
 import com.nickmillward.snake.utils.Enums;
@@ -24,7 +28,6 @@ public class StartScreen extends AbstractScreen {
     private TextButton startButton;
     private NinePatch startUpNine;
     private TextButton.TextButtonStyle textButtonStyle;
-    private BitmapFont font;
 
     public StartScreen() {
         super();
@@ -32,7 +35,6 @@ public class StartScreen extends AbstractScreen {
         skin.addRegions(new TextureAtlas(Constants.TEXTURE_ATLAS));
         startUpNine = skin.getPatch("button");
         textButtonStyle = new TextButton.TextButtonStyle();
-        font = new BitmapFont();
     }
 
     @Override
@@ -42,19 +44,18 @@ public class StartScreen extends AbstractScreen {
         table.align(Align.center | Align.top);
         table.setPosition(0, getHeight()); //Start at top left
 
-//        textButtonStyle.up = new NinePatchDrawable(startUpNine);
-//
-//        font.setColor(Color.BLACK);
-//        font.getData().setScale(2);
-//        textButtonStyle.font = font;
-//        startButton = new TextButton(Constants.BUTTON_START_TEXT, textButtonStyle);
-//        startButton.setBounds(50, 50, getWidth() / 4, getHeight() / 4);
-//        skin.add("button-up", new NinePatchDrawable(startUpNine));
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal(Constants.FONT_FISHFONT));
+        FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        parameter.size = (int)Math.ceil(2*Gdx.graphics.getWidth()/12);
+        parameter.color = Color.BLACK;
+        parameter.minFilter = Texture.TextureFilter.Linear;
+        parameter.magFilter = Texture.TextureFilter.Linear;
+        BitmapFont font = generator.generateFont(parameter);
+        generator.dispose();
 
-        skin.getFont("default-font").getData().setScale(2);
-
-        startButton = new TextButton(Constants.BUTTON_START_TEXT, skin);
-        startButton.setWidth(getWidth() / 100);
+        textButtonStyle.up = new NinePatchDrawable(startUpNine);
+        textButtonStyle.font = font;
+        startButton = new TextButton(Constants.BUTTON_START_TEXT, textButtonStyle);
 
         startButton.addListener(new ClickListener() {
             @Override

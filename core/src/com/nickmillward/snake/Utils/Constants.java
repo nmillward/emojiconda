@@ -13,6 +13,7 @@ public class Constants {
     public static final Color BACKGROUND_COLOR = Color.SKY;
     public static final String TEXTURE_ATLAS = "textures/textureAtlas.atlas";
     public static final String UI_SKIN = "uiskin.json";
+    public static final String FONT_FISHFONT = "font/Fishfingers.ttf";
 
     // SNAKE
 //    public static final float SNAKE_SEGMENT_DEFAULT_SIZE = WORLD_SIZE * 0.05f;
