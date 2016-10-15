@@ -46,7 +46,8 @@ public class StartScreen extends AbstractScreen {
 
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal(Constants.FONT_FISHFONT));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = (int)Math.ceil(2*Gdx.graphics.getWidth()/12);
+        parameter.size = 75;
+//        parameter.size = (int)Math.ceil(2*Gdx.graphics.getWidth()/12);
         parameter.color = Color.BLACK;
         parameter.minFilter = Texture.TextureFilter.Linear;
         parameter.magFilter = Texture.TextureFilter.Linear;
