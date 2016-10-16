@@ -32,8 +32,8 @@ public class Food {
     }
 
     private void initPosition() {
-        x = (float) Math.random() * (Constants.WORLD_SIZE - Constants.FOOD_DEFAULT_SIZE - Constants.BORDER_WIDTH);
-        y = (float) Math.random() * (Constants.WORLD_SIZE - Constants.FOOD_DEFAULT_SIZE - Constants.BORDER_WIDTH);
+        x = (float) Math.random() * (Constants.WORLD_SIZE - (Constants.FOOD_DEFAULT_SIZE * 2) - (Constants.BORDER_WIDTH * 2));
+        y = (float) Math.random() * (Constants.WORLD_SIZE - (Constants.FOOD_DEFAULT_SIZE * 2) - (Constants.BORDER_WIDTH * 2));
         position = new Vector2(x, y);
     }
 
