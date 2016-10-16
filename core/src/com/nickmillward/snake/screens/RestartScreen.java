@@ -32,6 +32,7 @@ public class RestartScreen extends AbstractScreen implements Screen {
     private int highScore;
     private NinePatch resetUpNine;
     private TextButton.TextButtonStyle textButtonStyle;
+    private Label.LabelStyle labelStyle;
 
     public RestartScreen(int highScore) {
         super();
@@ -40,7 +41,7 @@ public class RestartScreen extends AbstractScreen implements Screen {
         skin.addRegions(new TextureAtlas(Constants.TEXTURE_ATLAS));
         resetUpNine = skin.getPatch("button");
         textButtonStyle = new TextButton.TextButtonStyle();
-        font = new BitmapFont();
+        labelStyle = new Label.LabelStyle();
     }
 
     @Override
@@ -50,11 +51,15 @@ public class RestartScreen extends AbstractScreen implements Screen {
         table.align(Align.center | Align.top);
         table.setPosition(0, getHeight());
 
+        font = Utils.generateFreeTypeFont(Constants.FONT_FISHFONT, 75, Color.BLACK);
+
         textButtonStyle.up = new NinePatchDrawable(resetUpNine);
-        textButtonStyle.font = Utils.generateFreeTypeFont(Constants.FONT_FISHFONT, 75, Color.BLACK);
+        textButtonStyle.font = font;
         restartButton = new TextButton(Constants.BUTTON_RESTART_TEXT, textButtonStyle);
 
-        highScoreLabel = new Label(Constants.HIGH_SCORE_LABEL + highScore, skin);
+        labelStyle = new Label.LabelStyle(font, Color.BLACK);
+
+        highScoreLabel = new Label(Constants.HIGH_SCORE_LABEL + highScore, labelStyle);
         highScoreLabel.setFontScale(2);
         table.add(highScoreLabel).padTop(100);
 
