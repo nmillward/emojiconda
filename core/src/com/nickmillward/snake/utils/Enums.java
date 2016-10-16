@@ -45,7 +45,7 @@ public class Enums {
             }
         },
 
-        GAME {
+        GAME_SCREEN {
             public AbstractScreen getScreen(Object... params) {
                 return new GameplayScreen();
             }

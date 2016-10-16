@@ -67,7 +67,7 @@ public class RestartScreen extends AbstractScreen implements Screen {
         restartButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                ScreenManager.getInstance().showScreen(Enums.Screen.GAME);
+                ScreenManager.getInstance().showScreen(Enums.Screen.GAME_SCREEN);
                 event.stop();
             }
         });

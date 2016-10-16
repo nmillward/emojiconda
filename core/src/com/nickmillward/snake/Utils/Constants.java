@@ -65,7 +65,7 @@ public class Constants {
     public static final Color BORDER_COLOR = Color.WHITE;
     public static final float BORDER_WIDTH = 10.0f;
 
-    // GAME OVER SCREEN
+    // GAME_SCREEN OVER SCREEN
     public static final String HIGH_SCORE_LABEL = "High Score: ";
     public static final String BUTTON_RESTART_TEXT = "RESTART";
 
