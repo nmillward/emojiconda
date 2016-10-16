@@ -3,11 +3,9 @@ package com.nickmillward.snake.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -19,6 +17,7 @@ import com.badlogic.gdx.utils.Align;
 import com.nickmillward.snake.utils.Constants;
 import com.nickmillward.snake.utils.Enums;
 import com.nickmillward.snake.utils.ScreenManager;
+import com.nickmillward.snake.utils.Utils;
 
 /**
  * Created by nmillward on 10/9/16.
@@ -51,18 +50,8 @@ public class RestartScreen extends AbstractScreen implements Screen {
         table.align(Align.center | Align.top);
         table.setPosition(0, getHeight());
 
-        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal(Constants.FONT_FISHFONT));
-        FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = 75;
-//        parameter.size = (int)Math.ceil(2*Gdx.graphics.getWidth()/12);
-        parameter.color = Color.BLACK;
-        parameter.minFilter = Texture.TextureFilter.Linear;
-        parameter.magFilter = Texture.TextureFilter.Linear;
-        BitmapFont font = generator.generateFont(parameter);
-        generator.dispose();
-
         textButtonStyle.up = new NinePatchDrawable(resetUpNine);
-        textButtonStyle.font = font;
+        textButtonStyle.font = Utils.generateFreeTypeFont(Constants.FONT_FISHFONT, 75, Color.BLACK);
         restartButton = new TextButton(Constants.BUTTON_RESTART_TEXT, textButtonStyle);
 
         highScoreLabel = new Label(Constants.HIGH_SCORE_LABEL + highScore, skin);
@@ -70,8 +59,6 @@ public class RestartScreen extends AbstractScreen implements Screen {
         table.add(highScoreLabel).padTop(100);
 
         table.row();    // Add New Row
-//        restartButton = new TextButton(Constants.BUTTON_RESTART_TEXT, skin);
-//        restartButton.setWidth(getWidth() / 4);
         restartButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {

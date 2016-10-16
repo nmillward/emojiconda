@@ -2,11 +2,8 @@ package com.nickmillward.snake.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -17,6 +14,7 @@ import com.badlogic.gdx.utils.Align;
 import com.nickmillward.snake.utils.Constants;
 import com.nickmillward.snake.utils.Enums;
 import com.nickmillward.snake.utils.ScreenManager;
+import com.nickmillward.snake.utils.Utils;
 
 /**
  * Created by nmillward on 10/6/16.
@@ -44,18 +42,8 @@ public class StartScreen extends AbstractScreen {
         table.align(Align.center | Align.top);
         table.setPosition(0, getHeight()); //Start at top left
 
-        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal(Constants.FONT_FISHFONT));
-        FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = 75;
-//        parameter.size = (int)Math.ceil(2*Gdx.graphics.getWidth()/12);
-        parameter.color = Color.BLACK;
-        parameter.minFilter = Texture.TextureFilter.Linear;
-        parameter.magFilter = Texture.TextureFilter.Linear;
-        BitmapFont font = generator.generateFont(parameter);
-        generator.dispose();
-
         textButtonStyle.up = new NinePatchDrawable(startUpNine);
-        textButtonStyle.font = font;
+        textButtonStyle.font = Utils.generateFreeTypeFont(Constants.FONT_FISHFONT, 75, Color.BLACK);
         startButton = new TextButton(Constants.BUTTON_START_TEXT, textButtonStyle);
 
         startButton.addListener(new ClickListener() {
