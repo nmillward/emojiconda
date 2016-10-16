@@ -10,12 +10,11 @@ import com.nickmillward.snake.screens.StartScreen;
  */
 public class Enums {
 
-    public enum Direction {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
-        STILL
+    public enum GAME_STATE {
+        RUN,
+        PAUSE,
+        RESUME,
+        STOP
     }
 
     public enum Difficulty {
