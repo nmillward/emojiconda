@@ -17,7 +17,7 @@ public class Constants {
 
     // SNAKE
 //    public static final float SNAKE_SEGMENT_DEFAULT_SIZE = WORLD_SIZE * 0.05f;
-    public static final float SNAKE_SEGMENT_DEFAULT_SIZE = 40;
+    public static final float SNAKE_SEGMENT_DEFAULT_SIZE = 50;
     public static final Vector2 SNAKE_SEGMENT_CENTER = new Vector2(SNAKE_SEGMENT_DEFAULT_SIZE / 2, SNAKE_SEGMENT_DEFAULT_SIZE / 2);
     public static final int EASY_SNAKE_VELOCITY = 10;
     public static final int MEDIUM_SNAKE_VELOCITY = 5;
@@ -41,7 +41,7 @@ public class Constants {
 
     // FOOD
 //    public static final float FOOD_DEFAULT_SIZE = WORLD_SIZE * 0.05f;
-    public static final float FOOD_DEFAULT_SIZE = 32;
+    public static final float FOOD_DEFAULT_SIZE = 40;
     public static final Vector2 FOOD_CENTER = new Vector2(FOOD_DEFAULT_SIZE / 2, FOOD_DEFAULT_SIZE / 2);
     public static final int FOOD_BASE_POINT_VALUE = 5;
 
