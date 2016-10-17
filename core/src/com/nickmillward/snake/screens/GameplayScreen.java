@@ -28,15 +28,17 @@ public class GameplayScreen extends AbstractScreen {
     Level level;
     private SnakeHUD snakeHUD;
     private ShapeRenderer shapeRenderer;
+    private Enums.GAME_STATE gameState;
 
     public GameplayScreen() {
         super();
         AssetManager assetManager = new AssetManager();
         Assets.instance.init(assetManager);
-        level = new Level();
+        level = new Level(this);
         batch = new SpriteBatch();
         snakeHUD = new SnakeHUD();
         mobileControls = new MobileControls(level);
+        gameState = Enums.GAME_STATE.RUN;
     }
 
     @Override
@@ -66,8 +68,6 @@ public class GameplayScreen extends AbstractScreen {
 
     @Override
     public void render(float delta) {
-        level.update(delta);
-
         Gdx.gl.glClearColor(
                 Constants.BACKGROUND_COLOR.r,
                 Constants.BACKGROUND_COLOR.g,
@@ -85,13 +85,21 @@ public class GameplayScreen extends AbstractScreen {
         shapeRenderer.rectLine(0, getHeight(), getWidth(), getHeight(), Constants.BORDER_WIDTH); // top
         shapeRenderer.end();
 
-        level.render(batch);
+        switch (gameState) {
+            case RUN:
+                level.update(delta);
+                level.render(batch);
+                snakeHUD.render(batch, level.getCurrentScore());
+                break;
 
-        snakeHUD.render(batch, level.getCurrentScore());
+            case PAUSE:
 
-        if (level.isGameOver) {
-            level.resetGame();
-            ScreenManager.getInstance().showScreen(Enums.Screen.RESTART_SCREEN, level.getHighScore());
+                break;
+
+            case STOP:
+                level.resetGame();
+                ScreenManager.getInstance().showScreen(Enums.Screen.RESTART_SCREEN, level.getHighScore());
+                break;
         }
     }
 
@@ -100,5 +108,9 @@ public class GameplayScreen extends AbstractScreen {
      */
     public boolean onMobile() {
         return Gdx.app.getType() == Application.ApplicationType.Android || Gdx.app.getType() == Application.ApplicationType.iOS;
+    }
+
+    public void setGameState(Enums.GAME_STATE gameState) {
+        this.gameState = gameState;
     }
 }

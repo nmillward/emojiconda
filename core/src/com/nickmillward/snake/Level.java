@@ -5,7 +5,9 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nickmillward.snake.entities.Food;
 import com.nickmillward.snake.entities.Snake;
+import com.nickmillward.snake.screens.GameplayScreen;
 import com.nickmillward.snake.utils.Constants;
+import com.nickmillward.snake.utils.Enums;
 
 /**
  * Created by nmillward on 9/7/16.
@@ -14,6 +16,7 @@ public class Level {
 
     public static final String TAG = Level.class.getName();
 
+    GameplayScreen screen;
     public Viewport viewport;
     public Snake snake;
     public Food food;
@@ -21,8 +24,9 @@ public class Level {
     public int currentScore = 0;
     public int highScore = 0;
 
-    public Level() {
+    public Level(GameplayScreen screen) {
         viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
+        this.screen = screen;
         initGameDefault();
     }
 
@@ -47,12 +51,15 @@ public class Level {
     public void checkGameOver() {
         if (snake.getXofHead() < 0 || snake.getXofHead() > viewport.getWorldWidth() - Constants.SNAKE_SEGMENT_DEFAULT_SIZE) {
             isGameOver = true;
+            screen.setGameState(Enums.GAME_STATE.STOP);
         }
         if (snake.getYofHead() < 0 || snake.getYofHead() > viewport.getWorldHeight() - Constants.SNAKE_SEGMENT_DEFAULT_SIZE) {
             isGameOver = true;
+            screen.setGameState(Enums.GAME_STATE.STOP);
         }
         if (snake.snakeCollision()) {
             isGameOver = true;
+            screen.setGameState(Enums.GAME_STATE.STOP);
         }
     }
 
