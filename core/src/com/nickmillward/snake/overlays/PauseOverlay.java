@@ -20,7 +20,7 @@ public class PauseOverlay {
 
     public PauseOverlay() {
         this.viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
-        font = Utils.generateFreeTypeFont(Constants.FONT_FISHFONT, 48, Color.BLACK);
+        font = Utils.generateFreeTypeFont(Constants.FONT_FISHFONT, 96, Color.BLACK);
         shapeRenderer = new ShapeRenderer();
     }
 
@@ -31,7 +31,7 @@ public class PauseOverlay {
         batch.setProjectionMatrix(viewport.getCamera().combined);
         batch.begin();
         final String pauseText = "PAUSED";
-        font.draw(batch, pauseText, viewport.getWorldWidth() / 2, viewport.getWorldHeight() / 4);
+        font.draw(batch, pauseText, viewport.getWorldWidth() / 2, viewport.getWorldHeight() * 3/4);
         batch.end();
 
     }

@@ -24,6 +24,8 @@ public class SnakeHUD {
         shapeRenderer = new ShapeRenderer();
     }
 
+
+
     public void render(SpriteBatch batch, int score) {
         viewport.apply();
 

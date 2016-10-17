@@ -16,7 +16,6 @@ public class Constants {
     public static final String FONT_FISHFONT = "font/Fishfingers.ttf";
 
     // SNAKE
-//    public static final float SNAKE_SEGMENT_DEFAULT_SIZE = WORLD_SIZE * 0.05f;
     public static final float SNAKE_SEGMENT_DEFAULT_SIZE = 50;
     public static final Vector2 SNAKE_SEGMENT_CENTER = new Vector2(SNAKE_SEGMENT_DEFAULT_SIZE / 2, SNAKE_SEGMENT_DEFAULT_SIZE / 2);
     public static final int EASY_SNAKE_VELOCITY = 10;
@@ -40,7 +39,6 @@ public class Constants {
     public static final String IOS_TONGUE_WINK = "tongue_wink";
 
     // FOOD
-//    public static final float FOOD_DEFAULT_SIZE = WORLD_SIZE * 0.05f;
     public static final float FOOD_DEFAULT_SIZE = 40;
     public static final Vector2 FOOD_CENTER = new Vector2(FOOD_DEFAULT_SIZE / 2, FOOD_DEFAULT_SIZE / 2);
     public static final int FOOD_BASE_POINT_VALUE = 5;
@@ -60,6 +58,10 @@ public class Constants {
     public static final float SNAKE_HUD_VIEWPORT_SIZE = 480;
     public static final float SNAKE_HUD_MARGIN = 20;
     public static final String SNAKE_HUD_SCORE_LABEL = "Score: ";
+    public static final String PAUSE_BUTTON_TEXT = "PAUSE";
+
+    // PAUSE OVERLAY
+    public static final String PAUSED_TEXT = "PAUSED";
 
     // LEVEL
     public static final Color BORDER_COLOR = Color.WHITE;
