@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.input.GestureDetector;
 import com.nickmillward.snake.Level;
 import com.nickmillward.snake.MobileControls;
+import com.nickmillward.snake.overlays.PauseOverlay;
 import com.nickmillward.snake.overlays.SnakeHUD;
 import com.nickmillward.snake.utils.Assets;
 import com.nickmillward.snake.utils.Constants;
@@ -27,6 +28,7 @@ public class GameplayScreen extends AbstractScreen {
     SpriteBatch batch;
     Level level;
     private SnakeHUD snakeHUD;
+    private PauseOverlay pauseOverlay;
     private ShapeRenderer shapeRenderer;
     private Enums.GAME_STATE gameState;
 
@@ -37,6 +39,7 @@ public class GameplayScreen extends AbstractScreen {
         level = new Level(this);
         batch = new SpriteBatch();
         snakeHUD = new SnakeHUD();
+        pauseOverlay = new PauseOverlay();
         mobileControls = new MobileControls(level);
         gameState = Enums.GAME_STATE.RUN;
     }
@@ -58,6 +61,7 @@ public class GameplayScreen extends AbstractScreen {
     public void resize(int width, int height) {
         level.viewport.update(width, height, true);
         snakeHUD.viewport.update(width, height, true);
+        pauseOverlay.viewport.update(width, height, true);
     }
 
     @Override
@@ -93,7 +97,7 @@ public class GameplayScreen extends AbstractScreen {
                 break;
 
             case PAUSE:
-
+                pauseOverlay.render(batch);
                 break;
 
             case STOP:
