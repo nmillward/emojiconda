@@ -27,10 +27,10 @@ public class GameplayScreen extends AbstractScreen {
     GestureDetector gestureDetector;
     SpriteBatch batch;
     Level level;
+    private Enums.GAME_STATE gameState;
     private SnakeHUD snakeHUD;
     private PauseOverlay pauseOverlay;
     private ShapeRenderer shapeRenderer;
-    private Enums.GAME_STATE gameState;
 
     public GameplayScreen() {
         super();
@@ -38,7 +38,7 @@ public class GameplayScreen extends AbstractScreen {
         Assets.instance.init(assetManager);
         level = new Level(this);
         batch = new SpriteBatch();
-        snakeHUD = new SnakeHUD(batch);
+        snakeHUD = new SnakeHUD(this, batch);
         pauseOverlay = new PauseOverlay();
         mobileControls = new MobileControls(level);
         gameState = Enums.GAME_STATE.RUN;
@@ -88,6 +88,8 @@ public class GameplayScreen extends AbstractScreen {
         shapeRenderer.rectLine(getWidth(), 0, getWidth(), getHeight(), Constants.BORDER_WIDTH); // right
         shapeRenderer.rectLine(0, getHeight(), getWidth(), getHeight(), Constants.BORDER_WIDTH); // top
         shapeRenderer.end();
+
+        batch.setProjectionMatrix(snakeHUD.stage.getCamera().combined);
 
         switch (gameState) {
             case RUN:
