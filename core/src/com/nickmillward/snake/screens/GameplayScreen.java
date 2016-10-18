@@ -39,7 +39,7 @@ public class GameplayScreen extends AbstractScreen {
         level = new Level(this);
         batch = new SpriteBatch();
         snakeHUD = new SnakeHUD(this, batch);
-        pauseOverlay = new PauseOverlay();
+        pauseOverlay = new PauseOverlay(this, batch);
         mobileControls = new MobileControls(level);
         gameState = Enums.GAME_STATE.RUN;
     }
@@ -90,6 +90,7 @@ public class GameplayScreen extends AbstractScreen {
         shapeRenderer.end();
 
         batch.setProjectionMatrix(snakeHUD.stage.getCamera().combined);
+        batch.setProjectionMatrix(pauseOverlay.stage.getCamera().combined);
 
         switch (gameState) {
             case RUN:
@@ -97,10 +98,12 @@ public class GameplayScreen extends AbstractScreen {
                 level.render(batch);
                 snakeHUD.updateScore(level.getCurrentScore());
                 snakeHUD.stage.draw();
+//                pauseOverlay.stage.draw();
                 break;
 
             case PAUSE:
-                pauseOverlay.render(batch);
+//                pauseOverlay.render(batch);
+                pauseOverlay.stage.draw();
                 break;
 
             case STOP:

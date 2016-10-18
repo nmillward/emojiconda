@@ -24,15 +24,13 @@ import com.nickmillward.snake.utils.Utils;
 public class SnakeHUD {
 
     GameplayScreen screen;
+    ShapeRenderer shapeRenderer;
+
     public final Viewport viewport;
     final BitmapFont font;
-    ShapeRenderer shapeRenderer;
+
     public Stage stage;
-    private Table table;
-    private TextButton pauseButton;
-    private TextButton.TextButtonStyle textButtonStyle;
     private Label scoreLabel;
-    private Label.LabelStyle labelStyle;
     private int score;
 
     public SnakeHUD(final GameplayScreen screen, SpriteBatch batch) {
@@ -44,16 +42,16 @@ public class SnakeHUD {
         score = 0;
 
         stage = new Stage(viewport, batch);
-        table = new Table();
+        Table table = new Table();
         table.top();
         table.setFillParent(true);
 
-        labelStyle = new Label.LabelStyle(font, Color.WHITE);
+        Label.LabelStyle labelStyle = new Label.LabelStyle(font, Color.WHITE);
         scoreLabel = new Label(Constants.SNAKE_HUD_SCORE_LABEL + score, labelStyle);
 
-        textButtonStyle = new TextButton.TextButtonStyle();
+        TextButton.TextButtonStyle textButtonStyle = new TextButton.TextButtonStyle();
         textButtonStyle.font = font;
-        pauseButton = new TextButton(Constants.PAUSE_BUTTON_TEXT, textButtonStyle);
+        TextButton pauseButton = new TextButton(Constants.PAUSE_BUTTON_TEXT, textButtonStyle);
         pauseButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
