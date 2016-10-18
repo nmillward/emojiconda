@@ -38,7 +38,7 @@ public class GameplayScreen extends AbstractScreen {
         Assets.instance.init(assetManager);
         level = new Level(this);
         batch = new SpriteBatch();
-        snakeHUD = new SnakeHUD();
+        snakeHUD = new SnakeHUD(batch);
         pauseOverlay = new PauseOverlay();
         mobileControls = new MobileControls(level);
         gameState = Enums.GAME_STATE.RUN;
@@ -93,7 +93,8 @@ public class GameplayScreen extends AbstractScreen {
             case RUN:
                 level.update(delta);
                 level.render(batch);
-                snakeHUD.render(batch, level.getCurrentScore());
+                snakeHUD.updateScore(level.getCurrentScore());
+                snakeHUD.stage.draw();
                 break;
 
             case PAUSE:

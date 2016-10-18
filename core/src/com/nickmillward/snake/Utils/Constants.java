@@ -61,6 +61,7 @@ public class Constants {
     public static final String PAUSE_BUTTON_TEXT = "PAUSE";
 
     // PAUSE OVERLAY
+    public static final Color PAUSE_BACKGROUND_COLOR = Color.valueOf("BFFFFFFF"); // 75% White
     public static final String PAUSED_TEXT = "PAUSED";
 
     // LEVEL
