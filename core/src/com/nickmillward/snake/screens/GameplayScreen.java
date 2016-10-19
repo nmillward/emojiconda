@@ -2,6 +2,7 @@ package com.nickmillward.snake.screens;
 
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -31,6 +32,7 @@ public class GameplayScreen extends AbstractScreen {
     private SnakeHUD snakeHUD;
     private PauseOverlay pauseOverlay;
     private ShapeRenderer shapeRenderer;
+    public boolean isPaused;
 
     public GameplayScreen() {
         super();
@@ -42,6 +44,7 @@ public class GameplayScreen extends AbstractScreen {
         pauseOverlay = new PauseOverlay(this, batch);
         mobileControls = new MobileControls(level);
         gameState = Enums.GAME_STATE.RUN;
+        isPaused = false;
     }
 
     @Override
@@ -98,10 +101,12 @@ public class GameplayScreen extends AbstractScreen {
                 level.render(batch);
                 snakeHUD.updateScore(level.getCurrentScore());
                 snakeHUD.stage.draw();
+                pauseKeyPressed();
                 break;
 
             case PAUSE:
                 pauseOverlay.stage.draw();
+                pauseKeyPressed();
                 break;
 
             case STOP:
@@ -116,6 +121,18 @@ public class GameplayScreen extends AbstractScreen {
      */
     public boolean onMobile() {
         return Gdx.app.getType() == Application.ApplicationType.Android || Gdx.app.getType() == Application.ApplicationType.iOS;
+    }
+
+    public void pauseKeyPressed() {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+            if (!isPaused) {
+                gameState = Enums.GAME_STATE.PAUSE;
+                isPaused = true;
+            } else {
+                gameState = Enums.GAME_STATE.RUN;
+                isPaused = false;
+            }
+        }
     }
 
     public void setGameState(Enums.GAME_STATE gameState) {

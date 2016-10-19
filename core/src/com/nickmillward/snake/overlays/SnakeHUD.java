@@ -31,6 +31,7 @@ public class SnakeHUD {
 
     public Stage stage;
     private Label scoreLabel;
+    private TextButton pauseButton;
     private int score;
 
     public SnakeHUD(final GameplayScreen screen, SpriteBatch batch) {
@@ -51,12 +52,12 @@ public class SnakeHUD {
 
         TextButton.TextButtonStyle textButtonStyle = new TextButton.TextButtonStyle();
         textButtonStyle.font = font;
-        TextButton pauseButton = new TextButton(Constants.PAUSE_BUTTON_TEXT, textButtonStyle);
+        pauseButton = new TextButton(Constants.PAUSE_BUTTON_TEXT, textButtonStyle);
         pauseButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                screen.setGameState(Enums.GAME_STATE.PAUSE);
                 Gdx.app.log("SNAKE HUD", "PAUSE BUTTON CLICKED");
+                screen.setGameState(Enums.GAME_STATE.PAUSE);
                 event.stop();
             }
         });
