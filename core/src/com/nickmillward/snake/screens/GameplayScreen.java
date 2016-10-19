@@ -98,11 +98,9 @@ public class GameplayScreen extends AbstractScreen {
                 level.render(batch);
                 snakeHUD.updateScore(level.getCurrentScore());
                 snakeHUD.stage.draw();
-//                pauseOverlay.stage.draw();
                 break;
 
             case PAUSE:
-//                pauseOverlay.render(batch);
                 pauseOverlay.stage.draw();
                 break;
 

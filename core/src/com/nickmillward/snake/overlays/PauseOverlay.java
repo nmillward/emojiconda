@@ -50,7 +50,7 @@ public class PauseOverlay {
         stage = new Stage(viewport, batch);
         Table table = new Table();
         table.top();
-        table.setWidth(viewport.getWorldWidth());
+        table.setFillParent(true);
 
         Label.LabelStyle labelStyle = new Label.LabelStyle(font, Color.BLACK);
         Label pauseLabel = new Label(Constants.PAUSED_TEXT, labelStyle);
@@ -64,7 +64,7 @@ public class PauseOverlay {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 screen.setGameState(Enums.GAME_STATE.RUN);
-                Gdx.app.log("PAUE OVERLAY", "RESUME BUTTON CLICKED");
+                Gdx.app.log("PAUSE OVERLAY", "RESUME BUTTON CLICKED");
                 event.stop();
             }
         });
