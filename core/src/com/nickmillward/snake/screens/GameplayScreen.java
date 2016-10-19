@@ -4,6 +4,7 @@ import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -105,6 +106,18 @@ public class GameplayScreen extends AbstractScreen {
                 break;
 
             case PAUSE:
+                snakeHUD.stage.draw();
+                level.render(batch);
+
+                // Blend transparent rectangle for fade out effect
+                Gdx.graphics.getGL20().glEnable(GL20.GL_BLEND);
+                Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+                shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+                shapeRenderer.setColor(new Color(1, 1, 1, 0.3f));
+                shapeRenderer.rect(0, 0, getWidth(), getHeight());
+                shapeRenderer.end();
+                Gdx.gl.glDisable(GL20.GL_BLEND);
+
                 pauseOverlay.stage.draw();
                 pauseKeyPressed();
                 break;
