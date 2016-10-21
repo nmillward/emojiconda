@@ -16,7 +16,7 @@ public abstract class AbstractScreen extends Stage implements Screen {
         super(new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE));
     }
 
-    // Subclasses load actors in this meathod
+    // Subclasses load actors in this method
     public abstract void buildStage();
 
     @Override
