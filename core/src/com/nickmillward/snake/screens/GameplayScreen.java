@@ -29,7 +29,7 @@ public class GameplayScreen extends AbstractScreen {
     GestureDetector gestureDetector;
     SpriteBatch batch;
     Level level;
-    public Enums.Difficulty difficulty;
+    private Enums.Difficulty difficulty;
     private Enums.GAME_STATE gameState;
     private SnakeHUD snakeHUD;
     private PauseOverlay pauseOverlay;

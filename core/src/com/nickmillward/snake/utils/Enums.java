@@ -18,18 +18,24 @@ public class Enums {
     }
 
     public enum Difficulty {
-        EASY(Constants.EASY_SNAKE_VELOCITY),
-        MEDIUM(Constants.MEDIUM_SNAKE_VELOCITY),
-        HARD(Constants.HARD_SNAKE_VELOCITY);
+        EASY(Constants.EASY_SNAKE_VELOCITY, Constants.FOOD_EASY_POINT_VALUE),
+        MEDIUM(Constants.MEDIUM_SNAKE_VELOCITY, Constants.FOOD_MEDIUM_POINT_VALUE),
+        HARD(Constants.HARD_SNAKE_VELOCITY, Constants.FOOD_HARD_POINT_VALUE);
 
         float velocity;
+        int pointVal;
 
-        Difficulty(float velocity) {
+        Difficulty(float velocity, int pointVal) {
             this.velocity = velocity;
+            this.pointVal = pointVal;
         }
 
         public float getVelocity() {
             return velocity;
+        }
+
+        public int getPointVal() {
+            return pointVal;
         }
     }
 

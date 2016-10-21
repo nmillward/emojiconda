@@ -65,7 +65,7 @@ public class Food {
             if (Math.abs(snakeY - foodCenterPosition.y) < (Constants.SNAKE_SEGMENT_DEFAULT_SIZE)) {
                 changePosition();
                 snake.setGrowSnake(true);
-                level.incrementCurrentScore(Constants.FOOD_BASE_POINT_VALUE);
+                level.incrementCurrentScore(level.getDifficulty().getPointVal());
                 Gdx.app.log("FOOD", "SNAKE COORDINATES (" + snakeX + ", " + snakeY + ")");
                 Gdx.app.log("FOOD", "FOOD COORDINATES (" + foodCenterPosition.x + ", " + foodCenterPosition.y + ")");
                 Gdx.app.log("FOOD", "SNAKE ATE FOOD " + level.getCurrentScore());

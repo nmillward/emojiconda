@@ -42,6 +42,9 @@ public class Constants {
     public static final float FOOD_DEFAULT_SIZE = 40;
     public static final Vector2 FOOD_CENTER = new Vector2(FOOD_DEFAULT_SIZE / 2, FOOD_DEFAULT_SIZE / 2);
     public static final int FOOD_BASE_POINT_VALUE = 5;
+    public static final int FOOD_EASY_POINT_VALUE = 2;
+    public static final int FOOD_MEDIUM_POINT_VALUE = 5;
+    public static final int FOOD_HARD_POINT_VALUE = 10;
 
     public static final String IOS_BEEF = "beef";
     public static final String IOS_BURGER = "burger";
