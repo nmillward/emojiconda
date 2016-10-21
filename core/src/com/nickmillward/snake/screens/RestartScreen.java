@@ -27,9 +27,9 @@ public class RestartScreen extends AbstractScreen implements Screen {
     private Skin skin;
     private Table table;
     private Label highScoreLabel;
-    private TextButton restartButton;
+    private TextButton restartButton, homeButton;
     private BitmapFont font;
-    private NinePatch resetUpNine;
+    private NinePatch resetUpNine, homeUpNine;
     private TextButton.TextButtonStyle textButtonStyle;
     private Label.LabelStyle labelStyle;
     private int highScore;
@@ -42,6 +42,7 @@ public class RestartScreen extends AbstractScreen implements Screen {
         skin = new Skin(Gdx.files.internal(Constants.UI_SKIN));
         skin.addRegions(new TextureAtlas(Constants.TEXTURE_ATLAS));
         resetUpNine = skin.getPatch("button");
+        homeUpNine = skin.getPatch("button");
         textButtonStyle = new TextButton.TextButtonStyle();
     }
 
@@ -57,6 +58,7 @@ public class RestartScreen extends AbstractScreen implements Screen {
         textButtonStyle.up = new NinePatchDrawable(resetUpNine);
         textButtonStyle.font = font;
         restartButton = new TextButton(Constants.BUTTON_RESTART_TEXT, textButtonStyle);
+        homeButton = new TextButton(Constants.BUTTON_HOME_TEXT, textButtonStyle);
 
         labelStyle = new Label.LabelStyle(font, Color.BLACK);
 
@@ -72,8 +74,18 @@ public class RestartScreen extends AbstractScreen implements Screen {
                 event.stop();
             }
         });
-
         table.add(restartButton).padTop(100);
+
+        table.row();
+        homeButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                ScreenManager.getInstance().showScreen(Enums.Screen.START_SCREEN);
+                event.stop();
+            }
+        });
+        table.add(homeButton).padTop(25);
+
         addActor(table);
     }
 

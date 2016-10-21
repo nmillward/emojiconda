@@ -75,6 +75,7 @@ public class Constants {
     // GAME_SCREEN OVER SCREEN
     public static final String HIGH_SCORE_LABEL = "High Score: ";
     public static final String BUTTON_RESTART_TEXT = "RESTART";
+    public static final String BUTTON_HOME_TEXT = "HOME";
 
     // DIFFICULTY SCREEN
     public static final float DIFFICULTY_WORLD_SIZE = 480;
