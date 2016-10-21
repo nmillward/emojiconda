@@ -32,6 +32,8 @@ public class StartScreen extends AbstractScreen {
     private NinePatch startUpNine, difficultyUpNine;
     private TextButton.TextButtonStyle startButtonStyle, difficultyButtonStyle;
 
+    private Enums.Difficulty difficulty;
+
     public StartScreen() {
         super();
         skin = new Skin(Gdx.files.internal(Constants.UI_SKIN)); //down: button, up: button,
@@ -40,6 +42,7 @@ public class StartScreen extends AbstractScreen {
         difficultyUpNine = skin.getPatch("button");
         startButtonStyle = new TextButton.TextButtonStyle();
         difficultyButtonStyle = new TextButton.TextButtonStyle();
+        difficulty = Enums.Difficulty.MEDIUM;
     }
 
     @Override
@@ -66,14 +69,38 @@ public class StartScreen extends AbstractScreen {
         table.row();
         easyButton = new TextButton(Constants.EASY_DIFFICULTY_LABEL, difficultyButtonStyle);
         table.add(easyButton).padTop(10).width(startButton.getWidth() * 2/3).height(startButton.getHeight() * 3/4);
+        easyButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                difficulty = Enums.Difficulty.EASY;
+                Gdx.app.log("START SCREEN", "DIFF = " + difficulty);
+                event.stop();
+            }
+        });
 
         table.row();
         medButton = new TextButton(Constants.MEDIUM_DIFFICULTY_LABEL, difficultyButtonStyle);
         table.add(medButton).padTop(10).width(startButton.getWidth() * 2/3).height(startButton.getHeight() * 3/4);
+        medButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                difficulty = Enums.Difficulty.MEDIUM;
+                Gdx.app.log("START SCREEN", "DIFF = " + difficulty);
+                event.stop();
+            }
+        });
 
         table.row();
         hardButton = new TextButton(Constants.HARD_DIFFICULTY_LABEL, difficultyButtonStyle);
         table.add(hardButton).padTop(10).width(startButton.getWidth() * 2/3).height(startButton.getHeight() * 3/4);
+        hardButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                difficulty = Enums.Difficulty.HARD;
+                Gdx.app.log("START SCREEN", "DIFF = " + difficulty);
+                event.stop();
+            }
+        });
 
         table.row();
         startButton.addListener(new ClickListener() {
