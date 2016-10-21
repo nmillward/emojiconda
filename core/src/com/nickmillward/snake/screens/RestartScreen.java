@@ -41,7 +41,6 @@ public class RestartScreen extends AbstractScreen implements Screen {
         skin.addRegions(new TextureAtlas(Constants.TEXTURE_ATLAS));
         resetUpNine = skin.getPatch("button");
         textButtonStyle = new TextButton.TextButtonStyle();
-        labelStyle = new Label.LabelStyle();
     }
 
     @Override

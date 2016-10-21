@@ -89,6 +89,7 @@ public class Constants {
     public static final Vector2 HARD_CENTER = new Vector2(DIFFICULTY_WORLD_SIZE / 2, DIFFICULTY_WORLD_SIZE / 4);
 
     // START SCREEN
+    public static final String GAME_TITLE = "SNAKE";
     public static final String BUTTON_START_TEXT = "START";
     public static final String MENU_BUTTON = "button";
 
