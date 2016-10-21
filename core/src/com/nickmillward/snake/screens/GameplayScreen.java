@@ -38,7 +38,7 @@ public class GameplayScreen extends AbstractScreen {
 
     public GameplayScreen(Enums.Difficulty difficulty) {
         super();
-//        this.difficulty = difficulty;
+        this.difficulty = difficulty;
         AssetManager assetManager = new AssetManager();
         Assets.instance.init(assetManager);
         level = new Level(this, difficulty);
@@ -126,7 +126,7 @@ public class GameplayScreen extends AbstractScreen {
 
             case STOP:
                 level.resetGame();
-                ScreenManager.getInstance().showScreen(Enums.Screen.RESTART_SCREEN, level.getHighScore());
+                ScreenManager.getInstance().showScreen(Enums.Screen.RESTART_SCREEN, level.getHighScore(), difficulty);
                 break;
         }
     }

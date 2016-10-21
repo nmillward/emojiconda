@@ -29,14 +29,16 @@ public class RestartScreen extends AbstractScreen implements Screen {
     private Label highScoreLabel;
     private TextButton restartButton;
     private BitmapFont font;
-    private int highScore;
     private NinePatch resetUpNine;
     private TextButton.TextButtonStyle textButtonStyle;
     private Label.LabelStyle labelStyle;
+    private int highScore;
+    private Enums.Difficulty difficulty;
 
-    public RestartScreen(int highScore) {
+    public RestartScreen(int highScore, Enums.Difficulty difficulty) {
         super();
         this.highScore = highScore;
+        this.difficulty = difficulty;
         skin = new Skin(Gdx.files.internal(Constants.UI_SKIN));
         skin.addRegions(new TextureAtlas(Constants.TEXTURE_ATLAS));
         resetUpNine = skin.getPatch("button");
@@ -66,7 +68,7 @@ public class RestartScreen extends AbstractScreen implements Screen {
         restartButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                ScreenManager.getInstance().showScreen(Enums.Screen.GAME_SCREEN);
+                ScreenManager.getInstance().showScreen(Enums.Screen.GAME_SCREEN, difficulty);
                 event.stop();
             }
         });

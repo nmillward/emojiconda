@@ -43,7 +43,7 @@ public class Enums {
 
         RESTART_SCREEN {
             public AbstractScreen getScreen(Object... params) {
-                return new RestartScreen((Integer) params[0]);
+                return new RestartScreen((Integer) params[0], (Difficulty) params[1]);
             }
         },
 
