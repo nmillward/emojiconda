@@ -23,10 +23,12 @@ public class Level {
     public boolean isGameOver;
     public int currentScore = 0;
     public int highScore = 0;
+    public Enums.Difficulty difficulty;
 
-    public Level(GameplayScreen screen) {
+    public Level(GameplayScreen screen, Enums.Difficulty difficulty) {
         viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
         this.screen = screen;
+        this.difficulty = difficulty;
         initGameDefault();
     }
 
@@ -90,5 +92,9 @@ public class Level {
 
     public void resetCurrentScore() {
         currentScore = 0;
+    }
+
+    public Enums.Difficulty getDifficulty() {
+        return difficulty;
     }
 }

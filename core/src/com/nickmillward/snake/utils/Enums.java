@@ -18,16 +18,18 @@ public class Enums {
     }
 
     public enum Difficulty {
-        EASY(Constants.EASY_SNAKE_VELOCITY, Constants.EASY_DIFFICULTY_LABEL),
-        MEDIUM(Constants.MEDIUM_SNAKE_VELOCITY, Constants.MEDIUM_DIFFICULTY_LABEL),
-        HARD(Constants.HARD_SNAKE_VELOCITY, Constants.HARD_DIFFICULTY_LABEL);
+        EASY(Constants.EASY_SNAKE_VELOCITY),
+        MEDIUM(Constants.MEDIUM_SNAKE_VELOCITY),
+        HARD(Constants.HARD_SNAKE_VELOCITY);
 
         float velocity;
-        String label;
 
-        Difficulty(float velocity, String label) {
+        Difficulty(float velocity) {
             this.velocity = velocity;
-            this.label = label;
+        }
+
+        public float getVelocity() {
+            return velocity;
         }
     }
 
@@ -47,7 +49,7 @@ public class Enums {
 
         GAME_SCREEN {
             public AbstractScreen getScreen(Object... params) {
-                return new GameplayScreen();
+                return new GameplayScreen((Difficulty) params[0]);
             }
         };
 

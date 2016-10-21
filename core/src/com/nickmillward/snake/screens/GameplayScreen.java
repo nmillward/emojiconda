@@ -29,17 +29,19 @@ public class GameplayScreen extends AbstractScreen {
     GestureDetector gestureDetector;
     SpriteBatch batch;
     Level level;
+    public Enums.Difficulty difficulty;
     private Enums.GAME_STATE gameState;
     private SnakeHUD snakeHUD;
     private PauseOverlay pauseOverlay;
     private ShapeRenderer shapeRenderer;
     public boolean isPaused;
 
-    public GameplayScreen() {
+    public GameplayScreen(Enums.Difficulty difficulty) {
         super();
+//        this.difficulty = difficulty;
         AssetManager assetManager = new AssetManager();
         Assets.instance.init(assetManager);
-        level = new Level(this);
+        level = new Level(this, difficulty);
         batch = new SpriteBatch();
         snakeHUD = new SnakeHUD(this, batch);
         pauseOverlay = new PauseOverlay(this, batch);

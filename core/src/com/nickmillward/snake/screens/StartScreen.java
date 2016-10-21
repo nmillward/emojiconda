@@ -107,7 +107,7 @@ public class StartScreen extends AbstractScreen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 Gdx.app.log("Start", "button clicked");
-                ScreenManager.getInstance().showScreen(Enums.Screen.GAME_SCREEN);
+                ScreenManager.getInstance().showScreen(Enums.Screen.GAME_SCREEN, difficulty);
                 event.stop();
             }
         });
