@@ -46,7 +46,6 @@ public class StartScreen extends AbstractScreen {
     public void buildStage() {
         table = new Table();
         table.setWidth(super.getWidth());
-//        table.setHeight(super.getHeight());
         table.align(Align.center | Align.top);
         table.setPosition(0, getHeight()); //Start at top left
 
