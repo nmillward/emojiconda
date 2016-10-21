@@ -73,7 +73,6 @@ public class StartScreen extends AbstractScreen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 difficulty = Enums.Difficulty.EASY;
-                Gdx.app.log("START SCREEN", "DIFF = " + difficulty);
                 event.stop();
             }
         });
@@ -85,7 +84,6 @@ public class StartScreen extends AbstractScreen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 difficulty = Enums.Difficulty.MEDIUM;
-                Gdx.app.log("START SCREEN", "DIFF = " + difficulty);
                 event.stop();
             }
         });
@@ -97,7 +95,6 @@ public class StartScreen extends AbstractScreen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 difficulty = Enums.Difficulty.HARD;
-                Gdx.app.log("START SCREEN", "DIFF = " + difficulty);
                 event.stop();
             }
         });
@@ -106,7 +103,6 @@ public class StartScreen extends AbstractScreen {
         startButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                Gdx.app.log("Start", "button clicked");
                 ScreenManager.getInstance().showScreen(Enums.Screen.GAME_SCREEN, difficulty);
                 event.stop();
             }
