@@ -94,5 +94,6 @@ public class StartScreen extends AbstractScreen {
     public void dispose() {
         super.dispose();
         skin.dispose();
+        titleFont.dispose();
     }
 }

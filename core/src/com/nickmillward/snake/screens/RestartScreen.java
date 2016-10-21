@@ -62,7 +62,7 @@ public class RestartScreen extends AbstractScreen implements Screen {
         highScoreLabel.setFontScale(2);
         table.add(highScoreLabel).padTop(100);
 
-        table.row();    // Add New Row
+        table.row();
         restartButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
