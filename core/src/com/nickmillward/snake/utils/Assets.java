@@ -141,9 +141,21 @@ public class Assets implements Disposable, AssetErrorListener {
     public class ButtonAssets {
 
         public final AtlasRegion menu_button;
+        public final AtlasRegion button_easy_on;
+        public final AtlasRegion button_easy_off;
+        public final AtlasRegion button_medium_on;
+        public final AtlasRegion button_medium_off;
+        public final AtlasRegion button_hard_on;
+        public final AtlasRegion button_hard_off;
 
         public ButtonAssets(TextureAtlas atlas) {
             menu_button = atlas.findRegion(Constants.MENU_BUTTON);
+            button_easy_on = atlas.findRegion(Constants.BUTTON_EASY_ON);
+            button_easy_off = atlas.findRegion(Constants.BUTTON_EASY_OFF);
+            button_medium_on = atlas.findRegion(Constants.BUTTON_MEDIUM_ON);
+            button_medium_off = atlas.findRegion(Constants.BUTTON_MEDIUM_OFF);
+            button_hard_on = atlas.findRegion(Constants.BUTTON_HARD_ON);
+            button_hard_off = atlas.findRegion(Constants.BUTTON_HARD_OFF);
         }
 
     }

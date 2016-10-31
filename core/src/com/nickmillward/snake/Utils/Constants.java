@@ -96,5 +96,15 @@ public class Constants {
     public static final String GAME_TITLE = "SNAKE";
     public static final String BUTTON_START_TEXT = "PLAY";
     public static final String MENU_BUTTON = "button";
+    public static final String BUTTON_PLAY = "btn_play";
+    public static final String TITLE_SNAKE = "txt_snake";
+
+    public static final String BUTTON_EASY_ON = "EASY_ON";
+    public static final String BUTTON_EASY_OFF = "EASY_OFF";
+    public static final String BUTTON_MEDIUM_ON = "MEDIUM_ON";
+    public static final String BUTTON_MEDIUM_OFF = "MEDIUM_OFF";
+    public static final String BUTTON_HARD_ON = "HARD_ON";
+    public static final String BUTTON_HARD_OFF = "HARD_OFF";
+
 
 }
