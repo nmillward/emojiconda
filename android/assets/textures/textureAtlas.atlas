@@ -1,26 +1,96 @@
 
 textureAtlas.png
-size: 1024,256
+size: 1024,1024
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
+EASY_OFF
+  rotate: false
+  xy: 2, 68
+  size: 180, 180
+  orig: 180, 180
+  offset: 0, 0
+  index: -1
+EASY_ON
+  rotate: false
+  xy: 184, 68
+  size: 180, 180
+  orig: 180, 180
+  offset: 0, 0
+  index: -1
+HARD_OFF
+  rotate: false
+  xy: 366, 220
+  size: 180, 180
+  orig: 180, 180
+  offset: 0, 0
+  index: -1
+HARD_ON
+  rotate: false
+  xy: 548, 220
+  size: 180, 180
+  orig: 180, 180
+  offset: 0, 0
+  index: -1
+MEDIUM_OFF
+  rotate: false
+  xy: 366, 38
+  size: 180, 180
+  orig: 180, 180
+  offset: 0, 0
+  index: -1
+MEDIUM_ON
+  rotate: false
+  xy: 548, 38
+  size: 180, 180
+  orig: 180, 180
+  offset: 0, 0
+  index: -1
 beef
+  rotate: false
+  xy: 846, 868
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+bg_start
+  rotate: false
+  xy: 2, 376
+  size: 360, 640
+  orig: 360, 640
+  offset: 0, 0
+  index: -1
+btn_home
+  rotate: false
+  xy: 364, 542
+  size: 408, 138
+  orig: 408, 138
+  offset: 0, 0
+  index: -1
+btn_play
+  rotate: false
+  xy: 364, 402
+  size: 408, 138
+  orig: 408, 138
+  offset: 0, 0
+  index: -1
+btn_resume
+  rotate: false
+  xy: 364, 682
+  size: 428, 138
+  orig: 428, 138
+  offset: 0, 0
+  index: -1
+burger
   rotate: false
   xy: 2, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-burger
-  rotate: false
-  xy: 342, 128
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
 button
   rotate: false
-  xy: 2, 68
+  xy: 2, 250
   size: 338, 124
   split: 34, 23, 10, 22
   pad: 0, 0, 0, 0
@@ -36,148 +106,162 @@ cake
   index: -1
 candybar
   rotate: false
-  xy: 408, 128
+  xy: 134, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 cookie
   rotate: false
-  xy: 134, 2
+  xy: 200, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 cry_tears
   rotate: false
-  xy: 474, 128
+  xy: 266, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 donut
   rotate: false
-  xy: 200, 2
+  xy: 794, 756
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 drumstick
   rotate: false
-  xy: 540, 128
+  xy: 794, 690
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 grin
   rotate: false
-  xy: 266, 2
+  xy: 912, 868
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 happy
   rotate: false
-  xy: 606, 128
+  xy: 730, 336
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 happy_cry
   rotate: false
-  xy: 672, 128
+  xy: 730, 270
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 heart
   rotate: false
-  xy: 738, 128
+  xy: 730, 204
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 icecream
   rotate: false
-  xy: 804, 128
+  xy: 730, 138
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 kiss
   rotate: false
-  xy: 870, 128
+  xy: 730, 72
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 lollipop
   rotate: false
-  xy: 936, 128
+  xy: 730, 6
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 pizza
   rotate: false
-  xy: 342, 62
+  xy: 860, 802
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 shades
   rotate: false
-  xy: 408, 62
+  xy: 860, 736
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 shock
   rotate: false
-  xy: 474, 62
+  xy: 926, 802
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 smirk
   rotate: false
-  xy: 540, 62
+  xy: 926, 736
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tada
   rotate: false
-  xy: 606, 62
+  xy: 860, 670
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tongue_happy
   rotate: false
-  xy: 672, 62
+  xy: 926, 670
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tongue_tease
   rotate: false
-  xy: 738, 62
+  xy: 794, 624
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tongue_wink
   rotate: false
-  xy: 804, 62
+  xy: 774, 558
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 trollface
   rotate: false
-  xy: 870, 62
+  xy: 774, 492
   size: 64, 64
   orig: 64, 64
+  offset: 0, 0
+  index: -1
+txt_gameover
+  rotate: false
+  xy: 364, 934
+  size: 594, 82
+  orig: 594, 82
+  offset: 0, 0
+  index: -1
+txt_snake
+  rotate: false
+  xy: 364, 822
+  size: 480, 110
+  orig: 480, 110
   offset: 0, 0
   index: -1

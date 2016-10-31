@@ -101,16 +101,16 @@ public class StartScreen extends AbstractScreen {
             }
         });
 
-        table.add(titleLabel).padTop(25);
+        table.add(titleLabel).padTop(getViewport().getScreenHeight() / 25);
         table.row();
 //        table.add(shadeFace);
-        table.add(easyButton).padTop(10).width(startButton.getWidth() * 2/3).height(startButton.getHeight() * 3/4);
+        table.add(easyButton).padTop(getViewport().getScreenHeight() / 25).width(startButton.getWidth() * 2/3).height(startButton.getHeight() * 3/4);
         table.row();
-        table.add(medButton).padTop(10).width(startButton.getWidth() * 2/3).height(startButton.getHeight() * 3/4);
+        table.add(medButton).padTop(getViewport().getScreenHeight() / 75).width(startButton.getWidth() * 2/3).height(startButton.getHeight() * 3/4);
         table.row();
-        table.add(hardButton).padTop(10).width(startButton.getWidth() * 2/3).height(startButton.getHeight() * 3/4);
+        table.add(hardButton).padTop(getViewport().getScreenHeight() / 75).width(startButton.getWidth() * 2/3).height(startButton.getHeight() * 3/4);
         table.row();
-        table.add(startButton).padTop(50);
+        table.add(startButton).padTop(getViewport().getScreenHeight() / 15);
 
         addActor(table);
     }
