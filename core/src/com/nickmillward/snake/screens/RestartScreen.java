@@ -51,11 +51,11 @@ public class RestartScreen extends AbstractScreen implements Screen {
         table.align(Align.center | Align.top);
         table.setPosition(0, getHeight());
 
-        font = Utils.generateFreeTypeFont(Constants.FONT_FISHFONT, 75, Color.BLACK);
+        font = Utils.generateFreeTypeFont(Constants.FONT_FISHFONT, 75, Color.WHITE);
 
 
 
-        labelStyle = new Label.LabelStyle(font, Color.BLACK);
+        labelStyle = new Label.LabelStyle(font, Color.WHITE);
         highScoreLabelText = new Label(Constants.HIGH_SCORE_LABEL, labelStyle);
         highScoreLabelText.setFontScale(2);
         table.add(highScoreLabelText).padTop(25);
