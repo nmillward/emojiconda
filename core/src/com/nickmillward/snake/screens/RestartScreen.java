@@ -26,7 +26,7 @@ public class RestartScreen extends AbstractScreen implements Screen {
 
     private Skin skin;
     private Table table;
-    private Label highScoreLabel;
+    private Label highScoreLabelText, highScoreLabelNum;
     private Button playButton, homeButton;
     private BitmapFont font;
     private Button.ButtonStyle homeButtonStyle, playButtonStyle;
@@ -53,12 +53,16 @@ public class RestartScreen extends AbstractScreen implements Screen {
 
         font = Utils.generateFreeTypeFont(Constants.FONT_FISHFONT, 75, Color.BLACK);
 
-        
+
 
         labelStyle = new Label.LabelStyle(font, Color.BLACK);
-        highScoreLabel = new Label(Constants.HIGH_SCORE_LABEL + highScore, labelStyle);
-        highScoreLabel.setFontScale(2);
-        table.add(highScoreLabel).padTop(100);
+        highScoreLabelText = new Label(Constants.HIGH_SCORE_LABEL, labelStyle);
+        highScoreLabelText.setFontScale(2);
+        table.add(highScoreLabelText).padTop(25);
+        table.row();
+        highScoreLabelNum = new Label(highScore + "", labelStyle);
+        highScoreLabelNum.setFontScale(2);
+        table.add(highScoreLabelNum).padTop(10);
 
         table.row();
         homeButton = new Button(homeButtonStyle);
