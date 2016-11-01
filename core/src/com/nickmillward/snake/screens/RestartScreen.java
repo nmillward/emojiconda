@@ -14,7 +14,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
 import com.nickmillward.snake.utils.Constants;
 import com.nickmillward.snake.utils.Enums;
@@ -51,18 +50,18 @@ public class RestartScreen extends AbstractScreen implements Screen {
     @Override
     public void buildStage() {
         table = new Table(skin);
-        table.setWidth(getWidth());
-        table.align(Align.center | Align.top);
-        table.setPosition(0, getHeight());
+        table.setFillParent(true);
+//        table.center();
+        table.setWidth(getViewport().getWorldWidth());
+//        table.setWidth(getWidth());
+//        table.align(Align.center | Align.top);
+//        table.setPosition(0, getHeight());
 
         font = Utils.generateFreeTypeFont(Constants.FONT_TITAN, 50, Color.WHITE);
 
-
         table.row();
         gameOverTexture = new TextureRegion(skin.getRegion(Constants.TITLE_GAME_OVER));
-//        Texture gameOverTexture = new Texture(Gdx.files.internal("images/txt_gameover.png"));
         gameOver = new Image(new TextureRegionDrawable(new TextureRegion(gameOverTexture)));
-//        gameOver.setDrawable(new TextureRegionDrawable(new TextureRegion(gameOverTexture)));
         gameOver.setSize(gameOverTexture.getRegionWidth(), gameOverTexture.getRegionHeight());
         gameOver.setScaling(Scaling.fit);
         table.add(gameOver).padTop(25);

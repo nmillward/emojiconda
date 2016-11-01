@@ -13,7 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.nickmillward.snake.utils.Constants;
 import com.nickmillward.snake.utils.Enums;
@@ -44,11 +44,12 @@ public class StartScreen extends AbstractScreen {
         skin.addRegions(new TextureAtlas(Constants.TEXTURE_ATLAS));
         difficulty = Enums.Difficulty.MEDIUM;
 
-//        backgroundViewport = new ExtendViewport(getWidth(), getHeight());
-//        backgroundStage = new Stage();
-//        backgroundStage.setViewport(backgroundViewport);
+        backgroundViewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
+        backgroundStage = new Stage();
+        backgroundStage.setViewport(backgroundViewport);
         background = new TextureRegion(skin.getRegion("bg_start"));
 //        backgroundStage.addActor(new Image(background));
+        backgroundStage.addActor(new Image(new TextureRegionDrawable(new TextureRegion(skin.getRegion("bg_start"))), Scaling.fit));
 
         easyButtonStyle = new Button.ButtonStyle();
         medButtonStyle = new Button.ButtonStyle();
@@ -66,8 +67,8 @@ public class StartScreen extends AbstractScreen {
                 Constants.BACKGROUND_COLOR.a);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-//        backgroundStage.act();
-//        backgroundStage.draw();
+        backgroundStage.act();
+        backgroundStage.draw();
         act(delta);
         draw();
     }
@@ -75,9 +76,11 @@ public class StartScreen extends AbstractScreen {
     @Override
     public void buildStage() {
         table = new Table();
-        table.setWidth(super.getWidth());
-        table.align(Align.center | Align.top);
-        table.setPosition(0, getHeight()); //Start at top left
+//        table.setWidth(super.getWidth());
+        table.setFillParent(true);
+//        table.align(Align.center | Align.top);
+//        table.setPosition(0, getHeight()); //Start at top left
+        table.center();
 
         title_snake = new Image();
         title_snake.setDrawable(new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.TITLE_SNAKE))));
@@ -135,7 +138,7 @@ public class StartScreen extends AbstractScreen {
         table.row();
         table.add(btn_start).padTop(getViewport().getScreenHeight() / 15);
 
-        table.background(new TextureRegionDrawable(new TextureRegion(skin.getRegion("bg_start"))));
+//        table.background(new TextureRegionDrawable(new TextureRegion(skin.getRegion("bg_start")))).setScale(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
 
         addActor(table);
     }
