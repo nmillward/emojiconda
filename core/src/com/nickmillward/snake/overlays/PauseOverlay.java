@@ -3,18 +3,18 @@ package com.nickmillward.snake.overlays;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nickmillward.snake.screens.GameplayScreen;
@@ -34,15 +34,13 @@ public class PauseOverlay {
 
     public Stage stage;
     private Skin skin;
-    private NinePatch resumeUpNine;
-    private final TextButton resumeButton;
+    private final Button resumeButton;
 
     public PauseOverlay(final GameplayScreen screen, SpriteBatch batch) {
         this.screen = screen;
         this.viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
         skin = new Skin(Gdx.files.internal(Constants.UI_SKIN));
         skin.addRegions(new TextureAtlas(Constants.TEXTURE_ATLAS));
-        resumeUpNine = skin.getPatch("button");
 
         font = Utils.generateFreeTypeFont(Constants.FONT_FISHFONT, 96, Color.BLACK);
 
@@ -55,11 +53,10 @@ public class PauseOverlay {
         Label.LabelStyle labelStyle = new Label.LabelStyle(font, Color.BLACK);
         Label pauseLabel = new Label(Constants.PAUSED_TEXT, labelStyle);
 
-        TextButton.TextButtonStyle textButtonStyle = new TextButton.TextButtonStyle();
-        textButtonStyle.font = font;
-        textButtonStyle.up = new NinePatchDrawable(resumeUpNine);
+        Button.ButtonStyle buttonStyle = new Button.ButtonStyle();
+        buttonStyle.up = new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.BUTTON_PLAY)));
 
-        resumeButton = new TextButton(Constants.RESUME_BUTTON_TEXT, textButtonStyle);
+        resumeButton = new Button(buttonStyle);
         resumeButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
