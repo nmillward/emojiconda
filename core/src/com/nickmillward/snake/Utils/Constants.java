@@ -72,11 +72,6 @@ public class Constants {
     public static final Color BORDER_COLOR = Color.WHITE;
     public static final float BORDER_WIDTH = 15.0f;
 
-    // GAME_SCREEN OVER SCREEN
-    public static final String HIGH_SCORE_LABEL = "High Score: ";
-    public static final String BUTTON_RESTART_TEXT = "RESTART";
-    public static final String BUTTON_HOME_TEXT = "HOME";
-
     // DIFFICULTY SCREEN
     public static final float DIFFICULTY_WORLD_SIZE = 480;
     public static final float DIFFICULTY_LABEL_SCALE = 1.5f;
@@ -97,7 +92,6 @@ public class Constants {
     public static final String BUTTON_START_TEXT = "PLAY";
     public static final String MENU_BUTTON = "button";
     public static final String BUTTON_PLAY = "btn_play";
-    public static final String BUTTON_HOME = "btn_home";
     public static final String TITLE_SNAKE = "txt_snake";
 
     public static final String BUTTON_EASY_ON = "EASY_ON";
@@ -106,6 +100,14 @@ public class Constants {
     public static final String BUTTON_MEDIUM_OFF = "MEDIUM_OFF";
     public static final String BUTTON_HARD_ON = "HARD_ON";
     public static final String BUTTON_HARD_OFF = "HARD_OFF";
+
+    // GAME_SCREEN OVER SCREEN
+    public static final String HIGH_SCORE_LABEL = "High Score: ";
+    public static final String BUTTON_HOME = "btn_home";
+    public static final String TITLE_GAME_OVER = "txt_gameover";
+    public static final String BUTTON_RESTART_TEXT = "RESTART";
+    public static final String BUTTON_HOME_TEXT = "HOME";
+
 
 
 }

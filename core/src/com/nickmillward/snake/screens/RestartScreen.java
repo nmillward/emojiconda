@@ -8,12 +8,14 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.Scaling;
 import com.nickmillward.snake.utils.Constants;
 import com.nickmillward.snake.utils.Enums;
 import com.nickmillward.snake.utils.ScreenManager;
@@ -31,7 +33,9 @@ public class RestartScreen extends AbstractScreen implements Screen {
     private BitmapFont font;
     private Button.ButtonStyle homeButtonStyle, playButtonStyle;
     private Label.LabelStyle labelStyle;
+    private TextureRegion gameOverTexture;
     private int highScore;
+    private Image gameOver;
     private Enums.Difficulty difficulty;
 
     public RestartScreen(int highScore, Enums.Difficulty difficulty) {
@@ -46,7 +50,7 @@ public class RestartScreen extends AbstractScreen implements Screen {
 
     @Override
     public void buildStage() {
-        table = new Table();
+        table = new Table(skin);
         table.setWidth(getWidth());
         table.align(Align.center | Align.top);
         table.setPosition(0, getHeight());
@@ -54,7 +58,16 @@ public class RestartScreen extends AbstractScreen implements Screen {
         font = Utils.generateFreeTypeFont(Constants.FONT_FISHFONT, 75, Color.WHITE);
 
 
+        table.row();
+        gameOverTexture = new TextureRegion(skin.getRegion(Constants.TITLE_GAME_OVER));
+//        Texture gameOverTexture = new Texture(Gdx.files.internal("images/txt_gameover.png"));
+        gameOver = new Image(new TextureRegionDrawable(new TextureRegion(gameOverTexture)));
+//        gameOver.setDrawable(new TextureRegionDrawable(new TextureRegion(gameOverTexture)));
+        gameOver.setSize(gameOverTexture.getRegionWidth(), gameOverTexture.getRegionHeight());
+        gameOver.setScaling(Scaling.fit);
+        table.add(gameOver).padTop(25);
 
+        table.row();
         labelStyle = new Label.LabelStyle(font, Color.WHITE);
         highScoreLabelText = new Label(Constants.HIGH_SCORE_LABEL, labelStyle);
         highScoreLabelText.setFontScale(2);
