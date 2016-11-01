@@ -37,7 +37,7 @@ public class SnakeHUD {
     public SnakeHUD(final GameplayScreen screen, SpriteBatch batch) {
         this.screen = screen;
         this.viewport = new ExtendViewport(Constants.SNAKE_HUD_VIEWPORT_SIZE, Constants.SNAKE_HUD_VIEWPORT_SIZE);
-        font = Utils.generateFreeTypeFont(Constants.FONT_FISHFONT, 24, Color.WHITE);
+        font = Utils.generateFreeTypeFont(Constants.FONT_TITAN, 24, Color.WHITE);
         shapeRenderer = new ShapeRenderer();
 
         score = 0;
