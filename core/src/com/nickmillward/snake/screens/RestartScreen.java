@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -30,7 +29,6 @@ public class RestartScreen extends AbstractScreen implements Screen {
     private Label highScoreLabel;
     private Button playButton, homeButton;
     private BitmapFont font;
-    private NinePatch resetUpNine, homeUpNine;
     private Button.ButtonStyle homeButtonStyle, playButtonStyle;
     private Label.LabelStyle labelStyle;
     private int highScore;
@@ -42,8 +40,6 @@ public class RestartScreen extends AbstractScreen implements Screen {
         this.difficulty = difficulty;
         skin = new Skin(Gdx.files.internal(Constants.UI_SKIN));
         skin.addRegions(new TextureAtlas(Constants.TEXTURE_ATLAS));
-        resetUpNine = skin.getPatch("button");
-        homeUpNine = skin.getPatch("button");
         homeButtonStyle = new Button.ButtonStyle();
         playButtonStyle = new Button.ButtonStyle();
     }
@@ -57,8 +53,9 @@ public class RestartScreen extends AbstractScreen implements Screen {
 
         font = Utils.generateFreeTypeFont(Constants.FONT_FISHFONT, 75, Color.BLACK);
 
-        labelStyle = new Label.LabelStyle(font, Color.BLACK);
+        
 
+        labelStyle = new Label.LabelStyle(font, Color.BLACK);
         highScoreLabel = new Label(Constants.HIGH_SCORE_LABEL + highScore, labelStyle);
         highScoreLabel.setFontScale(2);
         table.add(highScoreLabel).padTop(100);
