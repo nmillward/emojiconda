@@ -97,6 +97,7 @@ public class Constants {
     public static final String BUTTON_START_TEXT = "PLAY";
     public static final String MENU_BUTTON = "button";
     public static final String BUTTON_PLAY = "btn_play";
+    public static final String BUTTON_HOME = "btn_home";
     public static final String TITLE_SNAKE = "txt_snake";
 
     public static final String BUTTON_EASY_ON = "EASY_ON";

@@ -6,13 +6,14 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.nickmillward.snake.utils.Constants;
 import com.nickmillward.snake.utils.Enums;
@@ -27,10 +28,10 @@ public class RestartScreen extends AbstractScreen implements Screen {
     private Skin skin;
     private Table table;
     private Label highScoreLabel;
-    private TextButton restartButton, homeButton;
+    private Button playButton, homeButton;
     private BitmapFont font;
     private NinePatch resetUpNine, homeUpNine;
-    private TextButton.TextButtonStyle textButtonStyle;
+    private Button.ButtonStyle homeButtonStyle, playButtonStyle;
     private Label.LabelStyle labelStyle;
     private int highScore;
     private Enums.Difficulty difficulty;
@@ -43,7 +44,8 @@ public class RestartScreen extends AbstractScreen implements Screen {
         skin.addRegions(new TextureAtlas(Constants.TEXTURE_ATLAS));
         resetUpNine = skin.getPatch("button");
         homeUpNine = skin.getPatch("button");
-        textButtonStyle = new TextButton.TextButtonStyle();
+        homeButtonStyle = new Button.ButtonStyle();
+        playButtonStyle = new Button.ButtonStyle();
     }
 
     @Override
@@ -55,11 +57,6 @@ public class RestartScreen extends AbstractScreen implements Screen {
 
         font = Utils.generateFreeTypeFont(Constants.FONT_FISHFONT, 75, Color.BLACK);
 
-        textButtonStyle.up = new NinePatchDrawable(resetUpNine);
-        textButtonStyle.font = font;
-        restartButton = new TextButton(Constants.BUTTON_RESTART_TEXT, textButtonStyle);
-        homeButton = new TextButton(Constants.BUTTON_HOME_TEXT, textButtonStyle);
-
         labelStyle = new Label.LabelStyle(font, Color.BLACK);
 
         highScoreLabel = new Label(Constants.HIGH_SCORE_LABEL + highScore, labelStyle);
@@ -67,16 +64,8 @@ public class RestartScreen extends AbstractScreen implements Screen {
         table.add(highScoreLabel).padTop(100);
 
         table.row();
-        restartButton.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                ScreenManager.getInstance().showScreen(Enums.Screen.GAME_SCREEN, difficulty);
-                event.stop();
-            }
-        });
-        table.add(restartButton).padTop(100);
-
-        table.row();
+        homeButton = new Button(homeButtonStyle);
+        homeButtonStyle.up = new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.BUTTON_HOME)));
         homeButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -84,7 +73,19 @@ public class RestartScreen extends AbstractScreen implements Screen {
                 event.stop();
             }
         });
-        table.add(homeButton).padTop(25);
+        table.add(homeButton).padTop(100);
+
+        table.row();
+        playButton = new Button(playButtonStyle);
+        playButtonStyle.up = new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.BUTTON_PLAY)));
+        playButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                ScreenManager.getInstance().showScreen(Enums.Screen.GAME_SCREEN, difficulty);
+                event.stop();
+            }
+        });
+        table.add(playButton).padTop(25);
 
         addActor(table);
     }
