@@ -1,8 +1,6 @@
 package com.nickmillward.snake.overlays;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -10,7 +8,6 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -20,7 +17,6 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.nickmillward.snake.screens.GameplayScreen;
 import com.nickmillward.snake.utils.Constants;
 import com.nickmillward.snake.utils.Enums;
-import com.nickmillward.snake.utils.Utils;
 
 /**
  * Created by nmillward on 10/17/16.
@@ -30,7 +26,6 @@ public class PauseOverlay {
     GameplayScreen screen;
 
     public final Viewport viewport;
-    final BitmapFont font;
 
     public Stage stage;
     private Skin skin;
@@ -42,19 +37,14 @@ public class PauseOverlay {
         skin = new Skin(Gdx.files.internal(Constants.UI_SKIN));
         skin.addRegions(new TextureAtlas(Constants.TEXTURE_ATLAS));
 
-        font = Utils.generateFreeTypeFont(Constants.FONT_FISHFONT, 96, Color.BLACK);
-
         stage = new Stage(viewport, batch);
         Table table = new Table();
-        table.top();
+        table.center();
         table.setFillParent(true);
         table.toFront();
 
-        Label.LabelStyle labelStyle = new Label.LabelStyle(font, Color.BLACK);
-        Label pauseLabel = new Label(Constants.PAUSED_TEXT, labelStyle);
-
         Button.ButtonStyle buttonStyle = new Button.ButtonStyle();
-        buttonStyle.up = new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.BUTTON_PLAY)));
+        buttonStyle.up = new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.BUTTON_RESUME)));
 
         resumeButton = new Button(buttonStyle);
         resumeButton.addListener(new ClickListener() {
@@ -66,9 +56,7 @@ public class PauseOverlay {
             }
         });
 
-        table.add(pauseLabel).padTop(100);
-        table.row();
-        table.add(resumeButton).padTop(100);
+        table.add(resumeButton);
 
         stage.addActor(table);
 

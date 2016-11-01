@@ -14,6 +14,7 @@ public class Constants {
     public static final String TEXTURE_ATLAS = "textures/textureAtlas.atlas";
     public static final String UI_SKIN = "uiskin.json";
     public static final String FONT_FISHFONT = "font/Fishfingers.ttf";
+    public static final String FONT_TITAN = "font/titan.ttf";
 
     // SNAKE
     public static final float SNAKE_SEGMENT_DEFAULT_SIZE = 50;
@@ -104,6 +105,7 @@ public class Constants {
     // GAME_SCREEN OVER SCREEN
     public static final String HIGH_SCORE_LABEL = "High Score: ";
     public static final String BUTTON_HOME = "btn_home";
+    public static final String BUTTON_RESUME = "btn_resume";
     public static final String TITLE_GAME_OVER = "txt_gameover";
     public static final String BUTTON_RESTART_TEXT = "RESTART";
     public static final String BUTTON_HOME_TEXT = "HOME";

@@ -55,7 +55,7 @@ public class RestartScreen extends AbstractScreen implements Screen {
         table.align(Align.center | Align.top);
         table.setPosition(0, getHeight());
 
-        font = Utils.generateFreeTypeFont(Constants.FONT_FISHFONT, 75, Color.WHITE);
+        font = Utils.generateFreeTypeFont(Constants.FONT_TITAN, 50, Color.WHITE);
 
 
         table.row();
