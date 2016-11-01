@@ -1,7 +1,6 @@
 package com.nickmillward.snake.screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -61,10 +60,10 @@ public class StartScreen extends AbstractScreen {
     @Override
     public void render(float delta) {
         Gdx.gl.glClearColor(
-                Color.BLACK.r,
-                Color.BLACK.g,
-                Color.BLACK.b,
-                Color.BLACK.a);
+                Constants.BACKGROUND_COLOR.r,
+                Constants.BACKGROUND_COLOR.g,
+                Constants.BACKGROUND_COLOR.b,
+                Constants.BACKGROUND_COLOR.a);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 //        backgroundStage.act();
