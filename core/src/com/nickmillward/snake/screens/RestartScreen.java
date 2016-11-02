@@ -26,15 +26,9 @@ import com.nickmillward.snake.utils.Utils;
 public class RestartScreen extends AbstractScreen implements Screen {
 
     private Skin skin;
-    private Table table;
-    private Label highScoreLabelText, highScoreLabelNum;
-    private Button playButton, homeButton;
     private BitmapFont font;
     private Button.ButtonStyle homeButtonStyle, playButtonStyle;
-    private Label.LabelStyle labelStyle;
-    private TextureRegion gameOverTexture;
     private int highScore;
-    private Image gameOver;
     private Enums.Difficulty difficulty;
 
     public RestartScreen(int highScore, Enums.Difficulty difficulty) {
@@ -49,35 +43,26 @@ public class RestartScreen extends AbstractScreen implements Screen {
 
     @Override
     public void buildStage() {
-        table = new Table(skin);
+        Table table = new Table(skin);
+        table.debug();
         table.setFillParent(true);
-//        table.center();
-        table.setWidth(getViewport().getWorldWidth());
-//        table.setWidth(getWidth());
-//        table.align(Align.center | Align.top);
-//        table.setPosition(0, getHeight());
+        table.center();
 
         font = Utils.generateFreeTypeFont(Constants.FONT_TITAN, 50, Color.WHITE);
 
-        table.row();
-        gameOverTexture = new TextureRegion(skin.getRegion(Constants.TITLE_GAME_OVER));
-        gameOver = new Image(new TextureRegionDrawable(new TextureRegion(gameOverTexture)));
+        TextureRegion gameOverTexture = new TextureRegion(skin.getRegion(Constants.TITLE_GAME_OVER));
+        Image gameOver = new Image(new TextureRegionDrawable(new TextureRegion(gameOverTexture)));
         gameOver.setSize(gameOverTexture.getRegionWidth(), gameOverTexture.getRegionHeight());
         gameOver.setScaling(Scaling.fit);
-        table.add(gameOver).padTop(25);
 
-        table.row();
-        labelStyle = new Label.LabelStyle(font, Color.WHITE);
-        highScoreLabelText = new Label(Constants.HIGH_SCORE_LABEL, labelStyle);
+        Label.LabelStyle labelStyle = new Label.LabelStyle(font, Color.WHITE);
+        Label highScoreLabelText = new Label(Constants.HIGH_SCORE_LABEL, labelStyle);
         highScoreLabelText.setFontScale(2);
-        table.add(highScoreLabelText).padTop(25);
-        table.row();
-        highScoreLabelNum = new Label(highScore + "", labelStyle);
-        highScoreLabelNum.setFontScale(2);
-        table.add(highScoreLabelNum).padTop(10);
 
-        table.row();
-        homeButton = new Button(homeButtonStyle);
+        Label highScoreLabelNum = new Label(highScore + "", labelStyle);
+        highScoreLabelNum.setFontScale(2);
+
+        Button homeButton = new Button(homeButtonStyle);
         homeButtonStyle.up = new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.BUTTON_HOME)));
         homeButton.addListener(new ClickListener() {
             @Override
@@ -86,10 +71,8 @@ public class RestartScreen extends AbstractScreen implements Screen {
                 event.stop();
             }
         });
-        table.add(homeButton).padTop(100);
 
-        table.row();
-        playButton = new Button(playButtonStyle);
+        Button playButton = new Button(playButtonStyle);
         playButtonStyle.up = new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.BUTTON_PLAY)));
         playButton.addListener(new ClickListener() {
             @Override
@@ -98,7 +81,20 @@ public class RestartScreen extends AbstractScreen implements Screen {
                 event.stop();
             }
         });
-        table.add(playButton).padTop(25);
+
+        table.add(gameOver).pad(50).expand().center();
+
+        table.row();
+        table.add(highScoreLabelText).pad(10);
+
+        table.row();
+        table.add(highScoreLabelNum).pad(10);
+
+        table.row();
+        table.add(homeButton).padTop(100).expand();
+
+        table.row();
+        table.add(playButton).padBottom(100).expand();
 
         addActor(table);
     }
