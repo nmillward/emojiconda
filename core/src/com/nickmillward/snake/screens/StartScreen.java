@@ -28,6 +28,7 @@ public class StartScreen extends AbstractScreen {
     private Table table;
     private Enums.Difficulty difficulty;
     private Button.ButtonStyle easyButtonStyle, medButtonStyle, hardButtonStyle, startButtonStyle;
+    private Label difficultyLabel;
 
     public StartScreen() {
         super();
@@ -39,9 +40,8 @@ public class StartScreen extends AbstractScreen {
         medButtonStyle = new Button.ButtonStyle();
         hardButtonStyle = new Button.ButtonStyle();
         startButtonStyle = new Button.ButtonStyle();
-
     }
-    
+
     @Override
     public void buildStage() {
         table = new Table();
@@ -60,6 +60,7 @@ public class StartScreen extends AbstractScreen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 difficulty = Enums.Difficulty.EASY;
+                difficultyLabel.setText(getDifficulty().toString());
                 event.stop();
             }
         });
@@ -72,6 +73,7 @@ public class StartScreen extends AbstractScreen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 difficulty = Enums.Difficulty.MEDIUM;
+                difficultyLabel.setText(getDifficulty().toString());
                 event.stop();
             }
         });
@@ -84,13 +86,14 @@ public class StartScreen extends AbstractScreen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 difficulty = Enums.Difficulty.HARD;
+                difficultyLabel.setText(getDifficulty().toString());
                 event.stop();
             }
         });
 
         BitmapFont font = Utils.generateFreeTypeFont(Constants.FONT_TITAN, 50, Color.WHITE);
         Label.LabelStyle difficultyLabelStyle = new Label.LabelStyle(font, Color.YELLOW);
-        Label difficultyLabel = new Label(getDifficulty().toString(), difficultyLabelStyle);
+        difficultyLabel = new Label(getDifficulty().toString(), difficultyLabelStyle);
 
         BitmapFont highScoreFont = Utils.generateFreeTypeFont(Constants.FONT_TITAN, 30, Color.WHITE);
         Label.LabelStyle highScoreLabelStyle = new Label.LabelStyle(highScoreFont, Color.WHITE);
