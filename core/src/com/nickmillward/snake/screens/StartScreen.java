@@ -25,7 +25,6 @@ import com.nickmillward.snake.utils.Utils;
 public class StartScreen extends AbstractScreen {
 
     private Skin skin;
-    private Table table;
     private Enums.Difficulty difficulty;
     private Label difficultyLabel;
     private Button btn_easy, btn_medium, btn_hard;
@@ -46,7 +45,7 @@ public class StartScreen extends AbstractScreen {
 
     @Override
     public void buildStage() {
-        table = new Table();
+        Table table = new Table();
         table.setFillParent(true);
         table.center();
 
@@ -82,8 +81,10 @@ public class StartScreen extends AbstractScreen {
         medButtonStyle.up = new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.BUTTON_MEDIUM_OFF)));
         medButtonStyle.checked = new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.BUTTON_MEDIUM_ON)));
         btn_medium = new Button(medButtonStyle);
+        btn_medium.setStyle(medButtonStyle);
         btn_medium.align(Align.center);
         if (!btn_medium.isChecked()) {
+            btn_medium.setChecked(true);
             btn_medium.addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
