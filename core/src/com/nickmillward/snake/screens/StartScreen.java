@@ -1,7 +1,9 @@
 package com.nickmillward.snake.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -9,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -18,6 +21,7 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.nickmillward.snake.utils.Constants;
 import com.nickmillward.snake.utils.Enums;
 import com.nickmillward.snake.utils.ScreenManager;
+import com.nickmillward.snake.utils.Utils;
 
 /**
  * Created by nmillward on 10/6/16.
@@ -28,9 +32,7 @@ public class StartScreen extends AbstractScreen {
     private TextureRegion background;
     private Stage backgroundStage;
     private ExtendViewport backgroundViewport;
-    private Button btn_easy, btn_medium, btn_hard, btn_start;
     private Button.ButtonStyle easyButtonStyle, medButtonStyle, hardButtonStyle, startButtonStyle;
-    private Image title_snake;
 
 
     private Skin skin;
@@ -82,12 +84,12 @@ public class StartScreen extends AbstractScreen {
 //        table.setPosition(0, getHeight()); //Start at top left
         table.center();
 
-        title_snake = new Image();
+        Image title_snake = new Image();
         title_snake.setDrawable(new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.TITLE_SNAKE))));
 
         easyButtonStyle.up = new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.BUTTON_EASY_OFF)));
         easyButtonStyle.checked = new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.BUTTON_EASY_ON)));
-        btn_easy = new Button(easyButtonStyle);
+        Button btn_easy = new Button(easyButtonStyle);
         btn_easy.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -98,7 +100,7 @@ public class StartScreen extends AbstractScreen {
 
         medButtonStyle.up = new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.BUTTON_MEDIUM_OFF)));
         medButtonStyle.checked = new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.BUTTON_MEDIUM_ON)));
-        btn_medium = new Button(medButtonStyle);
+        Button btn_medium = new Button(medButtonStyle);
         btn_medium.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -109,7 +111,7 @@ public class StartScreen extends AbstractScreen {
 
         hardButtonStyle.up = new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.BUTTON_HARD_OFF)));
         hardButtonStyle.checked = new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.BUTTON_HARD_ON)));
-        btn_hard = new Button(hardButtonStyle);
+        Button btn_hard = new Button(hardButtonStyle);
         btn_hard.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -118,8 +120,13 @@ public class StartScreen extends AbstractScreen {
             }
         });
 
+        BitmapFont font = Utils.generateFreeTypeFont(Constants.FONT_TITAN, 50, Color.WHITE);
+        Label.LabelStyle difficultyLabelStyle = new Label.LabelStyle(font, Color.YELLOW);
+        Label difficultyLabel = new Label(getDifficulty().toString(), difficultyLabelStyle);
+//        Label difficultyLabel = new Label(difficulty.toString(), difficultyLabelStyle);
+
         startButtonStyle.up = new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.BUTTON_PLAY)));
-        btn_start = new Button(startButtonStyle);
+        Button btn_start = new Button(startButtonStyle);
         btn_start.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -136,6 +143,9 @@ public class StartScreen extends AbstractScreen {
         table.add(btn_hard).padTop(getViewport().getScreenHeight() / 75).colspan(1);
 
         table.row();
+        table.add(difficultyLabel).padTop(25);
+
+        table.row();
         table.add(btn_start).padTop(getViewport().getScreenHeight() / 15);
 
 //        table.background(new TextureRegionDrawable(new TextureRegion(skin.getRegion("bg_start")))).setScale(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
@@ -147,5 +157,9 @@ public class StartScreen extends AbstractScreen {
     public void dispose() {
         super.dispose();
         skin.dispose();
+    }
+
+    public Enums.Difficulty getDifficulty() {
+        return difficulty;
     }
 }
