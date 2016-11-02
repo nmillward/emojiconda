@@ -27,13 +27,15 @@ public class StartScreen extends AbstractScreen {
     private Skin skin;
     private Table table;
     private Enums.Difficulty difficulty;
-    private Button.ButtonStyle easyButtonStyle, medButtonStyle, hardButtonStyle, startButtonStyle;
     private Label difficultyLabel;
+    private Button btn_easy, btn_medium, btn_hard;
+    private Button.ButtonStyle easyButtonStyle, medButtonStyle, hardButtonStyle, startButtonStyle;
 
     public StartScreen() {
         super();
         skin = new Skin(Gdx.files.internal(Constants.UI_SKIN)); //down: button, up: button,
         skin.addRegions(new TextureAtlas(Constants.TEXTURE_ATLAS));
+
         difficulty = Enums.Difficulty.MEDIUM;
 
         easyButtonStyle = new Button.ButtonStyle();
@@ -54,42 +56,78 @@ public class StartScreen extends AbstractScreen {
 
         easyButtonStyle.up = new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.BUTTON_EASY_OFF)));
         easyButtonStyle.checked = new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.BUTTON_EASY_ON)));
-        Button btn_easy = new Button(easyButtonStyle);
+        btn_easy = new Button(easyButtonStyle);
         btn_easy.align(Align.left);
-        btn_easy.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                difficulty = Enums.Difficulty.EASY;
-                difficultyLabel.setText(getDifficulty().toString());
-                event.stop();
-            }
-        });
+        if (!btn_easy.isChecked()) {
+            btn_easy.addListener(new ClickListener() {
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    if (!btn_easy.isDisabled()) {
+                        difficulty = Enums.Difficulty.EASY;
+                        difficultyLabel.setText(getDifficulty().toString());
+
+                        btn_easy.isChecked();
+                        btn_medium.setChecked(false);
+                        btn_hard.setChecked(false);
+
+                        btn_medium.setDisabled(false);
+                        btn_hard.setDisabled(false);
+                    }
+                    btn_easy.setDisabled(true);
+                    event.stop();
+                }
+            });
+        }
 
         medButtonStyle.up = new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.BUTTON_MEDIUM_OFF)));
         medButtonStyle.checked = new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.BUTTON_MEDIUM_ON)));
-        Button btn_medium = new Button(medButtonStyle);
+        btn_medium = new Button(medButtonStyle);
         btn_medium.align(Align.center);
-        btn_medium.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                difficulty = Enums.Difficulty.MEDIUM;
-                difficultyLabel.setText(getDifficulty().toString());
-                event.stop();
-            }
-        });
+        if (!btn_medium.isChecked()) {
+            btn_medium.addListener(new ClickListener() {
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    if (!btn_medium.isDisabled()) {
+                        difficulty = Enums.Difficulty.MEDIUM;
+                        difficultyLabel.setText(getDifficulty().toString());
+
+                        btn_medium.isChecked();
+                        btn_easy.setChecked(false);
+                        btn_hard.setChecked(false);
+
+                        btn_easy.setDisabled(false);
+                        btn_hard.setDisabled(false);
+                    }
+                    btn_medium.setDisabled(true);
+                    event.stop();
+                }
+            });
+        }
 
         hardButtonStyle.up = new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.BUTTON_HARD_OFF)));
         hardButtonStyle.checked = new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.BUTTON_HARD_ON)));
-        Button btn_hard = new Button(hardButtonStyle);
+        btn_hard = new Button(hardButtonStyle);
         btn_hard.align(Align.right);
-        btn_hard.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                difficulty = Enums.Difficulty.HARD;
-                difficultyLabel.setText(getDifficulty().toString());
-                event.stop();
-            }
-        });
+        if (!btn_hard.isChecked()) {
+            btn_hard.addListener(new ClickListener() {
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    if (!btn_hard.isDisabled()) {
+                        difficulty = Enums.Difficulty.HARD;
+                        difficultyLabel.setText(getDifficulty().toString());
+
+                        btn_hard.isChecked();
+                        btn_easy.setChecked(false);
+                        btn_medium.setChecked(false);
+
+                        btn_easy.setDisabled(false);
+                        btn_medium.setDisabled(false);
+                    }
+                    btn_hard.setDisabled(true);
+                    event.stop();
+                }
+            });
+        }
 
         BitmapFont font = Utils.generateFreeTypeFont(Constants.FONT_TITAN, 50, Color.WHITE);
         Label.LabelStyle difficultyLabelStyle = new Label.LabelStyle(font, Color.YELLOW);
