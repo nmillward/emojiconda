@@ -88,10 +88,6 @@ public class Level {
         return currentScore;
     }
 
-    public int getHighScore() {
-        return scorePref.getInteger(Constants.KEY_HIGH_SCORE, 0);
-    }
-
     public void incrementCurrentScore(int pointValue) {
         currentScore += pointValue;
     }

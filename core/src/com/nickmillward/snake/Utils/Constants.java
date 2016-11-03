@@ -13,7 +13,6 @@ public class Constants {
     public static final Color BACKGROUND_COLOR = Color.SLATE;
     public static final String TEXTURE_ATLAS = "textures/textureAtlas.atlas";
     public static final String UI_SKIN = "uiskin.json";
-    public static final String FONT_FISHFONT = "font/Fishfingers.ttf";
     public static final String FONT_TITAN = "font/titan.ttf";
     public static final String PREF_HIGH_SCORE = "High Score Preference";
     public static final String KEY_HIGH_SCORE = "score";
@@ -66,33 +65,11 @@ public class Constants {
     public static final String SNAKE_HUD_SCORE_LABEL = "Score: ";
     public static final String PAUSE_BUTTON_TEXT = "PAUSE";
 
-    // PAUSE OVERLAY
-    public static final Color PAUSE_BACKGROUND_COLOR = Color.valueOf("BFFFFFFF"); // 75% White
-    public static final String PAUSED_TEXT = "PAUSED";
-    public static final String RESUME_BUTTON_TEXT = "RESUME";
-
     // LEVEL
     public static final Color BORDER_COLOR = Color.WHITE;
     public static final float BORDER_WIDTH = 15.0f;
 
-    // DIFFICULTY SCREEN
-    public static final float DIFFICULTY_WORLD_SIZE = 480;
-    public static final float DIFFICULTY_LABEL_SCALE = 1.5f;
-
-    public static final Color BUTTON_COLOR = Color.WHITE;
-    public static final float BUTTON_MARGIN = 20;
-
-    public static final String EASY_DIFFICULTY_LABEL = "EASY";
-    public static final String MEDIUM_DIFFICULTY_LABEL = "MEDIUM";
-    public static final String HARD_DIFFICULTY_LABEL = "HARD";
-
-    public static final Vector2 EASY_CENTER = new Vector2(DIFFICULTY_WORLD_SIZE / 2, DIFFICULTY_WORLD_SIZE * 3/4);
-    public static final Vector2 MEDIUM_CENTER = new Vector2(DIFFICULTY_WORLD_SIZE / 2, DIFFICULTY_WORLD_SIZE / 2);
-    public static final Vector2 HARD_CENTER = new Vector2(DIFFICULTY_WORLD_SIZE / 2, DIFFICULTY_WORLD_SIZE / 4);
-
     // START SCREEN
-    public static final String GAME_TITLE = "SNAKE";
-    public static final String BUTTON_START_TEXT = "PLAY";
     public static final String MENU_BUTTON = "button";
     public static final String BUTTON_PLAY = "btn_play";
     public static final String TITLE_SNAKE = "txt_snake";
@@ -110,8 +87,6 @@ public class Constants {
     public static final String BUTTON_HOME = "btn_home";
     public static final String BUTTON_RESUME = "btn_resume";
     public static final String TITLE_GAME_OVER = "txt_gameover";
-    public static final String BUTTON_RESTART_TEXT = "RESTART";
-    public static final String BUTTON_HOME_TEXT = "HOME";
 
 
 

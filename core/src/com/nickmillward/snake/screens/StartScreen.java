@@ -36,7 +36,7 @@ public class StartScreen extends AbstractScreen {
 
     public StartScreen() {
         super();
-        skin = new Skin(Gdx.files.internal(Constants.UI_SKIN)); //down: button, up: button,
+        skin = new Skin(Gdx.files.internal(Constants.UI_SKIN));
         skin.addRegions(new TextureAtlas(Constants.TEXTURE_ATLAS));
 
         difficulty = Enums.Difficulty.MEDIUM;
