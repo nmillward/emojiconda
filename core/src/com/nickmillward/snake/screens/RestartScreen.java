@@ -44,11 +44,10 @@ public class RestartScreen extends AbstractScreen implements Screen {
     @Override
     public void buildStage() {
         Table table = new Table(skin);
-        table.debug();
         table.setFillParent(true);
         table.center();
 
-        font = Utils.generateFreeTypeFont(Constants.FONT_TITAN, 50, Color.WHITE);
+        font = Utils.generateFreeTypeFont(Constants.FONT_TITAN, 40, Color.WHITE);
 
         TextureRegion gameOverTexture = new TextureRegion(skin.getRegion(Constants.TITLE_GAME_OVER));
         Image gameOver = new Image(new TextureRegionDrawable(new TextureRegion(gameOverTexture)));
@@ -85,10 +84,10 @@ public class RestartScreen extends AbstractScreen implements Screen {
         table.add(gameOver).pad(50).expand().center();
 
         table.row();
-        table.add(highScoreLabelText).pad(10);
+        table.add(highScoreLabelText).pad(10).padTop(25);
 
         table.row();
-        table.add(highScoreLabelNum).pad(10);
+        table.add(highScoreLabelNum).pad(10).padBottom(25);
 
         table.row();
         table.add(homeButton).padTop(100).expand();
