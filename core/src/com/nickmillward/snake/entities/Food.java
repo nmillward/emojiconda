@@ -32,8 +32,16 @@ public class Food {
     }
 
     private void initPosition() {
-        x = (float) Math.random() * (Constants.WORLD_SIZE - (Constants.FOOD_DEFAULT_SIZE * 2) - (Constants.BORDER_WIDTH * 2));
-        y = (float) Math.random() * (Constants.WORLD_SIZE - (Constants.FOOD_DEFAULT_SIZE * 2) - (Constants.BORDER_WIDTH * 2));
+        x = (float) Math.random() * (Constants.WORLD_SIZE);
+        y = (float) Math.random() * (Constants.WORLD_SIZE);
+
+        if (x < Constants.BORDER_WIDTH + Constants.FOOD_DEFAULT_SIZE || x > Constants.WORLD_SIZE - Constants.FOOD_DEFAULT_SIZE) {
+            x = (float) Math.random() * (Constants.WORLD_SIZE);
+        }
+        if (y < Constants.BORDER_WIDTH + Constants.FOOD_DEFAULT_SIZE || y > Constants.WORLD_SIZE - Constants.FOOD_DEFAULT_SIZE) {
+            y = (float) Math.random() * (Constants.WORLD_SIZE);Gdx.app.log("FOOD", "========== NEW Y: " + y);
+        }
+
         position = new Vector2(x, y);
     }
 
@@ -43,13 +51,13 @@ public class Food {
 
     public void changePosition() {
         //TODO: Make sure the new food does not land on the Snake Body
-        Gdx.app.log("FOOD", "CHANGE POSITION CALLED =================== ");
+//        Gdx.app.log("FOOD", "CHANGE POSITION CALLED =================== ");
         initPosition();
         getRandomFoodAsset();
 
         for (SnakeSegment segment : snake.snakeSegments) {
             if ((Math.abs(segment.getX() - x) < Constants.FOOD_DEFAULT_SIZE) && (Math.abs(segment.getY() - y) < Constants.FOOD_DEFAULT_SIZE)) {
-                Gdx.app.log("FOOD", "=================== PLACED TOO CLOSE TO SNAKE");
+//                Gdx.app.log("FOOD", "=================== PLACED TOO CLOSE TO SNAKE");
                 changePosition();
             }
         }
@@ -66,9 +74,9 @@ public class Food {
                 changePosition();
                 snake.setGrowSnake(true);
                 level.incrementCurrentScore(level.getDifficulty().getPointVal());
-                Gdx.app.log("FOOD", "SNAKE COORDINATES (" + snakeX + ", " + snakeY + ")");
-                Gdx.app.log("FOOD", "FOOD COORDINATES (" + foodCenterPosition.x + ", " + foodCenterPosition.y + ")");
-                Gdx.app.log("FOOD", "SNAKE ATE FOOD " + level.getCurrentScore());
+//                Gdx.app.log("FOOD", "SNAKE COORDINATES (" + snakeX + ", " + snakeY + ")");
+//                Gdx.app.log("FOOD", "FOOD COORDINATES (" + foodCenterPosition.x + ", " + foodCenterPosition.y + ")");
+//                Gdx.app.log("FOOD", "SNAKE ATE FOOD " + level.getCurrentScore());
                 return true;
             }
         }
