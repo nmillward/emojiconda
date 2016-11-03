@@ -22,7 +22,7 @@ public class Constants {
     public static final Vector2 SNAKE_SEGMENT_CENTER = new Vector2(SNAKE_SEGMENT_DEFAULT_SIZE / 2, SNAKE_SEGMENT_DEFAULT_SIZE / 2);
     public static final int EASY_SNAKE_VELOCITY = 10;
     public static final int MEDIUM_SNAKE_VELOCITY = 5;
-    public static final int HARD_SNAKE_VELOCITY = 2;
+    public static final int HARD_SNAKE_VELOCITY = 3;
 
     public static final Vector2 SNAKE_DEFAULT_START_POINT = new Vector2(WORLD_SIZE / 2, WORLD_SIZE / 2);
     public static final int SNAKE_DEFAULT_LENGTH = 4;
