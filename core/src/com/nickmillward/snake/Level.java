@@ -1,5 +1,7 @@
 package com.nickmillward.snake;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -16,13 +18,15 @@ public class Level {
 
     public static final String TAG = Level.class.getName();
 
+    Preferences scorePref = Gdx.app.getPreferences(Constants.PREF_HIGH_SCORE);
+
     GameplayScreen screen;
     public Viewport viewport;
     public Snake snake;
     public Food food;
     public boolean isGameOver;
     public int currentScore = 0;
-    public int highScore = 0;
+    public int highScore = scorePref.getInteger(Constants.KEY_HIGH_SCORE, 0);
     public Enums.Difficulty difficulty;
 
     public Level(GameplayScreen screen, Enums.Difficulty difficulty) {
@@ -74,6 +78,8 @@ public class Level {
     public void resetGame() {
         if (currentScore > highScore) {
             highScore = currentScore;
+            scorePref.putInteger(Constants.KEY_HIGH_SCORE, highScore);
+            scorePref.flush();
         }
         resetCurrentScore();
     }
@@ -83,7 +89,7 @@ public class Level {
     }
 
     public int getHighScore() {
-        return highScore;
+        return scorePref.getInteger(Constants.KEY_HIGH_SCORE, 0);
     }
 
     public void incrementCurrentScore(int pointValue) {

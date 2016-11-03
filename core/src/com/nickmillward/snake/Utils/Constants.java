@@ -15,6 +15,8 @@ public class Constants {
     public static final String UI_SKIN = "uiskin.json";
     public static final String FONT_FISHFONT = "font/Fishfingers.ttf";
     public static final String FONT_TITAN = "font/titan.ttf";
+    public static final String PREF_HIGH_SCORE = "High Score Preference";
+    public static final String KEY_HIGH_SCORE = "score";
 
     // SNAKE
     public static final float SNAKE_SEGMENT_DEFAULT_SIZE = 50;

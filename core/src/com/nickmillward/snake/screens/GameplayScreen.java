@@ -126,7 +126,7 @@ public class GameplayScreen extends AbstractScreen {
 
             case STOP:
                 level.resetGame();
-                ScreenManager.getInstance().showScreen(Enums.Screen.RESTART_SCREEN, level.getHighScore(), difficulty);
+                ScreenManager.getInstance().showScreen(Enums.Screen.RESTART_SCREEN, difficulty);
                 break;
         }
     }

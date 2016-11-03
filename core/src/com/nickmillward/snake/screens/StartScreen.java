@@ -1,6 +1,7 @@
 package com.nickmillward.snake.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -24,11 +25,14 @@ import com.nickmillward.snake.utils.Utils;
  */
 public class StartScreen extends AbstractScreen {
 
+    Preferences scorePref = Gdx.app.getPreferences(Constants.PREF_HIGH_SCORE);
+
     private Skin skin;
     private Enums.Difficulty difficulty;
     private Label difficultyLabel;
     private Button btn_easy, btn_medium, btn_hard;
     private Button.ButtonStyle easyButtonStyle, medButtonStyle, hardButtonStyle, startButtonStyle;
+    private int highScore;
 
     public StartScreen() {
         super();
@@ -41,6 +45,8 @@ public class StartScreen extends AbstractScreen {
         medButtonStyle = new Button.ButtonStyle();
         hardButtonStyle = new Button.ButtonStyle();
         startButtonStyle = new Button.ButtonStyle();
+
+        highScore = scorePref.getInteger(Constants.KEY_HIGH_SCORE, 0);
     }
 
     @Override
@@ -136,7 +142,7 @@ public class StartScreen extends AbstractScreen {
 
         BitmapFont highScoreFont = Utils.generateFreeTypeFont(Constants.FONT_TITAN, 30, Color.WHITE);
         Label.LabelStyle highScoreLabelStyle = new Label.LabelStyle(highScoreFont, Color.WHITE);
-        Label highScoreLabel = new Label(Constants.HIGH_SCORE_LABEL + "100", highScoreLabelStyle);  //TODO: pull in saved high score
+        Label highScoreLabel = new Label(Constants.HIGH_SCORE_LABEL + highScore, highScoreLabelStyle);  //TODO: pull in saved high score
 
         startButtonStyle.up = new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.BUTTON_PLAY)));
         Button btn_start = new Button(startButtonStyle);

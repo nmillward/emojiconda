@@ -1,6 +1,7 @@
 package com.nickmillward.snake.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -25,15 +26,17 @@ import com.nickmillward.snake.utils.Utils;
  */
 public class RestartScreen extends AbstractScreen implements Screen {
 
+    Preferences scorePref = Gdx.app.getPreferences(Constants.PREF_HIGH_SCORE);
+
     private Skin skin;
     private BitmapFont font;
     private Button.ButtonStyle homeButtonStyle, playButtonStyle;
     private int highScore;
     private Enums.Difficulty difficulty;
 
-    public RestartScreen(int highScore, Enums.Difficulty difficulty) {
+    public RestartScreen(Enums.Difficulty difficulty) {
         super();
-        this.highScore = highScore;
+        this.highScore = scorePref.getInteger(Constants.KEY_HIGH_SCORE, 0);
         this.difficulty = difficulty;
         skin = new Skin(Gdx.files.internal(Constants.UI_SKIN));
         skin.addRegions(new TextureAtlas(Constants.TEXTURE_ATLAS));
