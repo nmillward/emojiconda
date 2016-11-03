@@ -1,6 +1,5 @@
 package com.nickmillward.snake.entities;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
@@ -39,7 +38,7 @@ public class Food {
             x = (float) Math.random() * (Constants.WORLD_SIZE);
         }
         if (y < Constants.BORDER_WIDTH + Constants.FOOD_DEFAULT_SIZE || y > Constants.WORLD_SIZE - Constants.FOOD_DEFAULT_SIZE) {
-            y = (float) Math.random() * (Constants.WORLD_SIZE);Gdx.app.log("FOOD", "========== NEW Y: " + y);
+            y = (float) Math.random() * (Constants.WORLD_SIZE);
         }
 
         position = new Vector2(x, y);
@@ -51,13 +50,11 @@ public class Food {
 
     public void changePosition() {
         //TODO: Make sure the new food does not land on the Snake Body
-//        Gdx.app.log("FOOD", "CHANGE POSITION CALLED =================== ");
         initPosition();
         getRandomFoodAsset();
 
         for (SnakeSegment segment : snake.snakeSegments) {
             if ((Math.abs(segment.getX() - x) < Constants.FOOD_DEFAULT_SIZE) && (Math.abs(segment.getY() - y) < Constants.FOOD_DEFAULT_SIZE)) {
-//                Gdx.app.log("FOOD", "=================== PLACED TOO CLOSE TO SNAKE");
                 changePosition();
             }
         }
@@ -74,9 +71,6 @@ public class Food {
                 changePosition();
                 snake.setGrowSnake(true);
                 level.incrementCurrentScore(level.getDifficulty().getPointVal());
-//                Gdx.app.log("FOOD", "SNAKE COORDINATES (" + snakeX + ", " + snakeY + ")");
-//                Gdx.app.log("FOOD", "FOOD COORDINATES (" + foodCenterPosition.x + ", " + foodCenterPosition.y + ")");
-//                Gdx.app.log("FOOD", "SNAKE ATE FOOD " + level.getCurrentScore());
                 return true;
             }
         }
