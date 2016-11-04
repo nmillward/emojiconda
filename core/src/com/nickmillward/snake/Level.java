@@ -99,4 +99,12 @@ public class Level {
     public Enums.Difficulty getDifficulty() {
         return difficulty;
     }
+
+    public float getViewportWidth() {
+        return screen.getViewport().getWorldWidth();
+    }
+
+    public float getViewportHeight() {
+        return screen.getViewport().getWorldHeight();
+    }
 }

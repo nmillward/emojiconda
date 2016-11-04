@@ -68,6 +68,7 @@ public class Constants {
     // LEVEL
     public static final Color BORDER_COLOR = Color.WHITE;
     public static final float BORDER_WIDTH = 15.0f;
+    public static final float BORDER_SNAKE_HUD = 100;
 
     // START SCREEN
     public static final String MENU_BUTTON = "button";

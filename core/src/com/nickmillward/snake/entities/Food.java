@@ -14,6 +14,7 @@ import com.nickmillward.snake.utils.Utils;
 public class Food {
 
     private float x, y;
+    private float viewportWidth, viewportHeight;
     private TextureRegion randomFood;
     private Vector2 position;
     private Snake snake;
@@ -31,14 +32,17 @@ public class Food {
     }
 
     private void initPosition() {
-        x = (float) Math.random() * (Constants.WORLD_SIZE);
-        y = (float) Math.random() * (Constants.WORLD_SIZE);
+        viewportWidth = level.getViewportWidth();
+        viewportHeight = level.getViewportHeight();
 
-        if (x < Constants.BORDER_WIDTH + Constants.FOOD_DEFAULT_SIZE || x > Constants.WORLD_SIZE - Constants.FOOD_DEFAULT_SIZE) {
-            x = (float) Math.random() * (Constants.WORLD_SIZE);
+        x = (float) Math.random() * viewportWidth;
+        y = (float) Math.random() * viewportHeight;
+
+        while (x < Constants.BORDER_WIDTH + Constants.FOOD_DEFAULT_SIZE || x > viewportWidth - Constants.FOOD_DEFAULT_SIZE) {
+            x = (float) Math.random() * (viewportWidth);
         }
-        if (y < Constants.BORDER_WIDTH + Constants.FOOD_DEFAULT_SIZE || y > Constants.WORLD_SIZE - Constants.FOOD_DEFAULT_SIZE) {
-            y = (float) Math.random() * (Constants.WORLD_SIZE);
+        while (y < Constants.BORDER_WIDTH + Constants.FOOD_DEFAULT_SIZE || y > viewportHeight - Constants.FOOD_DEFAULT_SIZE - Constants.BORDER_SNAKE_HUD) {
+            y = (float) Math.random() * (viewportHeight);
         }
 
         position = new Vector2(x, y);
