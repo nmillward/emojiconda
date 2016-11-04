@@ -3,6 +3,7 @@ package com.nickmillward.snake.screens;
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -59,7 +60,10 @@ public class GameplayScreen extends AbstractScreen {
     public void show() {
         if (onMobile()) {
             gestureDetector = new GestureDetector(mobileControls);
-            Gdx.input.setInputProcessor(gestureDetector);
+            InputMultiplexer multiplexer = new InputMultiplexer();
+            multiplexer.addProcessor(gestureDetector);
+            multiplexer.addProcessor(snakeHUD.stage);
+            Gdx.input.setInputProcessor(multiplexer);
         }
     }
 

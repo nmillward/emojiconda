@@ -67,7 +67,9 @@ public class SnakeHUD {
 
         stage.addActor(table);
 
-        Gdx.input.setInputProcessor(stage);
+//        InputMultiplexer inputMultiplexer = new InputMultiplexer();
+//        inputMultiplexer.addProcessor(stage);
+//        Gdx.input.setInputProcessor(inputMultiplexer);
     }
 
 
