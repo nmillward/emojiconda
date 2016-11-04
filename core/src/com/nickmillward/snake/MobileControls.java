@@ -74,33 +74,33 @@ public class MobileControls extends InputAdapter implements GestureDetector.Gest
 
     @Override
     public boolean touchDown(float x, float y, int pointer, int button) {
-        lastTouch.set(x, y);
-        Gdx.app.log("MOBILE", "TOUCH DOWN: (" + x + ", " + y + ")");
+//        lastTouch.set(x, y);
+//        Gdx.app.log("MOBILE", "TOUCH DOWN: (" + x + ", " + y + ")");
         return true;
     }
 
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
 //        return super.touchDragged(screenX, screenY, pointer);
-        Gdx.app.log("MOBILE", "DRAG OCCURRED");
-
-        newTouch.set(screenX, screenY);
-
-        Vector2 delta = newTouch.cpy().sub(lastTouch);
-
-        if (delta.x > 0) {
-            Gdx.app.log("MOBILE", "MOVE RIGHT");
-        } else if (delta.x < 0) {
-            Gdx.app.log("MOBILE", "MOVE LEFT");
-        }
-
-        if (delta.y > 0) {
-            Gdx.app.log("MOBILE", "MOVE UP");
-        } else if (delta.y < 0) {
-            Gdx.app.log("MOBILE", "MOVE DOWN");
-        }
-
-        lastTouch = newTouch;
+//        Gdx.app.log("MOBILE", "DRAG OCCURRED");
+//
+//        newTouch.set(screenX, screenY);
+//
+//        Vector2 delta = newTouch.cpy().sub(lastTouch);
+//
+//        if (delta.x > 0) {
+//            Gdx.app.log("MOBILE", "MOVE RIGHT");
+//        } else if (delta.x < 0) {
+//            Gdx.app.log("MOBILE", "MOVE LEFT");
+//        }
+//
+//        if (delta.y > 0) {
+//            Gdx.app.log("MOBILE", "MOVE UP");
+//        } else if (delta.y < 0) {
+//            Gdx.app.log("MOBILE", "MOVE DOWN");
+//        }
+//
+//        lastTouch = newTouch;
 
         return true;
     }
