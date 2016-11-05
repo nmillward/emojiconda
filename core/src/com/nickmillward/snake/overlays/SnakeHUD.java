@@ -30,6 +30,7 @@ public class SnakeHUD {
     final BitmapFont font;
 
     public Stage stage;
+    private Table table;
     private Label scoreLabel;
     private TextButton pauseButton;
     private int score;
@@ -43,9 +44,10 @@ public class SnakeHUD {
         score = 0;
 
         stage = new Stage(viewport, batch);
-        Table table = new Table();
+        table = new Table();
         table.top();
         table.setFillParent(true);
+        table.setTransform(true);
 
         Label.LabelStyle labelStyle = new Label.LabelStyle(font, Color.WHITE);
         scoreLabel = new Label(Constants.SNAKE_HUD_SCORE_LABEL + score, labelStyle);
@@ -61,6 +63,11 @@ public class SnakeHUD {
                 event.stop();
             }
         });
+
+//        ScaleToAction scaleScore = new ScaleToAction();
+//        scaleScore.setScale(1.5f);
+//        scaleScore.setDuration(5.0f);
+//        table.addAction(scaleScore);
 
         table.add(scoreLabel).expandX().padTop(Constants.SNAKE_HUD_MARGIN);
         table.add(pauseButton).expandX().padTop(Constants.SNAKE_HUD_MARGIN);
