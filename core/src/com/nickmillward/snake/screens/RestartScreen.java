@@ -84,6 +84,8 @@ public class RestartScreen extends AbstractScreen implements Screen {
             }
         });
 
+        table.setBackground(new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.IMG_BACKGROUND))));
+
         table.add(gameOver).pad(50).expand().center();
 
         table.row();
