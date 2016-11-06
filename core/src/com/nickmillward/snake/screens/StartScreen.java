@@ -29,6 +29,7 @@ public class StartScreen extends AbstractScreen {
 
     private Skin skin;
     private Enums.Difficulty difficulty;
+    private BitmapFont font;
     private Label difficultyLabel;
     private Button btn_easy, btn_medium, btn_hard;
     private Button.ButtonStyle easyButtonStyle, medButtonStyle, hardButtonStyle, startButtonStyle;
@@ -58,6 +59,12 @@ public class StartScreen extends AbstractScreen {
         Image title_snake = new Image();
         title_snake.setDrawable(new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.TITLE_SNAKE))));
         title_snake.setSize(300, 200);
+
+        font = Utils.generateFreeTypeFont(Constants.FONT_TITAN, 15, Color.WHITE);
+        Label.LabelStyle labelStyle = new Label.LabelStyle(font, Color.WHITE);
+        Label subtitleLabelText = new Label(Constants.SUBTITLE_LABEL, labelStyle);
+        subtitleLabelText.setFontScale(2);
+        subtitleLabelText.setAlignment(Align.center);
 
         easyButtonStyle.up = new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.BUTTON_EASY_OFF)));
         easyButtonStyle.checked = new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.BUTTON_EASY_ON)));
@@ -156,7 +163,10 @@ public class StartScreen extends AbstractScreen {
 
         table.setBackground(new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.IMG_BACKGROUND))));
 
-        table.add(title_snake).pad(50).colspan(3).expand().center();
+        table.add(title_snake).padTop(50).padLeft(50).padRight(50).padBottom(10).colspan(3).expand().center();
+
+        table.row();
+        table.add(subtitleLabelText).padLeft(50).padRight(50).padBottom(100).colspan(3).center();
 
         table.row();
         table.add(btn_easy).padLeft(50).colspan(1);

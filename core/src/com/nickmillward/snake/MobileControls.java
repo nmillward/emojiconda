@@ -13,7 +13,8 @@ public class MobileControls extends InputAdapter implements GestureDetector.Gest
     Level level;
 
     private Vector2 lastTouch = new Vector2();
-    private Vector2 newTouch = new Vector2();
+//    private Vector2 newTouch = new Vector2();
+    private Vector2 delta = new Vector2();
 
     public MobileControls(Level level) {
         this.level = level;
@@ -22,47 +23,56 @@ public class MobileControls extends InputAdapter implements GestureDetector.Gest
     @Override
     public boolean fling(float velocityX, float velocityY, int button) {
 
-        if (velocityX > 0 || velocityX < 0 || velocityY > 0) {
-            level.snake.setMoving(true);
+        if (level.snake.xDir == 0 && level.snake.yDir == 0) {
+            if (velocityX > 0 || velocityX < 0 || velocityY > 0) {
+                Gdx.app.log("MOBILE CONTROL", "and flinged up?!");
+                level.snake.setMoving(true);
+            } else {
+                level.snake.setMoving(false);
+            }
         }
 
-        if (Math.abs(velocityX) > Math.abs(velocityY)) {    // Move Left or Right
+        if (level.snake.isMoving()) {
 
-            if (velocityX < 0) { // Move Left
-                if (level.snake.getxDir() != 1) {
-                    level.snake.setxDir(-1);
-                    level.snake.setyDir(0);
-                    Gdx.app.log("MOBILE CONTROL", "MOVE LEFT");
-                }
+            if (Math.abs(velocityX) > Math.abs(velocityY)) {    // Move Left or Right
 
-            } else if (velocityX > 0) { // Move Right
-                if (level.snake.getxDir() != -1) {
-                    level.snake.setxDir(1);
-                    level.snake.setyDir(0);
-                    Gdx.app.log("MOBILE CONTROL", "MOVE RIGHT");
+                if (velocityX < 0) { // Move Left
+                    if (level.snake.getxDir() != 1) {
+                        level.snake.setxDir(-1);
+                        level.snake.setyDir(0);
+                        Gdx.app.log("MOBILE CONTROL", "MOVE LEFT");
+                    }
+
+                } else if (velocityX > 0) { // Move Right
+                    if (level.snake.getxDir() != -1) {
+                        level.snake.setxDir(1);
+                        level.snake.setyDir(0);
+                        Gdx.app.log("MOBILE CONTROL", "MOVE RIGHT");
+                    }
+
+                } else {
+                    // Do Nothing
                 }
 
             } else {
-                // Do Nothing
-            }
 
-        } else {
+                if (velocityY < 0) { // Move UP
+                    if (level.snake.getyDir() != -1) {
+                        level.snake.setxDir(0);
+                        level.snake.setyDir(1);
+                        Gdx.app.log("MOBILE CONTROL", "MOVE UP");
+                    }
 
-            if (velocityY < 0) { // Move UP
-                if (level.snake.getyDir() != -1) {
-                    level.snake.setxDir(0);
-                    level.snake.setyDir(1);
-                    Gdx.app.log("MOBILE CONTROL", "MOVE UP");
+                } else if (velocityY > 0) { // Move Down
+                    if (level.snake.getyDir() != 1) {
+                        level.snake.setxDir(0);
+                        level.snake.setyDir(-1);
+                        Gdx.app.log("MOBILE CONTROL", "MOVE DOWN");
+                    }
+                } else {
+                    // Do Nothing
                 }
 
-            } else if (velocityY > 0) { // Move Down
-                if (level.snake.getyDir() != 1) {
-                    level.snake.setxDir(0);
-                    level.snake.setyDir(-1);
-                    Gdx.app.log("MOBILE CONTROL", "MOVE DOWN");
-                }
-            } else {
-                // Do Nothing
             }
 
         }
@@ -76,7 +86,7 @@ public class MobileControls extends InputAdapter implements GestureDetector.Gest
     public boolean touchDown(float x, float y, int pointer, int button) {
 //        lastTouch.set(x, y);
 //        Gdx.app.log("MOBILE", "TOUCH DOWN: (" + x + ", " + y + ")");
-        return true;
+        return false;
     }
 
     @Override
@@ -84,9 +94,9 @@ public class MobileControls extends InputAdapter implements GestureDetector.Gest
 //        return super.touchDragged(screenX, screenY, pointer);
 //        Gdx.app.log("MOBILE", "DRAG OCCURRED");
 //
-//        newTouch.set(screenX, screenY);
+//        Vector2 newTouch = new Vector2(screenX, screenY);
 //
-//        Vector2 delta = newTouch.cpy().sub(lastTouch);
+//        delta = newTouch.cpy().sub(lastTouch);
 //
 //        if (delta.x > 0) {
 //            Gdx.app.log("MOBILE", "MOVE RIGHT");
@@ -102,11 +112,12 @@ public class MobileControls extends InputAdapter implements GestureDetector.Gest
 //
 //        lastTouch = newTouch;
 
-        return true;
+        return false;
     }
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+        Gdx.app.log("MOBILE", "TOUCH UP");
         return super.touchUp(screenX, screenY, pointer, button);
     }
 
