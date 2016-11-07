@@ -59,9 +59,10 @@ public class GameplayScreen extends AbstractScreen {
     @Override
     public void show() {
         if (onMobile()) {
-            gestureDetector = new GestureDetector(mobileControls);
+//            gestureDetector = new GestureDetector(mobileControls);
             InputMultiplexer multiplexer = new InputMultiplexer();
-            multiplexer.addProcessor(gestureDetector);
+//            multiplexer.addProcessor(gestureDetector);
+            multiplexer.addProcessor(mobileControls);
             multiplexer.addProcessor(snakeHUD.stage);
             Gdx.input.setInputProcessor(multiplexer);
         }

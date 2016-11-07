@@ -2,13 +2,13 @@ package com.nickmillward.snake;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
-import com.badlogic.gdx.input.GestureDetector;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
 
 /**
  * Created by nmillward on 9/30/16.
  */
-public class MobileControls extends InputAdapter implements GestureDetector.GestureListener {
+public class MobileControls extends InputAdapter implements InputProcessor {
 
     Level level;
 
@@ -20,79 +20,88 @@ public class MobileControls extends InputAdapter implements GestureDetector.Gest
         this.level = level;
     }
 
-    @Override
-    public boolean fling(float velocityX, float velocityY, int button) {
+//    @Override
+//    public boolean fling(float velocityX, float velocityY, int button) {
+//
+//        if (level.snake.xDir == 0 && level.snake.yDir == 0) {
+//            if (velocityX > 0 || velocityX < 0 || velocityY > 0) {
+//                Gdx.app.log("MOBILE CONTROL", "and flinged up?!");
+//                level.snake.setMoving(true);
+//            } else {
+//                level.snake.setMoving(false);
+//            }
+//        }
+//
+//        if (level.snake.isMoving()) {
+//
+//            if (Math.abs(velocityX) > Math.abs(velocityY)) {    // Move Left or Right
+//
+//                if (velocityX < 0) { // Move Left
+//                    if (level.snake.getxDir() != 1) {
+//                        level.snake.setxDir(-1);
+//                        level.snake.setyDir(0);
+//                        Gdx.app.log("MOBILE CONTROL", "MOVE LEFT");
+//                    }
+//
+//                } else if (velocityX > 0) { // Move Right
+//                    if (level.snake.getxDir() != -1) {
+//                        level.snake.setxDir(1);
+//                        level.snake.setyDir(0);
+//                        Gdx.app.log("MOBILE CONTROL", "MOVE RIGHT");
+//                    }
+//
+//                } else {
+//                    // Do Nothing
+//                }
+//
+//            } else {
+//
+//                if (velocityY < 0) { // Move UP
+//                    if (level.snake.getyDir() != -1) {
+//                        level.snake.setxDir(0);
+//                        level.snake.setyDir(1);
+//                        Gdx.app.log("MOBILE CONTROL", "MOVE UP");
+//                    }
+//
+//                } else if (velocityY > 0) { // Move Down
+//                    if (level.snake.getyDir() != 1) {
+//                        level.snake.setxDir(0);
+//                        level.snake.setyDir(-1);
+//                        Gdx.app.log("MOBILE CONTROL", "MOVE DOWN");
+//                    }
+//                } else {
+//                    // Do Nothing
+//                }
+//
+//            }
+//
+//        }
+//
+//        level.snake.move();
+//
+//        return false;
+//    }
 
-        if (level.snake.xDir == 0 && level.snake.yDir == 0) {
-            if (velocityX > 0 || velocityX < 0 || velocityY > 0) {
-                Gdx.app.log("MOBILE CONTROL", "and flinged up?!");
-                level.snake.setMoving(true);
-            } else {
-                level.snake.setMoving(false);
-            }
-        }
-
-        if (level.snake.isMoving()) {
-
-            if (Math.abs(velocityX) > Math.abs(velocityY)) {    // Move Left or Right
-
-                if (velocityX < 0) { // Move Left
-                    if (level.snake.getxDir() != 1) {
-                        level.snake.setxDir(-1);
-                        level.snake.setyDir(0);
-                        Gdx.app.log("MOBILE CONTROL", "MOVE LEFT");
-                    }
-
-                } else if (velocityX > 0) { // Move Right
-                    if (level.snake.getxDir() != -1) {
-                        level.snake.setxDir(1);
-                        level.snake.setyDir(0);
-                        Gdx.app.log("MOBILE CONTROL", "MOVE RIGHT");
-                    }
-
-                } else {
-                    // Do Nothing
-                }
-
-            } else {
-
-                if (velocityY < 0) { // Move UP
-                    if (level.snake.getyDir() != -1) {
-                        level.snake.setxDir(0);
-                        level.snake.setyDir(1);
-                        Gdx.app.log("MOBILE CONTROL", "MOVE UP");
-                    }
-
-                } else if (velocityY > 0) { // Move Down
-                    if (level.snake.getyDir() != 1) {
-                        level.snake.setxDir(0);
-                        level.snake.setyDir(-1);
-                        Gdx.app.log("MOBILE CONTROL", "MOVE DOWN");
-                    }
-                } else {
-                    // Do Nothing
-                }
-
-            }
-
-        }
-
-        level.snake.move();
-
-        return false;
-    }
-
-    @Override
-    public boolean touchDown(float x, float y, int pointer, int button) {
+//    @Override
+//    public boolean touchDown(float x, float y, int pointer, int button) {
 //        lastTouch.set(x, y);
 //        Gdx.app.log("MOBILE", "TOUCH DOWN: (" + x + ", " + y + ")");
-        return false;
+//        return false;
+//    }
+
+    @Override
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+//        return super.touchDown(screenX, screenY, pointer, button);
+        lastTouch.set(screenX, screenY);
+        Gdx.app.log("MOBILE", "TOUCH DOWN: (" + screenX + ", " + screenY + ")");
+        return true;
+
     }
 
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
 //        return super.touchDragged(screenX, screenY, pointer);
-//        Gdx.app.log("MOBILE", "DRAG OCCURRED");
+        Gdx.app.log("MOBILE", "DRAG OCCURRED");
 //
 //        Vector2 newTouch = new Vector2(screenX, screenY);
 //
@@ -117,43 +126,44 @@ public class MobileControls extends InputAdapter implements GestureDetector.Gest
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+//        return super.touchUp(screenX, screenY, pointer, button);
         Gdx.app.log("MOBILE", "TOUCH UP");
-        return super.touchUp(screenX, screenY, pointer, button);
+        return true;
     }
 
-    @Override
-    public boolean tap(float x, float y, int count, int button) {
-        return false;
-    }
-
-    @Override
-    public boolean longPress(float x, float y) {
-        return false;
-    }
-
-
-    @Override
-    public boolean pan(float x, float y, float deltaX, float deltaY) {
-        return false;
-    }
-
-    @Override
-    public boolean panStop(float x, float y, int pointer, int button) {
-        return false;
-    }
-
-    @Override
-    public boolean zoom(float initialDistance, float distance) {
-        return false;
-    }
-
-    @Override
-    public boolean pinch(Vector2 initialPointer1, Vector2 initialPointer2, Vector2 pointer1, Vector2 pointer2) {
-        return false;
-    }
-
-    @Override
-    public void pinchStop() {
-
-    }
+//    @Override
+//    public boolean tap(float x, float y, int count, int button) {
+//        return false;
+//    }
+//
+//    @Override
+//    public boolean longPress(float x, float y) {
+//        return false;
+//    }
+//
+//
+//    @Override
+//    public boolean pan(float x, float y, float deltaX, float deltaY) {
+//        return false;
+//    }
+//
+//    @Override
+//    public boolean panStop(float x, float y, int pointer, int button) {
+//        return false;
+//    }
+//
+//    @Override
+//    public boolean zoom(float initialDistance, float distance) {
+//        return false;
+//    }
+//
+//    @Override
+//    public boolean pinch(Vector2 initialPointer1, Vector2 initialPointer2, Vector2 pointer1, Vector2 pointer2) {
+//        return false;
+//    }
+//
+//    @Override
+//    public void pinchStop() {
+//
+//    }
 }
