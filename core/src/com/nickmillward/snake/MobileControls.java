@@ -102,6 +102,10 @@ public class MobileControls extends InputAdapter implements InputProcessor {
         newTouch = new Vector2(screenX, screenY);
 
         delta = newTouch.cpy().sub(lastTouch);
+        Gdx.app.log("MOBILE CONTROL", "DELTA: " + delta);
+
+        float deltaDiff = Math.abs(delta.x - delta.y);
+        Gdx.app.log("MOBILE CONTROL", "DELTA DIFF: " + deltaDiff);
 
         if (!level.snake.isMoving()) {
             if (delta.x > 0 || delta.x < 0 || delta.y < 0) {
@@ -111,36 +115,40 @@ public class MobileControls extends InputAdapter implements InputProcessor {
             }
         }
 
-        if (level.snake.isMoving()) {
-            if (Math.abs(delta.x) > Math.abs(delta.y)) {    // Move Left or Right
-                if (delta.x > 0) {
-                    if (level.snake.getxDir() != -1) {
-                        level.snake.setxDir(1);
-                        level.snake.setyDir(0);
-                        Gdx.app.log("MOBILE CONTROL", "MOVE RIGHT");
+        if (deltaDiff > 10.0) { //TODO: Look into better ways to combat touch sensitivity
+
+            if (level.snake.isMoving()) {
+                if (Math.abs(delta.x) > Math.abs(delta.y)) {    // Move Left or Right
+                    if (delta.x > 0) {
+                        if (level.snake.getxDir() != -1) {
+                            level.snake.setxDir(1);
+                            level.snake.setyDir(0);
+                            Gdx.app.log("MOBILE CONTROL", "MOVE RIGHT");
+                        }
+                    } else if (delta.x < 0) {
+                        if (level.snake.getxDir() != 1) {
+                            level.snake.setxDir(-1);
+                            level.snake.setyDir(0);
+                            Gdx.app.log("MOBILE CONTROL", "MOVE LEFT");
+                        }
                     }
-                } else if (delta.x < 0) {
-                    if (level.snake.getxDir() != 1) {
-                        level.snake.setxDir(-1);
-                        level.snake.setyDir(0);
-                        Gdx.app.log("MOBILE CONTROL", "MOVE LEFT");
-                    }
-                }
-            } else {
-                if (delta.y < 0) {
-                    if (level.snake.getyDir() != -1) {
-                        level.snake.setxDir(0);
-                        level.snake.setyDir(1);
-                        Gdx.app.log("MOBILE CONTROL", "MOVE UP");
-                    }
-                } else if (delta.y > 0) {
-                    if (level.snake.getyDir() != 1) {
-                        level.snake.setxDir(0);
-                        level.snake.setyDir(-1);
-                        Gdx.app.log("MOBILE CONTROL", "MOVE DOWN");
+                } else {
+                    if (delta.y < 0) {
+                        if (level.snake.getyDir() != -1) {
+                            level.snake.setxDir(0);
+                            level.snake.setyDir(1);
+                            Gdx.app.log("MOBILE CONTROL", "MOVE UP");
+                        }
+                    } else if (delta.y > 0) {
+                        if (level.snake.getyDir() != 1) {
+                            level.snake.setxDir(0);
+                            level.snake.setyDir(-1);
+                            Gdx.app.log("MOBILE CONTROL", "MOVE DOWN");
+                        }
                     }
                 }
             }
+
         }
 
         lastTouch = newTouch;
