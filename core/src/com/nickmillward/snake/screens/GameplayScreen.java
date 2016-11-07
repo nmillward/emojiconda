@@ -9,7 +9,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.input.GestureDetector;
 import com.nickmillward.snake.Level;
 import com.nickmillward.snake.MobileControls;
 import com.nickmillward.snake.overlays.PauseOverlay;
@@ -27,7 +26,6 @@ public class GameplayScreen extends AbstractScreen {
     public static final String TAG = GameplayScreen.class.getName();
 
     MobileControls mobileControls;
-    GestureDetector gestureDetector;
     SpriteBatch batch;
     Level level;
     private Enums.Difficulty difficulty;
@@ -59,9 +57,7 @@ public class GameplayScreen extends AbstractScreen {
     @Override
     public void show() {
         if (onMobile()) {
-//            gestureDetector = new GestureDetector(mobileControls);
             InputMultiplexer multiplexer = new InputMultiplexer();
-//            multiplexer.addProcessor(gestureDetector);
             multiplexer.addProcessor(mobileControls);
             multiplexer.addProcessor(snakeHUD.stage);
             Gdx.input.setInputProcessor(multiplexer);
