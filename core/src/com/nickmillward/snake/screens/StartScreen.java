@@ -149,7 +149,7 @@ public class StartScreen extends AbstractScreen {
 
         BitmapFont highScoreFont = Utils.generateFreeTypeFont(Constants.FONT_TITAN, 30, Color.WHITE);
         Label.LabelStyle highScoreLabelStyle = new Label.LabelStyle(highScoreFont, Color.WHITE);
-        Label highScoreLabel = new Label(Constants.HIGH_SCORE_LABEL + highScore, highScoreLabelStyle);  //TODO: pull in saved high score
+        Label highScoreLabel = new Label(Constants.HIGH_SCORE_LABEL + highScore, highScoreLabelStyle);
 
         startButtonStyle.up = new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.BUTTON_PLAY)));
         Button btn_start = new Button(startButtonStyle);
@@ -163,7 +163,7 @@ public class StartScreen extends AbstractScreen {
 
         table.setBackground(new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.IMG_BACKGROUND))));
 
-        table.add(title_snake).padTop(50).padLeft(50).padRight(50).padBottom(10).colspan(3).expand().center();
+        table.add(title_snake).padTop(100).padLeft(50).padRight(50).padBottom(10).colspan(3).center();
 
         table.row();
         table.add(subtitleLabelText).padLeft(50).padRight(50).padBottom(100).colspan(3).center();
@@ -177,10 +177,10 @@ public class StartScreen extends AbstractScreen {
         table.add(difficultyLabel).pad(25).colspan(3);
 
         table.row();
-        table.add(highScoreLabel).pad(50).colspan(3);
+        table.add(highScoreLabel).padTop(50).padBottom(70).colspan(3);
 
         table.row();
-        table.add(btn_start).pad(50).colspan(3).expand().center();
+        table.add(btn_start).colspan(3).expand().center();
 
         addActor(table);
     }
