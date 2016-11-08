@@ -115,7 +115,7 @@ public class MobileControls extends InputAdapter implements InputProcessor {
             }
         }
 
-        if (deltaDiff > 10.0) { //TODO: Look into better ways to combat touch sensitivity
+        if (deltaDiff > 15.0) { //TODO: Look into better ways to combat touch sensitivity
 
             if (level.snake.isMoving()) {
                 if (Math.abs(delta.x) > Math.abs(delta.y)) {    // Move Left or Right
