@@ -106,7 +106,8 @@ public class MobileControls extends InputAdapter implements InputProcessor {
         float touchDiff = newTouch.dst(lastTouch); //Find the distance between the two points
 
         if (!level.snake.isMoving()) {
-            if (delta.x > 0 || delta.x < 0 || delta.y < 0) {
+            if (newTouch.y < lastTouch.y) {
+                if (newTouch.x > lastTouch.x || newTouch.x < lastTouch.x)
                 level.snake.setMoving(true);
             } else {
                 level.snake.setMoving(false);
