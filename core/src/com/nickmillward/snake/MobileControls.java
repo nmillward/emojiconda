@@ -113,7 +113,7 @@ public class MobileControls extends InputAdapter implements InputProcessor {
             }
         }
 
-        if (touchDiff > 15.0) { //TODO: Look into better ways to combat touch sensitivity
+        if (touchDiff > 15.0) { //TODO: Look into change over time (e.g. no direction change within 200 milliseconds or * difficulty speed)
 
             Gdx.app.log("MOBILE CONTROL", "DELTA: " + delta);
             Gdx.app.log("MOBILE CONTROL", "POINT DIFF: " + touchDiff);
