@@ -102,10 +102,8 @@ public class MobileControls extends InputAdapter implements InputProcessor {
         newTouch = new Vector2(screenX, screenY);
 
         delta = newTouch.cpy().sub(lastTouch);
-        Gdx.app.log("MOBILE CONTROL", "DELTA: " + delta);
 
-        float deltaDiff = Math.abs(delta.x - delta.y);
-        Gdx.app.log("MOBILE CONTROL", "DELTA DIFF: " + deltaDiff);
+        float touchDiff = newTouch.dst(lastTouch); //Find the distance between the two points
 
         if (!level.snake.isMoving()) {
             if (delta.x > 0 || delta.x < 0 || delta.y < 0) {
@@ -115,7 +113,10 @@ public class MobileControls extends InputAdapter implements InputProcessor {
             }
         }
 
-        if (deltaDiff > 15.0) { //TODO: Look into better ways to combat touch sensitivity
+        if (touchDiff > 15.0) { //TODO: Look into better ways to combat touch sensitivity
+
+            Gdx.app.log("MOBILE CONTROL", "DELTA: " + delta);
+            Gdx.app.log("MOBILE CONTROL", "POINT DIFF: " + touchDiff);
 
             if (level.snake.isMoving()) {
                 if (Math.abs(delta.x) > Math.abs(delta.y)) {    // Move Left or Right
