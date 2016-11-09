@@ -27,17 +27,20 @@ import com.nickmillward.snake.utils.Utils;
 public class RestartScreen extends AbstractScreen implements Screen {
 
     Preferences scorePref = Gdx.app.getPreferences(Constants.PREF_HIGH_SCORE);
+    Preferences newHighScore = Gdx.app.getPreferences(Constants.PREF_NEW_HIGH_SCORE);
 
     private Skin skin;
     private BitmapFont font;
     private Button.ButtonStyle homeButtonStyle, playButtonStyle;
     private int highScore;
+    private boolean isNewHighScore;
     private Enums.Difficulty difficulty;
 
     public RestartScreen(Enums.Difficulty difficulty) {
         super();
-        this.highScore = scorePref.getInteger(Constants.KEY_HIGH_SCORE, 0);
         this.difficulty = difficulty;
+        highScore = scorePref.getInteger(Constants.KEY_HIGH_SCORE, 0);
+        isNewHighScore = newHighScore.getBoolean(Constants.KEY_NEW_HIGH_SCORE, false);
         skin = new Skin(Gdx.files.internal(Constants.UI_SKIN));
         skin.addRegions(new TextureAtlas(Constants.TEXTURE_ATLAS));
         homeButtonStyle = new Button.ButtonStyle();
@@ -58,6 +61,8 @@ public class RestartScreen extends AbstractScreen implements Screen {
         gameOver.setScaling(Scaling.fit);
 
         Label.LabelStyle labelStyle = new Label.LabelStyle(font, Color.WHITE);
+        Label newHighScoreLabel = new Label("NEW", labelStyle);
+        newHighScoreLabel.setFontScale(3);
         Label highScoreLabelText = new Label(Constants.HIGH_SCORE_LABEL, labelStyle);
         highScoreLabelText.setFontScale(2);
 
@@ -87,6 +92,11 @@ public class RestartScreen extends AbstractScreen implements Screen {
         table.setBackground(new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.IMG_BACKGROUND))));
 
         table.add(gameOver).pad(50).expand().center();
+
+        if (isNewHighScore) {
+            table.row();
+            table.add(newHighScoreLabel).pad(10).padTop(25);
+        }
 
         table.row();
         table.add(highScoreLabelText).pad(10).padTop(25);

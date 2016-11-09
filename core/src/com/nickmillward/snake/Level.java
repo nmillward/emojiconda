@@ -19,6 +19,7 @@ public class Level {
     public static final String TAG = Level.class.getName();
 
     Preferences scorePref = Gdx.app.getPreferences(Constants.PREF_HIGH_SCORE);
+    Preferences newHighScore = Gdx.app.getPreferences(Constants.PREF_NEW_HIGH_SCORE);
 
     GameplayScreen screen;
     public Viewport viewport;
@@ -27,6 +28,7 @@ public class Level {
     public boolean isGameOver;
     public int currentScore = 0;
     public int highScore = scorePref.getInteger(Constants.KEY_HIGH_SCORE, 0);
+//    public int highScore = scorePref.getInteger(Constants.KEY_HIGH_SCORE, 0);
     public Enums.Difficulty difficulty;
 
     public Level(GameplayScreen screen, Enums.Difficulty difficulty) {
@@ -80,6 +82,11 @@ public class Level {
             highScore = currentScore;
             scorePref.putInteger(Constants.KEY_HIGH_SCORE, highScore);
             scorePref.flush();
+            newHighScore.putBoolean(Constants.KEY_NEW_HIGH_SCORE, true);
+            newHighScore.flush();
+        } else {
+            newHighScore.putBoolean(Constants.KEY_NEW_HIGH_SCORE, false);
+            newHighScore.flush();
         }
         resetCurrentScore();
     }

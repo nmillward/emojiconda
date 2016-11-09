@@ -15,7 +15,9 @@ public class Constants {
     public static final String UI_SKIN = "uiskin.json";
     public static final String FONT_TITAN = "font/titan.ttf";
     public static final String PREF_HIGH_SCORE = "High Score Preference";
-    public static final String KEY_HIGH_SCORE = "score";
+    public static final String PREF_NEW_HIGH_SCORE = "New High Score Preference";
+    public static final String KEY_HIGH_SCORE = "highScore";
+    public static final String KEY_NEW_HIGH_SCORE = "newHighScore";
 
     // SNAKE
     public static final float SNAKE_SEGMENT_DEFAULT_SIZE = 50;
@@ -86,6 +88,7 @@ public class Constants {
 
     // GAME_SCREEN OVER SCREEN
     public static final String HIGH_SCORE_LABEL = "High Score: ";
+    public static final String NEW_HIGH_SCORE_LABEL = "NEW \n High Score: ";
     public static final String BUTTON_HOME = "btn_home";
     public static final String BUTTON_RESUME = "btn_resume";
     public static final String TITLE_GAME_OVER = "txt_gameover";
