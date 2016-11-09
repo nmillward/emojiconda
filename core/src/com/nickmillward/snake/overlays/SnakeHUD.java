@@ -4,10 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -24,30 +26,33 @@ import com.nickmillward.snake.utils.Utils;
 public class SnakeHUD {
 
     GameplayScreen screen;
-    ShapeRenderer shapeRenderer;
 
     public final Viewport viewport;
     final BitmapFont font;
 
     public Stage stage;
-    private Table table;
+    private SpriteBatch batch;
     private Label scoreLabel;
-    private TextButton pauseButton;
+    private Button pauseButton;
+    private Skin skin;
     private int score;
 
     public SnakeHUD(final GameplayScreen screen, SpriteBatch batch) {
         this.screen = screen;
+        this.batch = batch;
         this.viewport = new ExtendViewport(Constants.SNAKE_HUD_VIEWPORT_SIZE, Constants.SNAKE_HUD_VIEWPORT_SIZE);
         font = Utils.generateFreeTypeFont(Constants.FONT_TITAN, 24, Color.WHITE);
-        shapeRenderer = new ShapeRenderer();
+        skin = new Skin(Gdx.files.internal(Constants.UI_SKIN));
+        skin.addRegions(new TextureAtlas(Constants.TEXTURE_ATLAS));
 
         score = 0;
 
         stage = new Stage(viewport, batch);
-        table = new Table();
+        Table table = new Table();
         table.top();
         table.setFillParent(true);
         table.setTransform(true);
+        table.toFront();
 
         Label.LabelStyle labelStyle = new Label.LabelStyle(font, Color.WHITE);
         scoreLabel = new Label(Constants.SNAKE_HUD_SCORE_LABEL + score, labelStyle);
@@ -73,10 +78,9 @@ public class SnakeHUD {
         table.add(pauseButton).expandX().padTop(Constants.SNAKE_HUD_MARGIN);
 
         stage.addActor(table);
+//        stage.act();
 
-//        InputMultiplexer inputMultiplexer = new InputMultiplexer();
-//        inputMultiplexer.addProcessor(stage);
-//        Gdx.input.setInputProcessor(inputMultiplexer);
+        Gdx.input.setInputProcessor(stage);
     }
 
 

@@ -25,7 +25,6 @@ public class MobileControls extends InputAdapter implements InputProcessor {
         lastTouch.set(screenX, screenY);
         Gdx.app.log("MOBILE", "TOUCH DOWN: (" + screenX + ", " + screenY + ")");
         return true;
-
     }
 
     @Override

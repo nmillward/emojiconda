@@ -58,8 +58,15 @@ public class GameplayScreen extends AbstractScreen {
     public void show() {
         if (onMobile()) {
             InputMultiplexer multiplexer = new InputMultiplexer();
-            multiplexer.addProcessor(mobileControls);
             multiplexer.addProcessor(snakeHUD.stage);
+            multiplexer.addProcessor(pauseOverlay.stage);
+            multiplexer.addProcessor(mobileControls);
+            Gdx.input.setInputProcessor(multiplexer);
+        } else {
+            InputMultiplexer multiplexer = new InputMultiplexer();
+            multiplexer.addProcessor(this);
+            multiplexer.addProcessor(snakeHUD.stage);
+            multiplexer.addProcessor(pauseOverlay.stage);
             Gdx.input.setInputProcessor(multiplexer);
         }
     }
