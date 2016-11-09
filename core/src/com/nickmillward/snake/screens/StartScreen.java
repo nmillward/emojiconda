@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.actions.ScaleToAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -31,7 +33,7 @@ public class StartScreen extends AbstractScreen {
     private Enums.Difficulty difficulty;
     private BitmapFont font;
     private Label difficultyLabel;
-    private Button btn_easy, btn_medium, btn_hard;
+    private Button btn_easy, btn_medium, btn_hard, btn_start;
     private Button.ButtonStyle easyButtonStyle, medButtonStyle, hardButtonStyle, startButtonStyle;
     private int highScore;
 
@@ -152,11 +154,17 @@ public class StartScreen extends AbstractScreen {
         Label highScoreLabel = new Label(Constants.HIGH_SCORE_LABEL + highScore, highScoreLabelStyle);
 
         startButtonStyle.up = new TextureRegionDrawable(new TextureRegion(skin.getRegion(Constants.BUTTON_PLAY)));
-        Button btn_start = new Button(startButtonStyle);
+        btn_start = new Button(startButtonStyle);
+
+        final ScaleToAction scaleScore = Actions.action(ScaleToAction.class);
+        scaleScore.setScale(1.5f);
+        scaleScore.setDuration(5.0f);
+
         btn_start.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 ScreenManager.getInstance().showScreen(Enums.Screen.GAME_SCREEN, difficulty);
+                btn_start.addAction(scaleScore);
                 event.stop();
             }
         });
