@@ -44,7 +44,7 @@ public class MobileControls extends InputAdapter implements InputProcessor {
             }
         }
 
-        if (touchDiff > 15.0) { //TODO: Look into change over time (e.g. no direction change within 200 milliseconds or * difficulty speed)
+        if (touchDiff > 15.0) { //TODO: Look into change over time (e.g. no direction change within 200 milliseconds or * difficulty speed) --> Time lapsed since last direction change
 
             if (level.snake.isMoving()) {
                 if (Math.abs(delta.x) > Math.abs(delta.y)) {    // Move Left or Right

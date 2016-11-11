@@ -6,253 +6,273 @@ filter: Nearest,Nearest
 repeat: none
 EASY_OFF
   rotate: false
-  xy: 2, 18
+  xy: 412, 146
   size: 180, 180
   orig: 180, 180
   offset: 0, 0
   index: -1
 EASY_ON
   rotate: false
-  xy: 184, 18
+  xy: 794, 398
   size: 180, 180
   orig: 180, 180
   offset: 0, 0
   index: -1
 HARD_OFF
   rotate: false
-  xy: 412, 206
+  xy: 594, 146
   size: 180, 180
   orig: 180, 180
   offset: 0, 0
   index: -1
 HARD_ON
   rotate: false
-  xy: 594, 206
+  xy: 776, 216
   size: 180, 180
   orig: 180, 180
   offset: 0, 0
   index: -1
 MEDIUM_OFF
   rotate: false
-  xy: 794, 486
-  size: 180, 180
-  orig: 180, 180
-  offset: 0, 0
-  index: -1
-MEDIUM_ON
-  rotate: false
-  xy: 776, 304
+  xy: 776, 34
   size: 180, 180
   orig: 180, 180
   offset: 0, 0
   index: -1
 beef
   rotate: false
-  xy: 958, 420
+  xy: 958, 332
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 bg_start
   rotate: false
-  xy: 2, 340
+  xy: 2, 356
   size: 360, 640
   orig: 360, 640
   offset: 0, 0
   index: -1
+btn_got_it
+  rotate: false
+  xy: 412, 328
+  size: 292, 110
+  orig: 292, 110
+  offset: 0, 0
+  index: -1
 btn_home
   rotate: false
-  xy: 364, 388
+  xy: 2, 216
   size: 408, 138
   orig: 408, 138
   offset: 0, 0
   index: -1
 btn_play
   rotate: false
-  xy: 2, 200
+  xy: 2, 76
   size: 408, 138
   orig: 408, 138
   offset: 0, 0
   index: -1
 btn_resume
   rotate: false
-  xy: 364, 528
+  xy: 364, 440
   size: 428, 138
   orig: 428, 138
   offset: 0, 0
   index: -1
 burger
   rotate: false
-  xy: 958, 354
+  xy: 958, 266
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 cake
   rotate: false
-  xy: 958, 288
+  xy: 958, 200
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 candybar
   rotate: false
-  xy: 898, 916
+  xy: 958, 134
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 cookie
   rotate: false
-  xy: 776, 238
+  xy: 958, 68
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 cry_tears
   rotate: false
-  xy: 898, 850
+  xy: 958, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 donut
   rotate: false
-  xy: 842, 238
+  xy: 898, 932
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 drumstick
   rotate: false
-  xy: 898, 784
+  xy: 706, 374
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 emojiconda_title
   rotate: false
-  xy: 364, 752
+  xy: 364, 768
   size: 532, 228
   orig: 532, 228
   offset: 0, 0
   index: -1
 grin
   rotate: false
-  xy: 366, 134
+  xy: 2, 10
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 happy
   rotate: false
-  xy: 366, 68
+  xy: 412, 80
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 happy_cry
   rotate: false
-  xy: 432, 140
+  xy: 898, 866
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 heart
   rotate: false
-  xy: 432, 74
+  xy: 68, 10
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 icecream
   rotate: false
-  xy: 498, 140
+  xy: 478, 80
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 kiss
   rotate: false
-  xy: 498, 74
+  xy: 898, 800
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 lollipop
   rotate: false
-  xy: 564, 140
+  xy: 134, 10
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 pizza
   rotate: false
-  xy: 564, 74
+  xy: 544, 80
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 shades
   rotate: false
-  xy: 630, 140
+  xy: 200, 10
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 shock
   rotate: false
-  xy: 630, 74
+  xy: 610, 80
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 smirk
   rotate: false
-  xy: 696, 140
+  xy: 266, 10
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
+swipe
+  rotate: false
+  xy: 364, 664
+  size: 546, 102
+  orig: 546, 102
+  offset: 0, 0
+  index: -1
 tada
   rotate: false
-  xy: 696, 74
+  xy: 676, 80
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tongue_happy
   rotate: false
-  xy: 366, 2
+  xy: 332, 10
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tongue_tease
   rotate: false
-  xy: 432, 8
+  xy: 912, 734
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tongue_wink
   rotate: false
-  xy: 498, 8
+  xy: 912, 668
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 trollface
   rotate: false
-  xy: 564, 8
+  xy: 398, 10
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 txt_gameover
   rotate: false
-  xy: 364, 668
+  xy: 364, 580
   size: 594, 82
   orig: 594, 82
+  offset: 0, 0
+  index: -1
+
+textureAtlas2.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+MEDIUM_ON
+  rotate: false
+  xy: 2, 2
+  size: 180, 180
+  orig: 180, 180
   offset: 0, 0
   index: -1
