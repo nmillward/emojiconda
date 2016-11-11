@@ -71,6 +71,7 @@ public class InstructionOverlay {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 firstPref.putBoolean(Constants.KEY_FIRST_TIME, false);
+                firstPref.flush();
                 screen.setGameState(Enums.GAME_STATE.RUN);
                 Gdx.app.log("PAUSE OVERLAY", "GOT IT BUTTON CLICKED");
                 event.stop();
