@@ -132,6 +132,7 @@ public class GameplayScreen extends AbstractScreen {
                         Color.BLACK.b,
                         Color.BLACK.a);
                 Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+                instructionOverlay.enableButton();
 
                 instructionOverlay.stage.draw();
                 break;
@@ -141,6 +142,8 @@ public class GameplayScreen extends AbstractScreen {
                 level.render(batch);
                 snakeHUD.updateScore(level.getCurrentScore());
                 snakeHUD.stage.draw();
+                pauseOverlay.disableButton();
+                instructionOverlay.disableButton();
                 pauseKeyPressed();
                 break;
 
@@ -157,6 +160,7 @@ public class GameplayScreen extends AbstractScreen {
                 shapeRenderer.end();
                 Gdx.gl.glDisable(GL20.GL_BLEND);
 
+                pauseOverlay.enableButton();
                 pauseOverlay.stage.draw();
                 pauseKeyPressed();
                 break;
