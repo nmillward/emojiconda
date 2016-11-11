@@ -93,6 +93,8 @@ public class Constants {
     public static final String BUTTON_RESUME = "btn_resume";
     public static final String TITLE_GAME_OVER = "txt_gameover";
 
+    // INSTRUCTION OVERLAY
+    public static final String BUTTON_GOT_IT = "btn_got_it";
 
 
 }

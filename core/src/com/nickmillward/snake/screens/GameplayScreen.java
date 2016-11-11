@@ -107,6 +107,10 @@ public class GameplayScreen extends AbstractScreen {
         batch.setProjectionMatrix(pauseOverlay.stage.getCamera().combined);
 
         switch (gameState) {
+            case FIRST:
+
+                break;
+
             case RUN:
                 level.update(delta);
                 level.render(batch);

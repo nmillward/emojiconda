@@ -13,7 +13,7 @@ public class Enums {
     public enum GAME_STATE {
         RUN,
         PAUSE,
-        RESUME,
+        FIRST,
         STOP
     }
 
