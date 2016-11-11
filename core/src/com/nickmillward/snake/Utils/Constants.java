@@ -16,8 +16,10 @@ public class Constants {
     public static final String FONT_TITAN = "font/titan.ttf";
     public static final String PREF_HIGH_SCORE = "High Score Preference";
     public static final String PREF_NEW_HIGH_SCORE = "New High Score Preference";
+    public static final String PREF_FIRST_TIME = "First Time";
     public static final String KEY_HIGH_SCORE = "highScore";
     public static final String KEY_NEW_HIGH_SCORE = "newHighScore";
+    public static final String KEY_FIRST_TIME = "firstTime";
 
     // SNAKE
     public static final float SNAKE_SEGMENT_DEFAULT_SIZE = 50;
@@ -95,6 +97,7 @@ public class Constants {
 
     // INSTRUCTION OVERLAY
     public static final String BUTTON_GOT_IT = "btn_got_it";
-
+    public static final String IMG_SWIPE = "swipe";
+    public static final String TXT_SWIPE = "swipe-to-move";
 
 }

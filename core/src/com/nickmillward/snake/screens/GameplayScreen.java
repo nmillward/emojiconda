@@ -4,6 +4,7 @@ import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -11,6 +12,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.nickmillward.snake.Level;
 import com.nickmillward.snake.MobileControls;
+import com.nickmillward.snake.overlays.InstructionOverlay;
 import com.nickmillward.snake.overlays.PauseOverlay;
 import com.nickmillward.snake.overlays.SnakeHUD;
 import com.nickmillward.snake.utils.Assets;
@@ -25,6 +27,8 @@ public class GameplayScreen extends AbstractScreen {
 
     public static final String TAG = GameplayScreen.class.getName();
 
+    Preferences firstPref = Gdx.app.getPreferences(Constants.PREF_FIRST_TIME);
+
     MobileControls mobileControls;
     SpriteBatch batch;
     Level level;
@@ -32,7 +36,9 @@ public class GameplayScreen extends AbstractScreen {
     private Enums.GAME_STATE gameState;
     private SnakeHUD snakeHUD;
     private PauseOverlay pauseOverlay;
+    private InstructionOverlay instructionOverlay;
     private ShapeRenderer shapeRenderer;
+    private boolean isFirstTime;
     public boolean isPaused;
 
     public GameplayScreen(Enums.Difficulty difficulty) {
@@ -44,9 +50,17 @@ public class GameplayScreen extends AbstractScreen {
         batch = new SpriteBatch();
         snakeHUD = new SnakeHUD(this, batch);
         pauseOverlay = new PauseOverlay(this, batch);
+        instructionOverlay = new InstructionOverlay(this, batch);
         mobileControls = new MobileControls(level);
-        gameState = Enums.GAME_STATE.RUN;
         isPaused = false;
+
+        isFirstTime = firstPref.getBoolean(Constants.KEY_FIRST_TIME, true);
+        Gdx.app.log("GAME", "FIRST PREF: " + isFirstTime);
+        if (isFirstTime) {
+            gameState = Enums.GAME_STATE.FIRST;
+        } else {
+            gameState = Enums.GAME_STATE.RUN;
+        }
     }
 
     @Override
@@ -60,6 +74,7 @@ public class GameplayScreen extends AbstractScreen {
             InputMultiplexer multiplexer = new InputMultiplexer();
             multiplexer.addProcessor(snakeHUD.stage);
             multiplexer.addProcessor(pauseOverlay.stage);
+            multiplexer.addProcessor(instructionOverlay.stage);
             multiplexer.addProcessor(mobileControls);
             Gdx.input.setInputProcessor(multiplexer);
         } else {
@@ -67,6 +82,7 @@ public class GameplayScreen extends AbstractScreen {
             multiplexer.addProcessor(this);
             multiplexer.addProcessor(snakeHUD.stage);
             multiplexer.addProcessor(pauseOverlay.stage);
+            multiplexer.addProcessor(instructionOverlay.stage);
             Gdx.input.setInputProcessor(multiplexer);
         }
     }
@@ -76,6 +92,7 @@ public class GameplayScreen extends AbstractScreen {
         level.viewport.update(width, height, true);
         snakeHUD.viewport.update(width, height, true);
         pauseOverlay.viewport.update(width, height, true);
+        instructionOverlay.viewport.update(width, height, true);
     }
 
     @Override
@@ -105,10 +122,18 @@ public class GameplayScreen extends AbstractScreen {
 
         batch.setProjectionMatrix(snakeHUD.stage.getCamera().combined);
         batch.setProjectionMatrix(pauseOverlay.stage.getCamera().combined);
+        batch.setProjectionMatrix(instructionOverlay.stage.getCamera().combined);
 
         switch (gameState) {
             case FIRST:
+                Gdx.gl.glClearColor(
+                        Color.BLACK.r,
+                        Color.BLACK.g,
+                        Color.BLACK.b,
+                        Color.BLACK.a);
+                Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+                instructionOverlay.stage.draw();
                 break;
 
             case RUN:

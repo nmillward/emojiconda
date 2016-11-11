@@ -28,6 +28,7 @@ import com.nickmillward.snake.utils.Utils;
 public class StartScreen extends AbstractScreen {
 
     Preferences scorePref = Gdx.app.getPreferences(Constants.PREF_HIGH_SCORE);
+    Preferences firstPref = Gdx.app.getPreferences(Constants.PREF_FIRST_TIME);
 
     private Skin skin;
     private Enums.Difficulty difficulty;
@@ -36,6 +37,7 @@ public class StartScreen extends AbstractScreen {
     private Button btn_easy, btn_medium, btn_hard, btn_start;
     private Button.ButtonStyle easyButtonStyle, medButtonStyle, hardButtonStyle, startButtonStyle;
     private int highScore;
+    private boolean isFirstTime;
 
     public StartScreen() {
         super();
@@ -50,6 +52,7 @@ public class StartScreen extends AbstractScreen {
         startButtonStyle = new Button.ButtonStyle();
 
         highScore = scorePref.getInteger(Constants.KEY_HIGH_SCORE, 0);
+        isFirstTime = firstPref.getBoolean(Constants.KEY_FIRST_TIME, true);
     }
 
     @Override
