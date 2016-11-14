@@ -104,11 +104,14 @@ public class GameplayScreen extends AbstractScreen {
     @Override
     public void render(float delta) {
         Gdx.gl.glClearColor(
-                Constants.BACKGROUND_COLOR.r,
-                Constants.BACKGROUND_COLOR.g,
-                Constants.BACKGROUND_COLOR.b,
-                Constants.BACKGROUND_COLOR.a);
+                Constants.GAMEPLAY_BACKGROUND_COLOR.r,
+                Constants.GAMEPLAY_BACKGROUND_COLOR.g,
+                Constants.GAMEPLAY_BACKGROUND_COLOR.b,
+                Constants.GAMEPLAY_BACKGROUND_COLOR.a);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+//        Gdx.gl.glClearColor(0, 186, 203, 1);
+//        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         // BORDER
         shapeRenderer.setProjectionMatrix(getCamera().combined);

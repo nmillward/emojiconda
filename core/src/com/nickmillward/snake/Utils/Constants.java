@@ -11,6 +11,7 @@ public class Constants {
     // WORLD
     public static final float WORLD_SIZE = 800;
     public static final Color BACKGROUND_COLOR = Color.SLATE;
+    public static final Color GAMEPLAY_BACKGROUND_COLOR = Color.valueOf("00A3B2");
     public static final String TEXTURE_ATLAS = "textures/textureAtlas.atlas";
     public static final String UI_SKIN = "uiskin.json";
     public static final String FONT_TITAN = "font/titan.ttf";
