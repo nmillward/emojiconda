@@ -48,7 +48,7 @@ public class GameplayScreen extends AbstractScreen {
         Assets.instance.init(assetManager);
         level = new Level(this, difficulty);
         batch = new SpriteBatch();
-        snakeHUD = new SnakeHUD(this, batch);
+        snakeHUD = new SnakeHUD(this);
         pauseOverlay = new PauseOverlay(this, batch);
         instructionOverlay = new InstructionOverlay(this, batch);
         mobileControls = new MobileControls(level);

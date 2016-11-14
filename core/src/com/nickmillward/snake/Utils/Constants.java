@@ -67,7 +67,7 @@ public class Constants {
     public static final float SNAKE_HUD_VIEWPORT_SIZE = 480;
     public static final float SNAKE_HUD_MARGIN = 20;
     public static final String SNAKE_HUD_SCORE_LABEL = "Score: ";
-    public static final String PAUSE_BUTTON_TEXT = "PAUSE";
+    public static final String BUTTON_PAUSE = "btn_pause";
 
     // LEVEL
     public static final Color BORDER_COLOR = Color.WHITE;
