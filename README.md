@@ -1,3 +1,5 @@
+![featuregraphic](https://user-images.githubusercontent.com/4249779/39677916-289ca40a-5151-11e8-9189-b5527b871ba9.png)
+
 # emojiconda
 _An Android game built with [Libgdx](https://libgdx.badlogicgames.com/)_
 
